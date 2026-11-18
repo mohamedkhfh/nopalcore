@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#183D29" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Nopal Core" />
+  <meta name="description" content="شركة Nopal Core للتقنيات الحيوية واستغلال الأراضي — استخلاص زيت بذور التين الشوكي البكر، اللب المجمد خالي البذور، مقشر الكُسب التجميلي، بودرة الكلادود، والهلام الحيوي ضمن منظومة اقتصاد دائري صفرية الفاقد." />
+  <meta name="keywords" content="Nopal Core, نوبال كور, زيت التين الشوكي, بودرة الكلادود, الهلام الحيوي, تأجير الأراضي الزراعية, الاقتصاد الدائري, Prickly Pear Seed Oil, Opuntia ficus-indica Egypt" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Social Sharing Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nopal Core | نوبال كور - للتقنيات الحيوية واستغلال الأراضي" />
+  <meta property="og:description" content="منظومة تصنيع حيوي دائرية لتحويل الأراضي غير المستغلة ونبات التين الشوكي إلى خامات صناعية وتجميلية ودوائية عالية القيمة." />
+  <meta property="og:locale" content="ar_EG" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <title>Nopal Core | نوبال كور - للتقنيات الحيوية واستغلال الأراضي</title>
+
+  <!-- Official Geometric Core Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='26' fill='%23ffffff'/%3E%3Cg fill='none' stroke='%23183D29' stroke-width='6.5'%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(0 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(60 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(120 60 60)'/%3E%3C/g%3E%3Cg transform='translate(60 60) rotate(-42)' fill='none' stroke='%23D19336' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z'/%3E%3Cline x1='-14' y1='0' x2='14' y2='0'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='26' fill='%23183D29'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='6.5'%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(0 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(60 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(120 60 60)'/%3E%3C/g%3E%3Cg transform='translate(60 60) rotate(-42)' fill='none' stroke='%23D19336' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z'/%3E%3Cline x1='-14' y1='0' x2='14' y2='0'/%3E%3C/g%3E%3C/svg%3E" />
+
+  <!-- Structured Data (Schema.org JSON-LD) for Technical SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nopal Core Biotech",
+    "alternateName": "نوبال كور للتقنيات الحيوية",
+    "description": "Integrated circular-economy AgriTech & Biotech valorization of prickly pear (Opuntia ficus-indica) and marginal land utilization in Egypt.",
+    "email": "Nopalcore@hotmail.com",
+    "telephone": "+201065760174",
+    "founders": [
+      { "@type": "Person", "name": "Mohamed Khaled", "jobTitle": "Chief Executive Officer (CEO)" },
+      { "@type": "Person", "name": "Eng. Ahmed Hassanein", "jobTitle": "Co-Founder — Engineering & Operations" },
+      { "@type": "Person", "name": "Dr. Bassem Sayed", "jobTitle": "Co-Founder — R&D & Commercial B2B" }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      background-color: #FAF9F6;
+      color: #1E293B;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    html[dir="ltr"] body {
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+    }
+    .brand-green { color: #183D29; }
+    .bg-brand-green { background-color: #183D29; }
+    .border-brand-green { border-color: #183D29; }
+    .brand-gold { color: #D19336; }
+    .bg-brand-gold { background-color: #D19336; }
+    .tab-active {
+      background-color: #183D29;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(24, 61, 41, 0.18);
+    }
+    .tab-inactive {
+      color: #475569;
+    }
+    .tab-inactive:hover {
+      background-color: #F5F5F4;
+      color: #183D29;
+    }
+    .filter-active {
+      background-color: #183D29;
+      color: #FFFFFF;
+      border-color: #183D29;
+    }
+    .filter-inactive {
+      background-color: #FFFFFF;
+      color: #475569;
+      border-color: #E7E5E4;
+    }
+    .filter-inactive:hover {
+      border-color: #D19336;
+      color: #183D29;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @media (display-mode: standalone) {
+      #installAppBtn {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen selection:bg-[#D19336] selection:text-white pb-16 lg:pb-0">
+
+  <!-- Skip to Content for Accessibility (WCAG) -->
+  <a href="#publicView" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:right-3 focus:z-50 focus:bg-[#183D29] focus:text-white focus:px-4 focus:py-2 focus:rounded-xl focus:text-xs focus:font-extrabold" data-i18n="skip_link">
+    تخطي إلى المحتوى الرئيسي
+  </a>
+
+  <!-- Global Copy Link Toast Notification -->
+  <div id="copyLinkToast" role="status" aria-live="polite" class="hidden fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#183D29] text-white px-5 py-3 rounded-2xl shadow-lg border border-white/15 flex items-center gap-2.5 text-xs sm:text-sm font-extrabold">
+    <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+    <span id="copyLinkToastText" data-i18n="toast_copied">تم نسخ الرابط بنجاح!</span>
+  </div>
+
+  <!-- Clean Light Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-3">
+        <!-- Official Geometric Core Brand Logo -->
+        <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-3 group text-start cursor-pointer shrink-0">
+          <div class="w-11 h-11 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-1.5 transition-all group-hover:border-[#D19336]">
+            <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nopal Core Logo">
+              <g stroke="#183D29" stroke-width="6.5">
+                <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+                <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+                <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+              </g>
+              <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+                <line x1="-14" y1="0" x2="14" y2="0" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="block text-lg sm:text-xl font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
+              <span id="appModeBadge" class="hidden px-2 py-0.5 rounded-full bg-emerald-50 text-[#183D29] border border-emerald-200 text-[10px] font-extrabold">APP</span>
+            </div>
+            <span class="block text-[11px] font-semibold text-stone-500 mt-1" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
+          </div>
+        </button>
+
+        <!-- Single Desktop Navigation Bar + PWA App Installer + Language Switcher -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <nav class="hidden lg:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-2xl border border-stone-200/80" aria-label="Main Navigation">
+            <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-3.5 py-2 rounded-xl text-xs xl:text-sm font-extrabold transition cursor-pointer" data-i18n="tab_home">
+              الرئيسية
+            </button>
+            <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs xl:text-sm font-extrabold transition cursor-pointer" data-i18n="tab_products">
+              المنتجات الصناعية
+            </button>
+            <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs xl:text-sm font-extrabold transition cursor-pointer" data-i18n="tab_farmers">
+              تأجير الأراضي والتوريد
+            </button>
+            <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs xl:text-sm font-extrabold transition cursor-pointer" data-i18n="tab_about">
+              المنظومة والفريق
+            </button>
+            <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs xl:text-sm font-extrabold transition cursor-pointer" data-i18n="tab_b2b">
+              تواصل الشركات
+            </button>
+          </nav>
+
+          <!-- Web-to-App (PWA) Install Trigger Button -->
+          <button type="button" id="installAppBtn" onclick="openInstallAppModal()"
+            class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2.5 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-xs font-extrabold transition cursor-pointer shadow-sm">
+            <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            <span class="hidden sm:inline" data-i18n="btn_install_app">تثبيت التطبيق</span>
+          </button>
+
+          <!-- Bilingual Toggle -->
+          <button type="button" onclick="toggleLanguage()" id="langBtn"
+            class="px-3.5 sm:px-4 py-2.5 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] transition cursor-pointer shadow-sm">
+            English
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile & Tablet Horizontal Navigation Bar -->
+      <nav class="flex lg:hidden items-center gap-1.5 pb-3 overflow-x-auto no-scrollbar" aria-label="Mobile Navigation">
+        <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_home">
+          الرئيسية
+        </button>
+        <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_products">
+          المنتجات الصناعية
+        </button>
+        <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_farmers">
+          تأجير الأراضي والتوريد
+        </button>
+        <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_about">
+          المنظومة والفريق
+        </button>
+        <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_b2b">
+          تواصل الشركات
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN PUBLIC CONTENT CONTAINER -->
+  <main id="publicView" class="flex-grow divide-y divide-stone-200/70">
+
+    <!-- SECTION 1: HOME -->
+    <section id="page-home" class="page-section scroll-mt-24 py-10 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="bg-white rounded-3xl p-7 sm:p-12 lg:p-14 border border-stone-200 shadow-sm">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-8 space-y-6">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 text-[#D19336] border border-amber-200/80 text-xs font-extrabold">
+              <span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+              <span data-i18n="hero_badge">الاقتصاد الدائري الأخضر • Zero-Waste Biotech</span>
+            </span>
+
+            <h1 class="text-3xl sm:text-5xl font-black brand-green leading-[1.22]" data-i18n="hero_title">
+              نحوّل الأراضي غير المستغلة ونبات الصبار إلى خامات صناعية عالية القيمة
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl" data-i18n="hero_sub">
+              تتخصص شركة Nopal Core في استخلاص زيت بذور التين الشوكي البكر، اللب المجمد خالي البذور، مقشر الكُسب التجميلي، ومسحوق وهلام الكلادود لصناعات التجميل والأدوية والأغذية، مع بناء شراكات إيجارية مستدامة لاستثمار الأراضي الفاضية والهامشية.
+            </p>
+
+            <div class="flex flex-wrap gap-3.5 pt-2">
+              <button type="button" onclick="navigateToSection('farmers')"
+                class="bg-brand-green text-white px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base hover:opacity-95 transition shadow-sm cursor-pointer" data-i18n="hero_btn_farmer">
+                اعرض أرضك للإيجار أو ورّد خاماتك
+              </button>
+              <button type="button" onclick="navigateToSection('products')"
+                class="bg-[#FAF9F6] text-[#183D29] border border-stone-300 hover:border-[#183D29] px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base transition cursor-pointer" data-i18n="hero_btn_b2b">
+                استكشف المنتجات الصناعية (6 خامات)
+              </button>
+            </div>
+          </div>
+
+          <!-- Refined Light Brand Identity Card -->
+          <div class="lg:col-span-4 flex justify-center">
+            <div class="w-full max-w-xs rounded-3xl bg-[#FAF9F6] border border-stone-200 p-8 flex flex-col items-center text-center shadow-sm">
+              <svg class="w-32 h-32 mb-4" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#183D29" stroke-width="6">
+                  <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+                  <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+                  <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+                </g>
+                <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+                  <line x1="-14" y1="0" x2="14" y2="0" />
+                </g>
+              </svg>
+              <span class="text-xs font-black tracking-widest brand-green uppercase">NOPAL CORE</span>
+              <span class="text-xs text-slate-500 mt-1" data-i18n="hero_card_sub">منظومة التصنيع الحيوي الدائري</span>
+              <div class="w-12 h-1 rounded-full bg-brand-gold mt-4 mb-4"></div>
+              <div class="w-full grid grid-cols-2 gap-2 pt-3 border-t border-stone-200/80 text-[11px]">
+                <div class="bg-white p-2.5 rounded-xl border border-stone-200/60">
+                  <span class="block font-black brand-green text-sm">100%</span>
+                  <span class="text-slate-500 font-bold" data-i18n="stat_zero_waste">استغلال صفري الفاقد</span>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-stone-200/60">
+                  <span class="block font-black text-[#D19336] text-sm">6+</span>
+                  <span class="text-slate-500 font-bold" data-i18n="stat_outputs">مخرجات صناعية B2B</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dual-Stream Highlights Strip -->
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex items-start gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-[#D19336] font-black flex items-center justify-center shrink-0">01</div>
+          <div>
+            <h3 class="text-sm font-black brand-green" data-i18n="strip1_t">مسار الثمار والبذور (الصيفي والمخلفات)</h3>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed" data-i18n="strip1_d">استخلاص زيت البذور البكر على البارد، اللب المجمد خالي البذور، ومقشر الكُسب التجميلي وقشور الأعلاف.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex items-start gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-[#183D29] font-black flex items-center justify-center shrink-0">02</div>
+          <div>
+            <h3 class="text-sm font-black brand-green" data-i18n="strip2_t">مسار الألواح الخضراء (طوال العام)</h3>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed" data-i18n="strip2_d">تشغيل مستمر لإنتاج بودرة النوبال المجففة، الهلام الحيوي (Bio-Mucilage)، ومركزات الأعلاف المستدامة.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex items-start gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-[#D19336] font-black flex items-center justify-center shrink-0">03</div>
+          <div>
+            <h3 class="text-sm font-black brand-green" data-i18n="strip3_t">شراكات الأراضي وتوريد المصانع</h3>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed" data-i18n="strip3_d">تأجير الأراضي الصحراوية والهامشية وتوريد مخلفات بذور مصانع العصائر والمربى وثمار المزارع.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INDUSTRIAL PRODUCTS (ALL 6 CIRCULAR OUTPUTS + STREAM FILTER) -->
+    <section id="page-products" class="page-section scroll-mt-24 py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-7 sm:p-10 border border-stone-200 shadow-sm mb-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div>
+          <span class="inline-block px-3.5 py-1 rounded-full bg-amber-50 text-[#D19336] text-xs font-extrabold mb-2 border border-amber-200/80" data-i18n="prod_badge">
+            مخرجات التصنيع الحيوي • B2B Portfolio
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black brand-green" data-i18n="prod_title">المنتجات والخامات الصناعية المتكاملة</h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl leading-relaxed" data-i18n="prod_sub">
+            خامات طبيعية معيارية بمعالجة باردة ونظيفة تغطي مساري الثمار والألواح لتلبية احتياجات مصانع التجميل الفاخرة، الأغذية والعصائر، المكملات الدوائية، والأعلاف المستدامة.
+          </p>
+        </div>
+
+        <div class="shrink-0 flex flex-wrap gap-3">
+          <button type="button" onclick="openSampleModal('')"
+            class="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-brand-green text-white text-sm font-extrabold hover:opacity-95 transition cursor-pointer shadow-sm">
+            <svg class="w-4 h-4 text-[#D19336]" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+            <span data-i18n="btn_sample">تواصل لطلب عينة وشهادة COA</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Stream Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-2 mb-7" role="tablist" aria-label="Product Stream Filter">
+        <button type="button" data-filter="all" onclick="filterProducts('all')" class="prod-filter-btn filter-active px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold transition cursor-pointer" data-i18n="flt_all">
+          جميع الخامات (6)
+        </button>
+        <button type="button" data-filter="cosmetics" onclick="filterProducts('cosmetics')" class="prod-filter-btn filter-inactive px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold transition cursor-pointer" data-i18n="flt_cosmetics">
+          التجميل والمستحضرات الطبية (3)
+        </button>
+        <button type="button" data-filter="food" onclick="filterProducts('food')" class="prod-filter-btn filter-inactive px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold transition cursor-pointer" data-i18n="flt_food">
+          الأغذية والمكملات الحيوية (2)
+        </button>
+        <button type="button" data-filter="feed" onclick="filterProducts('feed')" class="prod-filter-btn filter-inactive px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold transition cursor-pointer" data-i18n="flt_feed">
+          الأعلاف المستدامة (1)
+        </button>
+      </div>
+
+      <!-- Enriched 6-Card Industrial Portfolio Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
+        <!-- Product 1: Seed Oil -->
+        <div data-category="cosmetics" class="product-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-amber-50 text-[#D19336] font-black text-base flex items-center justify-center">01</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p1_tag">تجميل وعناية فاخرة</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p1_t">زيت بذور التين الشوكي البكر</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p1_d">
+              معصور على البارد (Cold-Pressed) من البذور النقية دون مذيبات كيميائية، يتميز بتركيز استثنائي من فيتامين E (توكوفيرول) وحمض اللينوليك لتجديد البشرة ومكافحة علامات التقدم في السن.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_extraction">طريقة الاستخلاص</span>
+                <span class="font-extrabold brand-green" data-i18n="p1_ext">عصر بارد ميكانيكي</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">التطبيقات الصناعية</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p1_app">سيروم الوجه وزيوت العناية</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold">
+            <span class="text-slate-500" data-i18n="p1_spec">Cosmetic Grade • 100% نقي</span>
+            <button type="button" onclick="openSampleModal('oil')" class="text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
+
+        <!-- Product 2: Seedless Frozen Pulp -->
+        <div data-category="food" class="product-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-emerald-50 text-[#183D29] font-black text-base flex items-center justify-center">02</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p5_tag">صناعات غذائية وعصائر</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p5_t">لب التين الشوكي المجمد خالي البذور</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p5_d">
+              بيوريه فاكهة طبيعي مفصول البذور ومجمد سريعاً للحفاظ على اللون والسكريات الطبيعية ومضادات الأكسدة، جاهز للتوريد المباشر لمصانع العصائر، الآيس كريم، والمربات.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_extraction">طريقة المعالجة</span>
+                <span class="font-extrabold brand-green" data-i18n="p5_ext">فصل ميكانيكي وتجميد حفظي</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">التطبيقات الصناعية</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p5_app">العصائر، المربى، والآيس كريم</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold">
+            <span class="text-slate-500" data-i18n="p5_spec">Food Grade B2B Puree</span>
+            <button type="button" onclick="openSampleModal('pulp')" class="text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
+
+        <!-- Product 3: Dehydrated Cladode Powder -->
+        <div data-category="food" class="product-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-emerald-50 text-[#183D29] font-black text-base flex items-center justify-center">03</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p2_tag">مكملات وأغذية وظيفية</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p2_t">الكلادود المجفف والمطحون (Nopal Powder)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p2_d">
+              ألواح صبار منتقاة ومجففة حرارياً عند درجات حرارة منخفضة (&lt;50°م) للحفاظ على كامل القيمة الغذائية من الألياف الذائبة، البوليفينولات، والمعادن الحيوية للصناعات الغذائية والدوائية.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_extraction">طريقة المعالجة</span>
+                <span class="font-extrabold brand-green" data-i18n="p2_ext">تجفيف منخفض الحرارة وطحن ناعم</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">التطبيقات الصناعية</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p2_app">كبسولات المكملات والمخبوزات الصحية</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold">
+            <span class="text-slate-500" data-i18n="p2_spec">Nutraceutical & Food Grade</span>
+            <button type="button" onclick="openSampleModal('powder')" class="text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
+
+        <!-- Product 4: Bio-Mucilage -->
+        <div data-category="cosmetics" class="product-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-amber-50 text-[#D19336] font-black text-base flex items-center justify-center">04</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p3_tag">صناعات دوائية وتجميل</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p3_t">الهلام الحيوي (Bio-Mucilage)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p3_d">
+              مستخلص بوليمر طبيعي غرواني متعدد السكريات عالي اللزوجة، يعمل كمرطب عميق ومثبت حيوي طبيعي بديل للمشتقات الصناعية في التركيبات الطبية ومستحضرات العناية بالبشرة والشعر.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_extraction">طريقة الاستخلاص</span>
+                <span class="font-extrabold brand-green" data-i18n="p3_ext">استخلاص مائي وترسيب معياري</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">التطبيقات الصناعية</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p3_app">الجل الطبي والكريمات المرطبة</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold">
+            <span class="text-slate-500" data-i18n="p3_spec">Pharma & Cosmetic Biopolymer</span>
+            <button type="button" onclick="openSampleModal('mucilage')" class="text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
+
+        <!-- Product 5: Exfoliating Seed-Cake Cosmetic Scrub -->
+        <div data-category="cosmetics" class="product-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-amber-50 text-[#D19336] font-black text-base flex items-center justify-center">05</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p6_tag">مستحضرات تقشير طبيعية</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p6_t">مقشر الكُسب التجميلي (Seed-Cake Scrub)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p6_d">
+              حبيبات تقشير نباتية طبيعية ناتجة عن طحن وتنقية كُسب بذور التين الشوكي بعد العصر البارد، غنية بالبروتينات والألياف كبديل صديق للبيئة عن الميكروبلاستيك في غسول ومقشرات البشرة.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_extraction">طريقة التصنيع</span>
+                <span class="font-extrabold brand-green" data-i18n="p6_ext">طحن ميكروي ونخل قياسي</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">التطبيقات الصناعية</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p6_app">مقشرات الوجه والجسم والصابون</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold">
+            <span class="text-slate-500" data-i18n="p6_spec">Eco-Exfoliant • Microplastic-Free</span>
+            <button type="button" onclick="openSampleModal('scrub')" class="text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
+
+        <!-- Product 6: Sustainable Feed Concentrates -->
+        <div data-category="feed" class="product-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] hover:shadow-md transition flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-emerald-50 text-[#183D29] font-black text-base flex items-center justify-center">06</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p4_tag">أعلاف مستدامة</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p4_t">مركزات الأعلاف المستدامة (قشور وألواح)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p4_d">
+              إعادة تدوير الكتلة الحيوية الغنية بالبكتين والألياف وقشور الثمار بعد عمليات الاستخلاص لإنتاج إضافات ومكعبات علفية متوازنة غنية بالمعادن، تدعم صحة الثروة الحيوانية وتقلل تكلفة التغذية.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_extraction">طريقة التصنيع</span>
+                <span class="font-extrabold brand-green" data-i18n="p4_ext">تجفيف حراري وكبس علف</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">التطبيقات الصناعية</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p4_app">مزارع الإنتاج الحيواني ومصانع الأعلاف</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold">
+            <span class="text-slate-500" data-i18n="p4_spec">Sustainable Feed • Zero-Waste</span>
+            <button type="button" onclick="openSampleModal('feed')" class="text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: LAND LEASING & RAW MATERIAL SUPPLY PORTAL -->
+    <section id="page-farmers" class="page-section scroll-mt-24 py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <!-- Info Column -->
+        <div class="lg:col-span-5 bg-white rounded-3xl p-7 sm:p-8 border border-stone-200 shadow-sm space-y-5">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-50 brand-green text-xs font-extrabold" data-i18n="farm_badge">
+            بوابة أصحاب الأراضي والموردين
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black brand-green leading-snug" data-i18n="farm_title">
+            استثمر أرضك غير المستغلة أو ورّد مخلفات البذور والثمار
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed" data-i18n="farm_desc">
+            إذا كانت لديك مساحة أرض فاضية أو هامشية، تقوم Nopal Core بمعاينتها وتأجيرها بعقود واضحة، كما نستقبل عروض توريد مخلفات بذور التين الشوكي من مصانع العصائر والمربى وثمار الدرجة الثانية من المزارع.
+          </p>
+
+          <ul class="space-y-3 text-sm font-bold text-slate-700 pt-2">
+            <li class="flex items-center gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-brand-green text-white flex items-center justify-center text-xs shrink-0">✓</span>
+              <span data-i18n="farm_f1">مناسب للأراضي الصحراوية والهامشية والفاضية</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-brand-green text-white flex items-center justify-center text-xs shrink-0">✓</span>
+              <span data-i18n="farm_f2">معاينة فنية مجانية لتحديد مدى مطابقة التربة</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="w-5 h-5 rounded-full bg-brand-green text-white flex items-center justify-center text-xs shrink-0">✓</span>
+              <span data-i18n="farm_f3">شراء مخلفات البذور والثمار والألواح من المزارع والمصانع</span>
+            </li>
+          </ul>
+
+          <!-- Quick Supply Option for Juice Factories & Existing Farms -->
+          <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80 space-y-2">
+            <span class="block text-xs font-extrabold text-[#183D29]" data-i18n="supply_box_t">هل لديك مصنع عصير/مربى أو مزرعة تين شوكي قائمة؟</span>
+            <p class="text-[11px] text-slate-600 leading-relaxed" data-i18n="supply_box_d">
+              نشتري مخلفات بذور التين الشوكي، ثمار الفرزة الثانية، والألواح الخضراء من مزارع المنيا والخانكة والنوبارية بعقود توريد موسمية وسنوية.
+            </p>
+            <a href="https://wa.me/201065760174?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Nopal%20Core%D8%8C%20%D9%84%D8%AF%D9%8A%D9%86%D8%A7%20%D9%83%D9%85%D9%8A%D8%A7%D8%AA%20%D9%85%D9%86%20%D8%A8%D8%B0%D9%88%D8%B1%20%D8%A3%D9%88%20%D8%AB%D9%85%D8%A7%D8%B1%20%D8%A3%D9%88%20%D8%A3%D9%84%D9%88%D8%A7%D8%AD%20%D8%A7%D9%84%D8%AA%D9%8A%D9%86%20%D8%A7%D9%84%D8%B4%D9%88%D9%83%D9%8A%20%D9%84%D9%84%D8%AA%D9%88%D8%B1%D9%8A%D8%AF"
+              target="_blank" rel="noopener"
+              class="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#183D29] hover:text-[#D19336] underline">
+              <span data-i18n="supply_box_btn">تواصل لتوريد البذور أو الثمار الخام ←</span>
+            </a>
+          </div>
+
+          <!-- Exclusive Share Land Portal Button inside Agricultural Section -->
+          <div class="pt-1">
+            <button type="button" onclick="shareFarmersPortalLink()"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-300 hover:border-[#D19336] hover:bg-amber-50/50 text-xs sm:text-sm font-extrabold brand-green transition cursor-pointer shadow-sm">
+              <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+              <span data-i18n="btn_share_portal">مشاركة رابط بوابة تأجير الأراضي</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-7 sm:p-9 border border-stone-200 shadow-sm">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <h3 class="text-xl font-black brand-green" data-i18n="form_head">طلب معاينة وتأجير أرض</h3>
+            <span class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg bg-emerald-50 brand-green" data-i18n="form_free">معاينة مجانية</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-6" data-i18n="form_note">جميع الحقول الأساسية مطلوبة قبل الإرسال (السعر المقترح اختياري).</p>
+
+          <form id="farmerForm" novalidate class="space-y-4">
+            <!-- Anti-Bot Honeypot Field (Hidden from real users) -->
+            <div class="hidden" aria-hidden="true">
+              <label for="websiteUrlTrap">Website</label>
+              <input type="text" id="websiteUrlTrap" name="websiteUrlTrap" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Landowner Full Name -->
+            <div>
+              <label for="fullName" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="lbl_name">الاسم الكامل لصاحب الأرض *</label>
+              <input type="text" id="fullName" required minlength="3" maxlength="120" placeholder="مثال: محمود عبد الرحمن" data-i18n-placeholder="ph_name"
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-[#183D29]" />
+            </div>
+
+            <!-- Egyptian Phone & Farm Region Dropdown -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="phone" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="lbl_phone">رقم الموبايل المصري (11 رقم) *</label>
+                <input type="tel" id="phone" required maxlength="11" inputmode="numeric" placeholder="010xxxxxxxx"
+                  class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left font-mono focus:outline-none focus:border-[#183D29]" dir="ltr" />
+                <p class="text-[11px] text-slate-400 mt-1" data-i18n="hint_phone">11 رقم يبدأ بـ 010 أو 011 أو 012 أو 015</p>
+              </div>
+
+              <div>
+                <label for="governorateSelect" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="lbl_gov">المزرعة / المنطقة الزراعية *</label>
+                <select id="governorateSelect" required
+                  class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#183D29] cursor-pointer">
+                  <option value="" disabled selected data-i18n="opt_select_region">-- اختر المنطقة أو المزرعة --</option>
+                  <option value="المنيا - الظهير الصحراوي" data-i18n="reg_minya">المنيا - الظهير الصحراوي</option>
+                  <option value="الخانكة - القليوبية" data-i18n="reg_khanka">الخانكة - القليوبية</option>
+                  <option value="طريق مصر الإسكندرية الصحراوي" data-i18n="reg_alex">طريق مصر الإسكندرية الصحراوي</option>
+                  <option value="النوبارية" data-i18n="reg_nubaria">النوبارية</option>
+                  <option value="الفيوم" data-i18n="reg_fayoum">الفيوم</option>
+                  <option value="الوادي الجديد" data-i18n="reg_newvalley">الوادي الجديد</option>
+                  <option value="__other__" data-i18n="reg_other">أخرى (تحديد منطقة مخصصة)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Custom Region Input -->
+            <div id="customGovWrapper" class="hidden">
+              <label for="customGovernorate" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="lbl_custom_gov">اكتب اسم المحافظة أو المنطقة *</label>
+              <input type="text" id="customGovernorate" minlength="2" maxlength="100" placeholder="مثال: أسيوط - مركز الغنايم" data-i18n-placeholder="ph_custom_gov"
+                class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-[#FAF9F6] text-sm focus:outline-none focus:border-[#183D29]" />
+            </div>
+
+            <!-- Simplified Land Area Input + Live Conversion Badge -->
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <label for="areaInput" class="block text-xs font-bold text-slate-700">
+                  <span data-i18n="lbl_area">المساحة غير المستغلة *</span>
+                </label>
+                <span id="liveAreaConverted" class="text-[11px] font-extrabold text-[#D19336]"></span>
+              </div>
+              <div class="flex rounded-xl border border-stone-300 overflow-hidden focus-within:border-[#183D29] bg-white">
+                <input type="number" id="areaInput" required min="1" step="any" placeholder="مثال: 10" data-i18n-placeholder="ph_area"
+                  class="w-full px-4 py-3 text-sm focus:outline-none" />
+                <select id="areaUnit" aria-label="وحدة المساحة"
+                  class="bg-stone-100 border-s border-stone-300 px-4 py-3 text-xs sm:text-sm font-extrabold brand-green focus:outline-none cursor-pointer shrink-0">
+                  <option value="feddan" data-i18n="opt_feddan">فدان</option>
+                  <option value="sqm" data-i18n="opt_sqm">متر مربع</option>
+                </select>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1" data-i18n="area_simple_hint">اختر الوحدة (فدان أو متر مربع) واكتب المساحة المتاحة</p>
+            </div>
+
+            <!-- Optional Expected Rent + Prefer Negotiation -->
+            <div class="p-4 rounded-2xl bg-[#FAF9F6] border border-stone-200 space-y-2.5">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <label for="expectedRent" class="text-xs font-bold text-slate-700" data-i18n="lbl_rent">
+                  متوسط الإيجار السنوي المتوقع للفدان (اختياري - ج.م)
+                </label>
+                <label class="inline-flex items-center gap-2 cursor-pointer select-none text-xs font-extrabold brand-green bg-white px-3 py-1.5 rounded-lg border border-stone-200">
+                  <input type="checkbox" id="preferNegotiation" class="w-4 h-4 accent-[#183D29] rounded cursor-pointer" />
+                  <span data-i18n="lbl_nego">يُفضّل التفاوض بعد المعاينة</span>
+                </label>
+              </div>
+
+              <input type="number" id="expectedRent" min="500" step="100" placeholder="اكتب السعر المتوقع بالجنيه المصري أو اختر التفاوض" data-i18n-placeholder="ph_rent"
+                class="w-full px-4 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:border-[#183D29] disabled:bg-stone-100 disabled:text-slate-400" />
+
+              <p class="text-[11px] text-slate-500 leading-relaxed" data-i18n="rent_reassure">
+                يساعدنا في تسريع التقييم، ويُحدد السعر النهائي العادل بعد المعاينة الفنية للأرض.
+              </p>
+            </div>
+
+            <!-- Validation / Success Feedback -->
+            <div id="formAlert" role="alert" aria-live="polite" class="hidden p-3.5 rounded-xl text-xs font-bold"></div>
+
+            <button type="submit" id="submitBtn"
+              class="w-full bg-brand-green text-white py-4 rounded-2xl font-extrabold text-sm hover:opacity-95 transition shadow-sm cursor-pointer" data-i18n="btn_submit">
+              إرسال طلب المعاينة والتأجير
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CIRCULAR SYSTEM & FOUNDING TEAM (CREDIBILITY FOR INCUBATORS & B2B) -->
+    <section id="page-about" class="page-section scroll-mt-24 py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="bg-white rounded-3xl p-7 sm:p-10 border border-stone-200 shadow-sm">
+        <div class="max-w-3xl">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-amber-50 text-[#D19336] text-xs font-extrabold mb-2 border border-amber-200/80" data-i18n="about_badge">
+            النواة الهندسية • The Geometric Core
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black brand-green" data-i18n="about_title">منظومة التصنيع الحيوي والفريق المؤسس</h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed" data-i18n="about_sub">
+            تجمع Nopal Core بين الهندسة الكيميائية والعمليات الصناعية والبحث والتطوير والإدارة المالية لتحويل محصول التين الشوكي المصري من زراعة موسمية تقليدية إلى صناعة تحويلية مستدامة تعمل طوال العام.
+          </p>
+        </div>
+
+        <!-- 3-Step Biorefinery Architecture -->
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+          <div class="p-6 rounded-2xl bg-[#FAF9F6] border border-stone-200/90 space-y-2">
+            <span class="text-xs font-extrabold text-[#D19336]" data-i18n="step1_kicker">المرحلة الأولى • التوريد والزراعة</span>
+            <h3 class="text-base font-black brand-green" data-i18n="step1_title">استغلال الأراضي وتجميع البذور</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="step1_desc">
+              تأجير الأراضي الصحراوية والهامشية قليلة المياه وتجميع مخلفات بذور مصانع العصائر وثمار الفرزة الثانية من مزارع المنيا والخانكة.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-[#FAF9F6] border border-stone-200/90 space-y-2">
+            <span class="text-xs font-extrabold text-[#183D29]" data-i18n="step2_kicker">المرحلة الثانية • المعالجة المعيارية</span>
+            <h3 class="text-base font-black brand-green" data-i18n="step2_title">خط إنتاج مزدوج (صيفي وطوال العام)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="step2_desc">
+              وحدة تصنيع مرنة تعالج الثمار صيفاً (عصر بارد للبذور وفصل اللب) وتعالج الألواح الخضراء طوال العام (تجفيف منخفض الحرارة واستخلاص الميوسيلاج).
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-[#FAF9F6] border border-stone-200/90 space-y-2">
+            <span class="text-xs font-extrabold text-[#D19336]" data-i18n="step3_kicker">المرحلة الثالثة • التوريد الصناعي B2B</span>
+            <h3 class="text-base font-black brand-green" data-i18n="step3_title">خامات معتمدة بصفر نفايات</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="step3_desc">
+              إمداد مصانع التجميل، المكملات الدوائية، العصائر، والأعلاف بخامات نقية مرفقة بشهادات التحليل الفني (COA) مع تدوير كامل المتبقيات الحيوية.
+            </p>
+          </div>
+        </div>
+
+        <!-- Founding Team Cards (3 Co-Founders) -->
+        <div class="mt-10 pt-8 border-t border-stone-200/80">
+          <h3 class="text-lg sm:text-xl font-black brand-green mb-5" data-i18n="team_heading">الفريق المؤسس (Founding Team)</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- Mohamed Khaled -->
+            <div class="p-6 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-brand-green text-white font-black text-sm flex items-center justify-center">MK</span>
+                  <span class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg bg-amber-50 text-[#D19336] border border-amber-200/70">CEO & Co-Founder</span>
+                </div>
+                <h4 class="text-base font-black brand-green" data-i18n="f1_name">محمد خالد (Mohamed Khaled)</h4>
+                <p class="text-xs font-bold text-slate-500 mt-0.5" data-i18n="f1_role">الرئيس التنفيذي والشريك المؤسس</p>
+                <p class="text-xs text-slate-600 mt-3 leading-relaxed" data-i18n="f1_bio">
+                  يقود إعداد نماذج الأعمال ودراسات الجدوى، الإدارة المالية والإدارية، تطوير الشراكات الاستراتيجية، وإدارة ملفات التمويل والحاضنات.
+                </p>
+              </div>
+            </div>
+
+            <!-- Ahmed Hassanein -->
+            <div class="p-6 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-emerald-50 text-[#183D29] border border-emerald-200 font-black text-sm flex items-center justify-center">AH</span>
+                  <span class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg bg-stone-100 text-slate-700">Engineering & Ops</span>
+                </div>
+                <h4 class="text-base font-black brand-green" data-i18n="f2_name">م. أحمد حسنين (Eng. Ahmed Hassanein)</h4>
+                <p class="text-xs font-bold text-slate-500 mt-0.5" data-i18n="f2_role">الشريك المؤسس للهندسة والعمليات</p>
+                <p class="text-xs text-slate-600 mt-3 leading-relaxed" data-i18n="f2_bio">
+                  يقود تصميم خطوط الإنتاج المعيارية، هندسة معدات العصر البارد والتجفيف، وإدارة العمليات التشغيلية وسلاسل الإمداد.
+                </p>
+              </div>
+            </div>
+
+            <!-- Dr. Bassem Sayed -->
+            <div class="p-6 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-amber-50 text-[#D19336] border border-amber-200 font-black text-sm flex items-center justify-center">BS</span>
+                  <span class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg bg-stone-100 text-slate-700">R&D & Commercial B2B</span>
+                </div>
+                <h4 class="text-base font-black brand-green" data-i18n="f3_name">د. باسم سيد (Dr. Bassem Sayed)</h4>
+                <p class="text-xs font-bold text-slate-500 mt-0.5" data-i18n="f3_role">الشريك المؤسس للبحث والتطوير والتطوير التجاري</p>
+                <p class="text-xs text-slate-600 mt-3 leading-relaxed" data-i18n="f3_bio">
+                  يشرف على بروتوكولات الاستخلاص الحيوي، معايير الجودة وشهادات التحليل الفني (COA)، وتطوير شراكات المبيعات الصناعية (B2B).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: B2B CORPORATE CONTACT -->
+    <section id="page-b2b" class="page-section scroll-mt-24 py-12 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-stone-200 shadow-sm text-center space-y-6">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-[#D19336] border border-amber-200/80 text-xs font-extrabold" data-i18n="b2b_badge">
+          توريد الشركات والمصانع • B2B Supply
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black brand-green leading-tight" data-i18n="b2b_title">
+          هل تمثل مصنعاً أو شركة تبحث عن خامات طبيعية عالية النقاء؟
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed" data-i18n="b2b_sub">
+          تواصل مباشرة مع فريق المبيعات الصناعية في Nopal Core لطلب شهادات التحليل الفني (COA)، العينات المعملية، أو ترتيب عقود توريد منتظمة.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+          <button type="button" onclick="openSampleModal('')"
+             class="bg-amber-50 text-[#183D29] border border-amber-300 px-7 py-3.5 rounded-2xl font-extrabold text-sm hover:border-[#183D29] transition shadow-sm cursor-pointer">
+            <span data-i18n="btn_b2b_modal">تحديد الخامة وطلب عينة (COA)</span>
+          </button>
+          <a href="https://wa.me/201065760174?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Nopal%20Core%D8%8C%20%D9%86%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%AE%D8%A7%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9"
+             target="_blank" rel="noopener"
+             class="bg-[#25D366] text-slate-950 px-7 py-3.5 rounded-2xl font-extrabold text-sm hover:brightness-105 transition shadow-sm">
+            <span data-i18n="btn_wa">تواصل مباشر عبر واتساب</span>
+          </a>
+          <button type="button" onclick="contactEmail()"
+             class="bg-brand-green text-white px-7 py-3.5 rounded-2xl font-extrabold text-sm hover:opacity-95 transition shadow-sm cursor-pointer">
+            <span data-i18n="btn_email">مراسلة عبر البريد الرسمي</span>
+          </button>
+        </div>
+
+        <div class="pt-4 border-t border-stone-100 text-xs text-slate-500">
+          <span data-i18n="official_email_lbl">البريد الرسمي للشركة: </span>
+          <strong class="brand-green font-mono select-all">Nopalcore@hotmail.com</strong>
+          <p id="emailToast" class="hidden text-[#D19336] font-extrabold mt-2" data-i18n="email_copied_msg">✓ تم نسخ البريد الإلكتروني الرسمي إلى الحافظة</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- INTERACTIVE SAMPLE & COA REQUEST MODAL -->
+  <div id="sampleModal" role="dialog" aria-modal="true" aria-labelledby="sampleModalHeading" class="hidden fixed inset-0 z-50 bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 border border-stone-200 shadow-xl space-y-4">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="text-[11px] font-extrabold text-[#D19336] uppercase" data-i18n="modal_kicker">طلب عينة معملية ومواصفات (COA)</span>
+          <h3 id="sampleModalHeading" class="text-lg font-black brand-green mt-1" data-i18n="modal_title">تواصل لطلب عينة من خامات Nopal Core</h3>
+        </div>
+        <button type="button" onclick="closeSampleModal()" aria-label="إغلاق" class="w-8 h-8 rounded-full bg-stone-100 text-slate-500 hover:text-slate-800 font-bold cursor-pointer">✕</button>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="modal_desc">
+        حدد الخامة المطلوبة واسم شركتك ليتم تجهيز رسالة الطلب المباشرة لفريق المبيعات الصناعية:
+      </p>
+
+      <!-- Customizer inside Sample Modal -->
+      <div class="space-y-3 pt-1">
+        <div>
+          <label for="sampleProductSelect" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="modal_lbl_prod">الخامة الصناعية المطلوبة</label>
+          <select id="sampleProductSelect" onchange="updateSampleLinks()" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-[#FAF9F6] text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:border-[#183D29]">
+            <option value="all" data-i18n="modal_opt_all">جميع الخامات الصناعية (ملف كامل + COA)</option>
+            <option value="oil" data-i18n="p1_t">زيت بذور التين الشوكي البكر</option>
+            <option value="pulp" data-i18n="p5_t">لب التين الشوكي المجمد خالي البذور</option>
+            <option value="powder" data-i18n="p2_t">الكلادود المجفف والمطحون (Nopal Powder)</option>
+            <option value="mucilage" data-i18n="p3_t">الهلام الحيوي (Bio-Mucilage)</option>
+            <option value="scrub" data-i18n="p6_t">مقشر الكُسب التجميلي (Seed-Cake Scrub)</option>
+            <option value="feed" data-i18n="p4_t">مركزات الأعلاف المستدامة (قشور وألواح)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label for="sampleCompanyInput" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="modal_lbl_comp">اسم الشركة / المصنع</label>
+            <input type="text" id="sampleCompanyInput" oninput="updateSampleLinks()" placeholder="اختياري" data-i18n-placeholder="ph_optional" class="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:border-[#183D29]" />
+          </div>
+          <div>
+            <label for="sampleQtyInput" class="block text-xs font-bold text-slate-700 mb-1" data-i18n="modal_lbl_qty">الكمية التقديرية</label>
+            <input type="text" id="sampleQtyInput" oninput="updateSampleLinks()" placeholder="مثال: عينة 100 مل / 5 كجم" data-i18n-placeholder="ph_sample_qty" class="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:border-[#183D29]" />
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-2.5 pt-2">
+        <a id="modalWaLink" href="https://wa.me/201065760174" target="_blank" rel="noopener"
+          class="block w-full text-center py-3.5 rounded-2xl bg-[#25D366] text-slate-950 font-extrabold text-sm hover:brightness-105 transition">
+          <span data-i18n="modal_wa">إرسال طلب العينة عبر واتساب (WhatsApp)</span>
+        </a>
+        <a id="modalMailLink" href="mailto:Nopalcore@hotmail.com"
+          class="block w-full text-center py-3.5 rounded-2xl bg-brand-green text-white font-extrabold text-sm hover:opacity-95 transition">
+          <span data-i18n="modal_mail">إرسال عبر البريد الإلكتروني (Nopalcore@hotmail.com)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEB-TO-APP (PWA) INSTALL MODAL -->
+  <div id="installAppModal" role="dialog" aria-modal="true" aria-labelledby="installModalHeading" class="hidden fixed inset-0 z-50 bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 border border-stone-200 shadow-xl space-y-4">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-[#183D29] p-2 flex items-center justify-center shrink-0">
+            <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-width="6.5">
+                <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+                <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+                <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+              </g>
+              <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+                <line x1="-14" y1="0" x2="14" y2="0" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <span class="text-[11px] font-extrabold text-[#D19336] uppercase" data-i18n="app_modal_kicker">تطبيق الويب التقدمي • PWA App</span>
+            <h3 id="installModalHeading" class="text-lg font-black brand-green" data-i18n="app_modal_title">تثبيت تطبيق Nopal Core</h3>
+          </div>
+        </div>
+        <button type="button" onclick="closeInstallAppModal()" aria-label="إغلاق" class="w-8 h-8 rounded-full bg-stone-100 text-slate-500 hover:text-slate-800 font-bold cursor-pointer">✕</button>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="app_modal_desc">
+        يمكنك تثبيت منصة Nopal Core كتطبيق مباشر على شاشة هاتفك أو حاسوبك للوصول السريع لبوابة تأجير الأراضي وكتالوج الخامات الصناعية ولوحة الإدارة حتى في ضعف الشبكة:
+      </p>
+
+      <!-- Direct Install Prompt Button (shown automatically when browser supports beforeinstallprompt) -->
+      <button type="button" id="nativePwaInstallBtn" onclick="triggerNativePwaInstall()"
+        class="hidden w-full py-3.5 rounded-2xl bg-brand-green text-white font-extrabold text-sm hover:opacity-95 transition cursor-pointer shadow-sm" data-i18n="app_btn_direct">
+        تثبيت التطبيق الآن بضغطة واحدة
+      </button>
+
+      <!-- Step-by-step instructions for Android / iOS / Desktop -->
+      <div class="space-y-2.5 text-xs bg-[#FAF9F6] p-4 rounded-2xl border border-stone-200">
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-brand-green text-white font-black flex items-center justify-center shrink-0">1</span>
+          <p class="text-slate-700 leading-relaxed" data-i18n="app_step_android">
+            <strong>على هواتف أندرويد (Chrome):</strong> اضغط على قائمة المتصفح (⋮) أعلى الشاشة ثم اختر <strong>«تثبيت التطبيق / Install App»</strong> أو «الإضافة إلى الشاشة الرئيسية».
+          </p>
+        </div>
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-brand-green text-white font-black flex items-center justify-center shrink-0">2</span>
+          <p class="text-slate-700 leading-relaxed" data-i18n="app_step_ios">
+            <strong>على آيفون (Safari):</strong> اضغط على زر المشاركة (Share ⬆️) أسفل الشاشة ثم اختر <strong>«إضافة إلى الشاشة الرئيسية / Add to Home Screen»</strong>.
+          </p>
+        </div>
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-brand-green text-white font-black flex items-center justify-center shrink-0">3</span>
+          <p class="text-slate-700 leading-relaxed" data-i18n="app_step_desktop">
+            <strong>على الكمبيوتر (Chrome / Edge):</strong> اضغط على أيقونة التثبيت بجوار شريط العنوان أعلى المتصفح لتشغيله كتطبيق مستقل.
+          </p>
+        </div>
+      </div>
+
+      <button type="button" onclick="closeInstallAppModal()" class="w-full py-3 rounded-2xl bg-stone-100 hover:bg-stone-200 text-slate-700 font-extrabold text-xs cursor-pointer transition" data-i18n="app_modal_close">
+        حسناً، فهمت
+      </button>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD (#admin) -->
+  <section id="adminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+    <div id="adminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-sm border border-stone-200 mt-6">
+      <div class="flex flex-col items-center mb-6 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 p-2 mb-3 flex items-center justify-center">
+          <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#183D29" stroke-width="6.5">
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+            </g>
+            <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+              <line x1="-14" y1="0" x2="14" y2="0" />
+            </g>
+          </svg>
+        </div>
+        <h2 class="text-xl font-black brand-green" data-i18n="adm_login_title">لوحة إدارة Nopal Core</h2>
+        <p class="text-xs text-slate-500 mt-1" data-i18n="adm_login_sub">الدخول مقتصر على حساب الإدارة المعتمد</p>
+      </div>
+      <form id="adminLoginForm" class="space-y-4">
+        <input type="email" id="adminEmail" value="Nopalcore@hotmail.com" required
+          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
+        <input type="password" id="adminPass" placeholder="كلمة المرور" data-i18n-placeholder="ph_admin_pass" required
+          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
+        <p id="loginError" class="hidden text-xs text-red-600 font-bold bg-red-50 p-3 rounded-xl"></p>
+        <button type="submit" id="adminLoginBtn" class="w-full bg-brand-green text-white py-3.5 rounded-xl font-extrabold text-sm cursor-pointer" data-i18n="adm_btn_login">
+          تسجيل الدخول
+        </button>
+      </form>
+      <div class="mt-5 text-center">
+        <button type="button" onclick="navigateToSection('home')" class="text-xs font-bold text-slate-500 hover:text-[#183D29] cursor-pointer" data-i18n="adm_back_home">
+          ← العودة للموقع الرئيسي
+        </button>
+      </div>
+    </div>
+
+    <!-- Leads Dashboard Content -->
+    <div id="adminDashboardContent" class="hidden space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-stone-200 shadow-sm">
+        <div>
+          <h2 class="text-2xl font-black brand-green" data-i18n="adm_dash_title">طلبات تأجير ومعاينة الأراضي</h2>
+          <p class="text-xs text-slate-500 mt-0.5" data-i18n="adm_dash_sub">مربوط مباشرة بقاعدة بيانات Supabase (farmer_leads)</p>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          <button type="button" onclick="exportLeadsToCSV()" class="px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-[#183D29] text-xs font-extrabold hover:border-[#D19336] cursor-pointer" data-i18n="adm_btn_csv">
+            تصدير Excel / CSV
+          </button>
+          <button type="button" onclick="navigateToSection('home')" class="px-4 py-2 rounded-xl border border-stone-300 text-xs font-bold hover:bg-stone-100 cursor-pointer" data-i18n="adm_btn_site">الموقع الرئيسي</button>
+          <button type="button" onclick="loadLeads()" class="px-4 py-2 rounded-xl bg-stone-200 text-xs font-bold hover:bg-stone-300 cursor-pointer" data-i18n="adm_btn_refresh">تحديث البيانات</button>
+          <button type="button" onclick="logoutAdmin()" class="px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold cursor-pointer" data-i18n="adm_btn_logout">تسجيل خروج</button>
+        </div>
+      </div>
+
+      <!-- Admin Summary KPI Cards & Search Filter -->
+      <div class="grid sm:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-bold" data-i18n="adm_kpi_total">إجمالي الطلبات</span>
+          <p id="kpiTotalLeads" class="text-2xl font-black brand-green mt-1">0</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-bold" data-i18n="adm_kpi_area">إجمالي المساحات المعروضة</span>
+          <p id="kpiTotalFeddan" class="text-2xl font-black text-[#D19336] mt-1">0 فدان</p>
+        </div>
+        <div class="sm:col-span-2 bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-center">
+          <label for="adminSearchInput" class="text-xs text-slate-500 font-bold mb-1.5" data-i18n="adm_search_lbl">بحث سريع بالاسم أو المحافظة أو رقم الموبايل</label>
+          <input type="search" id="adminSearchInput" oninput="renderLeadsTable()" placeholder="ابحث هنا..." data-i18n-placeholder="ph_adm_search"
+            class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:border-[#183D29]" />
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto">
+        <table class="w-full text-right text-sm">
+          <thead class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200">
+            <tr>
+              <th class="p-4" data-i18n="th_date">التاريخ</th>
+              <th class="p-4" data-i18n="th_name">الاسم</th>
+              <th class="p-4" data-i18n="th_phone">رقم الموبايل</th>
+              <th class="p-4" data-i18n="th_gov">المحافظة / المركز</th>
+              <th class="p-4" data-i18n="th_area">المساحة (فدان / م²)</th>
+              <th class="p-4" data-i18n="th_rent">الإيجار المتوقع / فدان</th>
+              <th class="p-4" data-i18n="th_action">إجراء سريع</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody" class="divide-y divide-stone-200">
+            <tr><td colspan="7" class="p-6 text-center text-slate-400">جاري تحميل الطلبات...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean Light Footer -->
+  <footer class="bg-white border-t border-stone-200 py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <svg class="w-8 h-8" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#183D29" stroke-width="6.5">
+            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+          </g>
+          <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+            <line x1="-14" y1="0" x2="14" y2="0" />
+          </g>
+        </svg>
+        <span class="font-black brand-green text-sm">NOPAL CORE</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs text-slate-500">
+        <span>© 2026 Nopal Core Biotech. All rights reserved.</span>
+        <button type="button" onclick="openInstallAppModal()" class="text-slate-500 hover:text-[#183D29] font-bold transition cursor-pointer" data-i18n="footer_app_btn">
+          التطبيق (PWA)
+        </button>
+        <button type="button" onclick="openAdminPortal()" class="text-slate-400 hover:text-[#183D29] font-bold transition cursor-pointer">
+          Admin
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile App Bottom Navigation Dock (Native App Experience on Mobile Screens) -->
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200 px-2 py-1.5 grid grid-cols-5 gap-1 shadow-lg" aria-label="Bottom App Navigation">
+    <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
+      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      <span data-i18n="dock_home">الرئيسية</span>
+    </button>
+    <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
+      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+      <span data-i18n="dock_products">الخامات</span>
+    </button>
+    <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
+      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span data-i18n="dock_farmers">الأراضي</span>
+    </button>
+    <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
+      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <span data-i18n="dock_about">الفريق</span>
+    </button>
+    <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
+      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+      <span data-i18n="dock_b2b">الشركات</span>
+    </button>
+  </nav>
+
+  <script>
+    // ==========================================
+    // 1. SUPABASE INITIALIZATION (UNCHANGED AS REQUESTED)
+    // ==========================================
+    const SUPABASE_URL = 'https://ipwbibgzmmkrxzexfjkv.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_-S7HszdsUfwZZ3UMGWZiMg_qnc9rpGU';
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ==========================================
+    // 2. XSS SANITIZATION & SECURITY UTILITIES
+    // ==========================================
+    function escapeHtml(unsafeStr) {
+      if (unsafeStr === null || unsafeStr === undefined) return '';
+      return String(unsafeStr)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    const RATE_LIMIT_MS = 20000;
+    let lastSubmitTimestamp = 0;
+
+    // ==========================================
+    // 3. WEB-TO-APP (PWA MANIFEST & INSTALL HANDLER)
+    // ==========================================
+    let deferredPwaPrompt = null;
+
+    function initWebToAppCapabilities() {
+      // Only inject dynamic manifest when hosted on standard HTTP/HTTPS domain
+      if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+        try {
+          const iconSvgUrl = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='26' fill='%23183D29'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='6.5'%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(0 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(60 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='26' ry='46' transform='rotate(120 60 60)'/%3E%3C/g%3E%3Cg transform='translate(60 60) rotate(-42)' fill='none' stroke='%23D19336' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z'/%3E%3Cline x1='-14' y1='0' x2='14' y2='0'/%3E%3C/g%3E%3C/svg%3E";
+          const manifestObj = {
+            name: "Nopal Core | نوبال كور للتقنيات الحيوية",
+            short_name: "Nopal Core",
+            description: "منظومة التصنيع الحيوي الدائري وتأجير الأراضي الزراعية — Nopal Core Biotech",
+            start_url: window.location.href.split('#')[0] || "./",
+            display: "standalone",
+            dir: "rtl",
+            lang: "ar",
+            background_color: "#FAF9F6",
+            theme_color: "#183D29",
+            icons: [
+              { src: iconSvgUrl, sizes: "192x192 512x512", type: "image/svg+xml", purpose: "any maskable" }
+            ]
+          };
+          const manifestBlob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+          const manifestLink = document.createElement('link');
+          manifestLink.rel = 'manifest';
+          manifestLink.href = URL.createObjectURL(manifestBlob);
+          document.head.appendChild(manifestLink);
+        } catch (e) {}
+      }
+
+      if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
+        const badge = document.getElementById('appModeBadge');
+        if (badge) badge.classList.remove('hidden');
+      }
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPwaPrompt = e;
+        const nativeBtn = document.getElementById('nativePwaInstallBtn');
+        if (nativeBtn) nativeBtn.classList.remove('hidden');
+      });
+    }
+
+    function openInstallAppModal() {
+      document.getElementById('installAppModal').classList.remove('hidden');
+    }
+
+    function closeInstallAppModal() {
+      document.getElementById('installAppModal').classList.add('hidden');
+    }
+
+    async function triggerNativePwaInstall() {
+      if (!deferredPwaPrompt) return;
+      deferredPwaPrompt.prompt();
+      await deferredPwaPrompt.userChoice;
+      deferredPwaPrompt = null;
+      document.getElementById('nativePwaInstallBtn').classList.add('hidden');
+      closeInstallAppModal();
+    }
+
+    // ==========================================
+    // 4. COPY LINK & SHARE PORTAL UTILITIES
+    // ==========================================
+    let copyToastTimer = null;
+
+    function showCopyToast(type) {
+      const toast = document.getElementById('copyLinkToast');
+      const toastText = document.getElementById('copyLinkToastText');
+      const isEn = currentLang === 'en';
+      if (type === 'farmers') {
+        toastText.textContent = isEn ? 'Land leasing portal link copied!' : 'تم نسخ رابط بوابة تأجير الأراضي!';
+      } else {
+        toastText.textContent = isEn ? 'Website link copied to clipboard!' : 'تم نسخ رابط الموقع بنجاح!';
+      }
+      toast.classList.remove('hidden');
+      clearTimeout(copyToastTimer);
+      copyToastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2800);
+    }
+
+    async function copyPageLink(urlToCopy, type = 'website') {
+      let copied = false;
+      try {
+        const tempInput = document.createElement('input');
+        tempInput.value = urlToCopy;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999);
+        copied = document.execCommand('copy');
+        document.body.removeChild(tempInput);
+      } catch (e) {
+        copied = false;
+      }
+      if (!copied && navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(urlToCopy);
+        } catch (err) {}
+      }
+      showCopyToast(type);
+    }
+
+    async function shareFarmersPortalLink() {
+      const baseUrl = window.location.href.split('#')[0];
+      const farmersUrl = `${baseUrl}#farmers`;
+      const isEn = currentLang === 'en';
+      const shareTitle = isEn ? 'Nopal Core — Idle Land Leasing Portal' : 'Nopal Core — بوابة تأجير واستثمار الأراضي غير المستغلة';
+      const shareText = isEn
+        ? 'Lease your unused or marginal land with Nopal Core for stable annual returns.'
+        : 'سجّل أرضك غير المستغلة أو الهامشية للتأجير بعائد سنوي ثابت مع شركة Nopal Core:';
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: shareTitle, text: shareText, url: farmersUrl });
+          return;
+        } catch (err) {
+          if (err && err.name === 'AbortError') return;
+        }
+      }
+
+      copyPageLink(farmersUrl, 'farmers');
+    }
+
+    // ==========================================
+    // 5. CONTINUOUS SINGLE-PAGE SMOOTH NAVIGATION
+    // ==========================================
+    function setActiveTab(sectionId) {
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        if (btn.getAttribute('data-tab') === sectionId) {
+          btn.classList.remove('tab-inactive');
+          btn.classList.add('tab-active');
+        } else {
+          btn.classList.remove('tab-active');
+          btn.classList.add('tab-inactive');
+        }
+      });
+    }
+
+    function navigateToSection(sectionId) {
+      document.getElementById('adminView').classList.add('hidden');
+      document.getElementById('publicView').classList.remove('hidden');
+
+      try {
+        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+          history.replaceState(null, '', '#' + sectionId);
+        }
+      } catch (err) {}
+
+      setActiveTab(sectionId);
+      const targetSection = document.getElementById('page-' + sectionId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      if (document.getElementById('publicView').classList.contains('hidden')) return;
+      const sections = ['home', 'products', 'farmers', 'about', 'b2b'];
+      const scrollPos = window.scrollY + 190;
+      for (const id of sections) {
+        const el = document.getElementById('page-' + id);
+        if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
+          setActiveTab(id);
+          break;
+        }
+      }
+    }, { passive: true });
+
+    // ==========================================
+    // 6. PRODUCT PORTFOLIO FILTER & DYNAMIC SAMPLE MODAL
+    // ==========================================
+    function filterProducts(category) {
+      document.querySelectorAll('.prod-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.classList.remove('filter-inactive');
+          btn.classList.add('filter-active');
+        } else {
+          btn.classList.remove('filter-active');
+          btn.classList.add('filter-inactive');
+        }
+      });
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function updateSampleLinks() {
+      const selectEl = document.getElementById('sampleProductSelect');
+      const selectedOptionText = selectEl.options[selectEl.selectedIndex]?.textContent || 'Nopal Core Products';
+      const companyName = document.getElementById('sampleCompanyInput').value.trim();
+      const qtyText = document.getElementById('sampleQtyInput').value.trim();
+      const isEn = currentLang === 'en';
+
+      let waMessage = isEn
+        ? `Hello Nopal Core, we would like to request a lab sample & COA for: ${selectedOptionText}.`
+        : `مرحباً Nopal Core، نرغب في طلب عينة معملية وشهادة التحليل الفني (COA) لمنتج: ${selectedOptionText}.`;
+
+      if (companyName) {
+        waMessage += isEn ? `\nCompany: ${companyName}` : `\nاسم الشركة/المصنع: ${companyName}`;
+      }
+      if (qtyText) {
+        waMessage += isEn ? `\nEstimated Quantity: ${qtyText}` : `\nالكمية المطلوبة: ${qtyText}`;
+      }
+
+      const mailSubject = `Sample & COA Request - ${selectedOptionText} - Nopal Core`;
+      const mailBody = `${waMessage}\n\nContact Phone: `;
+
+      document.getElementById('modalWaLink').href = `https://wa.me/201065760174?text=${encodeURIComponent(waMessage)}`;
+      document.getElementById('modalMailLink').href = `mailto:Nopalcore@hotmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+    }
+
+    function openSampleModal(productKey = '') {
+      const selectEl = document.getElementById('sampleProductSelect');
+      if (productKey && selectEl) {
+        selectEl.value = productKey;
+      } else if (selectEl) {
+        selectEl.value = 'all';
+      }
+      updateSampleLinks();
+      document.getElementById('sampleModal').classList.remove('hidden');
+    }
+
+    function closeSampleModal() {
+      document.getElementById('sampleModal').classList.add('hidden');
+    }
+
+    document.getElementById('sampleModal').addEventListener('click', function (e) {
+      if (e.target === this) closeSampleModal();
+    });
+
+    document.getElementById('installAppModal').addEventListener('click', function (e) {
+      if (e.target === this) closeInstallAppModal();
+    });
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeSampleModal();
+        closeInstallAppModal();
+      }
+    });
+
+    // ==========================================
+    // 7. LAND LEASING FORM & STRICT VALIDATION (SUPABASE PRESERVED)
+    // ==========================================
+    const SQM_PER_FEDDAN = 4200;
+    const phoneInput = document.getElementById('phone');
+    const govSelect = document.getElementById('governorateSelect');
+    const customGovWrapper = document.getElementById('customGovWrapper');
+    const customGovInput = document.getElementById('customGovernorate');
+    const areaInput = document.getElementById('areaInput');
+    const areaUnit = document.getElementById('areaUnit');
+    const liveAreaConverted = document.getElementById('liveAreaConverted');
+    const rentInput = document.getElementById('expectedRent');
+    const negoCheckbox = document.getElementById('preferNegotiation');
+
+    phoneInput.addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, '').slice(0, 11);
+    });
+
+    function updateLiveAreaHelper() {
+      const val = parseFloat(areaInput.value);
+      if (isNaN(val) || val <= 0) {
+        liveAreaConverted.textContent = '';
+        return;
+      }
+      const isEn = currentLang === 'en';
+      if (areaUnit.value === 'feddan') {
+        const sqm = Math.round(val * SQM_PER_FEDDAN).toLocaleString();
+        liveAreaConverted.textContent = isEn ? `≈ ${sqm} m²` : `≈ ${sqm} متر مربع`;
+      } else {
+        const fed = (val / SQM_PER_FEDDAN).toFixed(2);
+        liveAreaConverted.textContent = isEn ? `≈ ${fed} Feddan` : `≈ ${fed} فدان`;
+      }
+    }
+
+    areaInput.addEventListener('input', updateLiveAreaHelper);
+    areaUnit.addEventListener('change', updateLiveAreaHelper);
+
+    govSelect.addEventListener('change', function () {
+      if (this.value === '__other__') {
+        customGovWrapper.classList.remove('hidden');
+        customGovInput.required = true;
+        customGovInput.focus();
+      } else {
+        customGovWrapper.classList.add('hidden');
+        customGovInput.required = false;
+        customGovInput.value = '';
+      }
+    });
+
+    negoCheckbox.addEventListener('change', function () {
+      if (this.checked) {
+        rentInput.value = '';
+        rentInput.disabled = true;
+      } else {
+        rentInput.disabled = false;
+      }
+    });
+
+    document.getElementById('farmerForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const alertBox = document.getElementById('formAlert');
+      const submitBtn = document.getElementById('submitBtn');
+      const isEn = currentLang === 'en';
+
+      // Honeypot Bot Check
+      const trapVal = document.getElementById('websiteUrlTrap').value;
+      if (trapVal) return;
+
+      // Client-side Rate Limit Check
+      const now = Date.now();
+      if (now - lastSubmitTimestamp < RATE_LIMIT_MS) {
+        alertBox.className = 'p-3.5 rounded-xl text-xs font-bold bg-amber-50 border border-amber-200 text-[#183D29] block';
+        alertBox.textContent = isEn
+          ? 'Please wait a few seconds before submitting another request.'
+          : 'يرجى الانتظار ثوانٍ قليلة قبل إرسال طلب آخر.';
+        return;
+      }
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const phone = phoneInput.value.trim();
+      const selectedRegion = govSelect.value;
+      const customRegion = customGovInput.value.trim();
+      const governorate = selectedRegion === '__other__' ? customRegion : selectedRegion;
+      const rawArea = parseFloat(areaInput.value);
+      const unit = areaUnit.value;
+      const isNego = negoCheckbox.checked;
+      const rentRaw = rentInput.value.trim();
+
+      function showError(msgAr, msgEn) {
+        alertBox.className = 'p-3.5 rounded-xl text-xs font-bold bg-red-50 border border-red-200 text-red-700 block';
+        alertBox.textContent = isEn ? msgEn : msgAr;
+      }
+
+      function showSuccess(msgAr, msgEn) {
+        alertBox.className = 'p-3.5 rounded-xl text-xs font-bold bg-emerald-50 border border-emerald-200 text-[#183D29] block';
+        alertBox.textContent = isEn ? msgEn : msgAr;
+      }
+
+      if (fullName.length < 3) {
+        return showError('يرجى إدخال الاسم الكامل لصاحب الأرض (3 أحرف على الأقل).', 'Please enter your full name (at least 3 characters).');
+      }
+
+      const egyptPhoneRegex = /^01[0125][0-9]{8}$/;
+      if (!egyptPhoneRegex.test(phone)) {
+        return showError(
+          'رقم الموبايل غير صحيح: يجب إدخال 11 رقم مصري يبدأ بـ 010 أو 011 أو 012 أو 015.',
+          'Invalid Egyptian mobile number: must be 11 digits starting with 010, 011, 012, or 015.'
+        );
+      }
+
+      if (!selectedRegion) {
+        return showError('يرجى اختيار المزرعة أو المنطقة الزراعية من القائمة.', 'Please select a farm or agricultural region.');
+      }
+
+      if (selectedRegion === '__other__' && customRegion.length < 2) {
+        return showError('يرجى كتابة اسم المحافظة أو المنطقة المخصصة.', 'Please enter your custom governorate or region.');
+      }
+
+      if (isNaN(rawArea) || rawArea <= 0) {
+        return showError('يرجى إدخال المساحة المتاحة بشكل صحيح.', 'Please enter a valid land area.');
+      }
+
+      const normalizedFeddan = unit === 'sqm'
+        ? parseFloat((rawArea / SQM_PER_FEDDAN).toFixed(4))
+        : rawArea;
+
+      let expectedRent = null;
+      if (!isNego && rentRaw !== '') {
+        const parsedRent = parseFloat(rentRaw);
+        if (isNaN(parsedRent) || parsedRent <= 0) {
+          return showError('يرجى إدخال قيمة إيجار صحيحة أو اختيار التفاوض بعد المعاينة.', 'Please enter a valid rent amount or select negotiation.');
+        }
+        expectedRent = parsedRent;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = isEn ? 'Submitting Request...' : 'جاري إرسال الطلب...';
+      alertBox.classList.add('hidden');
+
+      try {
+        // Smart adaptive Supabase insert that automatically strips any column not present in your table schema
+        const candidatePayloads = [
+          {
+            full_name: fullName,
+            phone: phone,
+            governorate: governorate,
+            area_feddan: normalizedFeddan,
+            expected_rent: expectedRent,
+            status: 'pending_inspection'
+          },
+          {
+            full_name: fullName,
+            phone: phone,
+            governorate: governorate,
+            area_feddan: normalizedFeddan,
+            expected_rent: expectedRent
+          },
+          {
+            name: fullName,
+            phone: phone,
+            governorate: governorate,
+            area_feddan: normalizedFeddan,
+            expected_rent: expectedRent
+          },
+          {
+            farmer_name: fullName,
+            phone: phone,
+            governorate: governorate,
+            area_feddan: normalizedFeddan,
+            expected_rent: expectedRent
+          }
+        ];
+
+        let insertSuccess = false;
+        let lastError = null;
+
+        for (const basePayload of candidatePayloads) {
+          let currentPayload = { ...basePayload };
+
+          // Dynamically strip any missing column reported by PostgREST (PGRST204)
+          for (let attempt = 0; attempt < 6; attempt++) {
+            const { error } = await sb.from('farmer_leads').insert([currentPayload]);
+            if (!error) {
+              insertSuccess = true;
+              break;
+            }
+            lastError = error;
+
+            if (error.code === 'PGRST204' && error.message) {
+              const match = error.message.match(/'([^']+)' column/);
+              if (match && match[1] && match[1] in currentPayload) {
+                const missingCol = match[1];
+                delete currentPayload[missingCol];
+                // Map name/area/region to alternative column names if needed
+                if (missingCol === 'full_name' && !('name' in currentPayload)) {
+                  currentPayload.name = fullName;
+                } else if (missingCol === 'governorate' && !('region' in currentPayload)) {
+                  currentPayload.region = governorate;
+                } else if (missingCol === 'area_feddan' && !('area' in currentPayload)) {
+                  currentPayload.area = normalizedFeddan;
+                }
+                continue;
+              }
+            }
+            break;
+          }
+
+          if (insertSuccess) break;
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = isEn ? 'Submit Inspection & Leasing Request' : 'إرسال طلب المعاينة والتأجير';
+
+        if (!insertSuccess) {
+          console.error('Supabase insert error:', lastError);
+          return showError(
+            'تعذّر حفظ الطلب حالياً. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة عبر واتساب.',
+            'Could not save your request right now. Please try again or contact us via WhatsApp.'
+          );
+        }
+
+        lastSubmitTimestamp = Date.now();
+        showSuccess(
+          'تم استلام طلبك وحفظه بنجاح في قاعدة البيانات! سيتواصل معك فريق المعاينة قريباً.',
+          'Request received and saved successfully! Our technical team will contact you soon.'
+        );
+        this.reset();
+        rentInput.disabled = false;
+        liveAreaConverted.textContent = '';
+        customGovWrapper.classList.add('hidden');
+        customGovInput.required = false;
+
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = isEn ? 'Submit Inspection & Leasing Request' : 'إرسال طلب المعاينة والتأجير';
+        showError(
+          'حدث خطأ في الاتصال بالشبكة. يرجى التحقق من الإنترنت أو مراسلتنا عبر واتساب.',
+          'Network connection error. Please check your internet or message us on WhatsApp.'
+        );
+      }
+    });
+
+    // ==========================================
+    // 8. B2B EMAIL COPY + MAILTO
+    // ==========================================
+    async function contactEmail() {
+      let copied = false;
+      try {
+        const tempInput = document.createElement('input');
+        tempInput.value = 'Nopalcore@hotmail.com';
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999);
+        copied = document.execCommand('copy');
+        document.body.removeChild(tempInput);
+      } catch (err) {
+        copied = false;
+      }
+      if (!copied && navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText('Nopalcore@hotmail.com');
+        } catch (e) {}
+      }
+      const toast = document.getElementById('emailToast');
+      if (toast) toast.classList.remove('hidden');
+      window.location.href = 'mailto:Nopalcore@hotmail.com?subject=B2B%20Inquiry%20-%20Nopal%20Core';
+    }
+
+    // ==========================================
+    // 9. COMPLETE BILINGUAL SUPPORT (AR / EN + PLACEHOLDERS)
+    // ==========================================
+    let currentLang = 'ar';
+    const translations = {
+      en: {
+        skip_link: 'Skip to main content',
+        tagline: 'Biotech & Land Utilization',
+        tab_home: 'Home',
+        tab_products: 'Industrial Products',
+        tab_farmers: 'Land Leasing & Supply',
+        tab_about: 'System & Team',
+        tab_b2b: 'B2B Corporate',
+        dock_home: 'Home',
+        dock_products: 'Products',
+        dock_farmers: 'Lands',
+        dock_about: 'Team',
+        dock_b2b: 'B2B',
+        btn_install_app: 'Install App',
+        hero_badge: 'Green Circular Economy • Zero-Waste Biotech',
+        hero_title: 'Transforming Idle Lands & Prickly Pear into High-Value Industrial Raw Materials',
+        hero_sub: 'Nopal Core specializes in cold-pressed prickly pear seed oil, seedless frozen fruit pulp, exfoliating seed-cake scrub, and cladode powder & bio-mucilage for cosmetics, food, and pharmaceuticals, partnering with landowners to utilize marginal lands.',
+        hero_card_sub: 'Zero-Waste Biorefinery System',
+        stat_zero_waste: 'Zero-Waste Valorization',
+        stat_outputs: 'Industrial B2B Outputs',
+        hero_btn_farmer: 'Lease Land or Supply Raw Materials',
+        hero_btn_b2b: 'Explore Industrial Products (6 Outputs)',
+        strip1_t: 'Fruit & Seed Stream (Summer & Agro-Waste)',
+        strip1_d: 'Cold-pressed virgin seed oil, seedless frozen fruit puree, exfoliating cosmetic scrub, and dried peel feed.',
+        strip2_t: 'Cladode Green Pad Stream (Year-Round)',
+        strip2_d: 'Continuous year-round processing of dehydrated nopal powder, bio-mucilage hydrocolloid, and forage cubes.',
+        strip3_t: 'Land Partnerships & Factory Sourcing',
+        strip3_d: 'Leasing desert/marginal lands and sourcing seed waste from juice factories and second-grade farm fruit.',
+        prod_badge: 'Bioprocessing Outputs • B2B Portfolio',
+        prod_title: 'Integrated Industrial Products & Raw Materials',
+        prod_sub: 'Standardized, clean-processed natural raw materials across our dual fruit and cladode streams for luxury cosmetics, food & beverage, nutraceuticals, and sustainable feeds.',
+        btn_sample: 'Request Lab Sample & COA',
+        flt_all: 'All Raw Materials (6)',
+        flt_cosmetics: 'Cosmetics & Pharma (3)',
+        flt_food: 'Food & Nutraceuticals (2)',
+        flt_feed: 'Sustainable Feed (1)',
+        card_req_sample: 'Request Sample →',
+        p1_tag: 'Luxury Skincare',
+        p1_t: 'Virgin Prickly Pear Seed Oil',
+        p1_d: 'Cold-pressed from pure seeds without chemical solvents, exceptionally rich in Vitamin E (tocopherols) and linoleic acid for skin rejuvenation.',
+        lbl_extraction: 'Processing Method',
+        p1_ext: 'Mechanical Cold Press',
+        lbl_apps: 'Industrial Applications',
+        p1_app: 'Facial serums & skincare oils',
+        p1_spec: 'Cosmetic Grade • 100% Pure',
+        p5_tag: 'Food & Beverage Industry',
+        p5_t: 'Seedless Frozen Prickly Pear Pulp',
+        p5_d: 'Natural deseeded fruit puree rapidly frozen to preserve vibrant color, natural sugars, and antioxidants for juice, ice cream, and jam factories.',
+        p5_ext: 'Mechanical Deseeding & Cold Storage',
+        p5_app: 'Juices, jams, & ice cream',
+        p5_spec: 'Food Grade B2B Puree',
+        p2_tag: 'Supplements & Functional Food',
+        p2_t: 'Dehydrated Cladode Powder (Nopal Powder)',
+        p2_d: 'Carefully selected cactus pads thermally dried at low temps (<50°C) preserving soluble fibers, polyphenols, and essential minerals.',
+        p2_ext: 'Low-Temp Drying & Fine Milling',
+        p2_app: 'Dietary capsules & healthy bakery',
+        p2_spec: 'Nutraceutical & Food Grade',
+        p3_tag: 'Pharma & Cosmetics',
+        p3_t: 'Bio-Mucilage Extract',
+        p3_d: 'High-viscosity natural polysaccharide hydrocolloid biopolymer acting as a deep moisturizer and natural stabilizer in medical and cosmetic products.',
+        p3_ext: 'Aqueous Extraction & Precision Drying',
+        p3_app: 'Medical gels & moisturizing creams',
+        p3_spec: 'Pharma & Cosmetic Biopolymer',
+        p6_tag: 'Natural Exfoliants',
+        p6_t: 'Exfoliating Seed-Cake Cosmetic Scrub',
+        p6_d: 'Upcycled botanical exfoliating granules milled from cold-pressed prickly pear seed cake, replacing synthetic microplastics in cleansers and scrubs.',
+        p6_ext: 'Precision Milling & Sieving',
+        p6_app: 'Facial/body scrubs & natural soaps',
+        p6_spec: 'Eco-Exfoliant • Microplastic-Free',
+        p4_tag: 'Sustainable Feed',
+        p4_t: 'Sustainable Feed Concentrates (Peels & Pads)',
+        p4_d: 'Upcycling post-extraction pectin, fruit peels, and fiber-rich biomass into balanced mineral-rich forage cubes supporting livestock health.',
+        p4_ext: 'Thermal Drying & Feed Pelleting',
+        p4_app: 'Livestock farms & feed mills',
+        p4_spec: 'Sustainable Feed • Zero-Waste',
+        farm_badge: 'Landowners & Suppliers Portal',
+        farm_title: 'Monetize Your Idle Land or Supply Seed & Fruit Biomass',
+        farm_desc: 'If you own unused, marginal, or low-water land, Nopal Core inspects and leases it under clear contracts. We also purchase prickly pear seed waste from juice factories and second-grade fruit from farms.',
+        farm_f1: 'Suitable for desert, marginal, and idle lands',
+        farm_f2: 'Free technical inspection to assess soil suitability',
+        farm_f3: 'Purchasing seed waste, fruit, and pads from farms & factories',
+        supply_box_t: 'Operating a Juice/Jam Factory or Prickly Pear Farm?',
+        supply_box_d: 'We buy prickly pear seed by-products, second-grade fruit, and green cladodes from Minya, Khanka, and Nubaria under seasonal and annual supply contracts.',
+        supply_box_btn: 'Contact Us to Supply Seeds or Raw Fruit →',
+        btn_share_portal: 'Share Land Leasing Portal Link',
+        form_head: 'Land Inspection & Leasing Request',
+        form_free: 'Free Inspection',
+        form_note: 'Essential fields required before submission (expected rent is optional).',
+        lbl_name: 'Landowner Full Name *',
+        lbl_phone: 'Egyptian Mobile Number (11 Digits) *',
+        hint_phone: '11 digits starting with 010, 011, 012, or 015',
+        lbl_gov: 'Farm / Agricultural Region *',
+        opt_select_region: '-- Select region or farm --',
+        reg_minya: 'Minya - Western Desert',
+        reg_khanka: 'Khanka - Qalyubia',
+        reg_alex: 'Cairo-Alexandria Desert Road',
+        reg_nubaria: 'Nubaria',
+        reg_fayoum: 'Fayoum',
+        reg_newvalley: 'New Valley',
+        reg_other: 'Other (Specify custom region)',
+        lbl_custom_gov: 'Enter Governorate or Region *',
+        lbl_area: 'Unused Land Area *',
+        opt_feddan: 'Feddan',
+        opt_sqm: 'Square Meter',
+        area_simple_hint: 'Select unit (Feddan or m²) and enter available area',
+        lbl_rent: 'Expected Annual Rent / Feddan (Optional - EGP)',
+        lbl_nego: 'Prefer negotiation after inspection',
+        rent_reassure: 'Helps us speed up evaluation; final fair rent is determined after technical land inspection.',
+        btn_submit: 'Submit Inspection & Leasing Request',
+        about_badge: 'The Geometric Core • Circular Biotech',
+        about_title: 'Biorefinery Architecture & Founding Team',
+        about_sub: 'Nopal Core unites chemical & process engineering, R&D, and financial management to transform Egyptian prickly pear from a seasonal crop into a year-round circular bio-industry.',
+        step1_kicker: 'Stage 01 • Sourcing & Cultivation',
+        step1_title: 'Marginal Land Leasing & Seed Aggregation',
+        step1_desc: 'Leasing low-water marginal lands while sourcing seed by-products from juice plants and second-grade fruit from Minya and Khanka farms.',
+        step2_kicker: 'Stage 02 • Modular Bioprocessing',
+        step2_title: 'Dual-Stream Line (Summer & Year-Round)',
+        step2_desc: 'Shared modular facility processing summer fruit (cold-pressed oil & frozen pulp) and year-round cladodes (low-temp drying & mucilage extraction).',
+        step3_kicker: 'Stage 03 • Industrial B2B Supply',
+        step3_title: 'COA-Certified Zero-Waste Outputs',
+        step3_desc: 'Supplying cosmetics, nutraceutical, food, and feed manufacturers with standardized raw materials backed by Certificates of Analysis (COA).',
+        team_heading: 'Founding Team',
+        f1_name: 'Mohamed Khaled',
+        f1_role: 'Chief Executive Officer (CEO) & Co-Founder',
+        f1_bio: 'Leads business setup, feasibility modeling, financial & administrative operations, strategic partnerships, and incubator/investor fundraising.',
+        f2_name: 'Eng. Ahmed Hassanein',
+        f2_role: 'Co-Founder — Engineering & Operations',
+        f2_bio: 'Leads modular production line design, cold-press and dehydration machinery engineering, and supply chain & workshop operations.',
+        f3_name: 'Dr. Bassem Sayed',
+        f3_role: 'Co-Founder — R&D & Commercial B2B',
+        f3_bio: 'Oversees bio-extraction protocols, quality assurance & Certificates of Analysis (COA), and industrial B2B sales partnerships.',
+        b2b_badge: 'Corporate & Factory Supply • B2B',
+        b2b_title: 'Representing a Factory or Brand Seeking High-Purity Natural Raw Materials?',
+        b2b_sub: 'Connect directly with our industrial sales team at Nopal Core to request Certificates of Analysis (COA), lab samples, or recurring supply contracts.',
+        btn_b2b_modal: 'Select Material & Request Sample (COA)',
+        btn_wa: 'Direct WhatsApp Inquiry',
+        btn_email: 'Contact via Official Email',
+        official_email_lbl: 'Official Company Email: ',
+        email_copied_msg: '✓ Official email copied to clipboard',
+        modal_kicker: 'Lab Sample & COA Request',
+        modal_title: 'Inquire for Nopal Core Material Sample',
+        modal_desc: 'Select your target raw material and company name to prepare a direct sample & COA inquiry for our industrial sales team:',
+        modal_lbl_prod: 'Required Industrial Raw Material',
+        modal_opt_all: 'All Industrial Materials (Full Portfolio + COA)',
+        modal_lbl_comp: 'Company / Factory Name',
+        modal_lbl_qty: 'Estimated Quantity',
+        modal_wa: 'Send Sample Request via WhatsApp',
+        modal_mail: 'Send via Official Email (Nopalcore@hotmail.com)',
+        app_modal_kicker: 'Progressive Web App • PWA',
+        app_modal_title: 'Install Nopal Core App',
+        app_modal_desc: 'Install Nopal Core directly on your phone or computer home screen for instant access to the land portal, industrial catalog, and admin dashboard:',
+        app_btn_direct: 'Install App Now (One-Click)',
+        app_step_android: 'On Android (Chrome): Tap the browser menu (⋮) and select "Install App" or "Add to Home Screen".',
+        app_step_ios: 'On iPhone (Safari): Tap the Share button (⬆️) at the bottom and select "Add to Home Screen".',
+        app_step_desktop: 'On Desktop (Chrome / Edge): Click the install icon in the address bar to run Nopal Core as a standalone app.',
+        app_modal_close: 'Got It',
+        footer_app_btn: 'Install App (PWA)',
+        adm_login_title: 'Nopal Core Admin Portal',
+        adm_login_sub: 'Restricted to authorized management account',
+        adm_btn_login: 'Sign In',
+        adm_back_home: '← Back to Main Website',
+        adm_dash_title: 'Land Inspection & Leasing Requests',
+        adm_dash_sub: 'Connected live to Supabase (farmer_leads)',
+        adm_btn_csv: 'Export Excel / CSV',
+        adm_btn_site: 'Main Website',
+        adm_btn_refresh: 'Refresh Data',
+        adm_btn_logout: 'Sign Out',
+        adm_kpi_total: 'Total Requests',
+        adm_kpi_area: 'Total Offered Area',
+        adm_search_lbl: 'Quick Filter by Name, Region, or Phone',
+        th_date: 'Date',
+        th_name: 'Landowner Name',
+        th_phone: 'Mobile Number',
+        th_gov: 'Governorate / Region',
+        th_area: 'Area (Feddan / m²)',
+        th_rent: 'Expected Rent / Feddan',
+        th_action: 'Quick Action',
+        toast_copied: 'Link copied successfully!'
+      }
+    };
+
+    const placeholderTranslations = {
+      ar: {
+        ph_name: 'مثال: محمود عبد الرحمن',
+        ph_custom_gov: 'مثال: أسيوط - مركز الغنايم',
+        ph_area: 'مثال: 10',
+        ph_rent: 'اكتب السعر المتوقع بالجنيه المصري أو اختر التفاوض',
+        ph_optional: 'اختياري',
+        ph_sample_qty: 'مثال: عينة 100 مل / 5 كجم',
+        ph_admin_pass: 'كلمة المرور',
+        ph_adm_search: 'ابحث بالاسم أو المنطقة أو الهاتف...'
+      },
+      en: {
+        ph_name: 'e.g., Mahmoud Abdelrahman',
+        ph_custom_gov: 'e.g., Assiut - El Ghanayem',
+        ph_area: 'e.g., 10',
+        ph_rent: 'Enter expected annual rent in EGP or check negotiation',
+        ph_optional: 'Optional',
+        ph_sample_qty: 'e.g., 100ml sample / 5 kg',
+        ph_admin_pass: 'Password',
+        ph_adm_search: 'Filter by name, region, or phone...'
+      }
+    };
+
+    const arCache = {};
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      arCache[el.getAttribute('data-i18n')] = el.textContent;
+    });
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langBtn').textContent = currentLang === 'ar' ? 'English' : 'عربي';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (currentLang === 'en' && translations.en[key]) {
+          el.textContent = translations.en[key];
+        } else if (arCache[key]) {
+          el.textContent = arCache[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const pKey = el.getAttribute('data-i18n-placeholder');
+        if (placeholderTranslations[currentLang] && placeholderTranslations[currentLang][pKey]) {
+          el.placeholder = placeholderTranslations[currentLang][pKey];
+        }
+      });
+
+      updateLiveAreaHelper();
+      updateSampleLinks();
+      if (!document.getElementById('adminDashboardContent').classList.contains('hidden')) {
+        renderLeadsTable();
+      }
+    }
+
+    // ==========================================
+    // 10. ADMIN DASHBOARD ROUTING, XSS-SAFE TABLE & CSV EXPORT
+    // ==========================================
+    let cachedLeadsData = [];
+
+    async function checkAdminSession() {
+      try {
+        const { data } = await sb.auth.getSession();
+        const session = data?.session;
+        if (session && session.user && session.user.email && session.user.email.toLowerCase() === 'nopalcore@hotmail.com') {
+          showDashboard();
+        }
+      } catch (e) {}
+    }
+
+    function checkRoute() {
+      const currentHash = (window.location.hash || '').replace('#', '');
+      if (currentHash === 'admin') {
+        document.getElementById('publicView').classList.add('hidden');
+        document.getElementById('adminView').classList.remove('hidden');
+        checkAdminSession();
+      } else {
+        document.getElementById('publicView').classList.remove('hidden');
+        document.getElementById('adminView').classList.add('hidden');
+        const validSections = ['home', 'products', 'farmers', 'about', 'b2b'];
+        if (validSections.includes(currentHash)) {
+          setActiveTab(currentHash);
+          const targetEl = document.getElementById('page-' + currentHash);
+          if (targetEl) {
+            setTimeout(() => targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+          }
+        }
+      }
+    }
+
+    function openAdminPortal() {
+      document.getElementById('publicView').classList.add('hidden');
+      document.getElementById('adminView').classList.remove('hidden');
+      try {
+        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+          history.replaceState(null, '', '#admin');
+        }
+      } catch (e) {}
+      checkAdminSession();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('hashchange', checkRoute);
+    window.addEventListener('DOMContentLoaded', () => {
+      initWebToAppCapabilities();
+      checkRoute();
+    });
+
+    document.getElementById('adminLoginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const email = document.getElementById('adminEmail').value.trim();
+      const password = document.getElementById('adminPass').value;
+      const errEl = document.getElementById('loginError');
+      const loginBtn = document.getElementById('adminLoginBtn');
+      const isEn = currentLang === 'en';
+
+      loginBtn.disabled = true;
+      loginBtn.textContent = isEn ? 'Verifying...' : 'جاري التحقق...';
+      errEl.classList.add('hidden');
+
+      try {
+        const { data, error } = await sb.auth.signInWithPassword({ email, password });
+        loginBtn.disabled = false;
+        loginBtn.textContent = isEn ? 'Sign In' : 'تسجيل الدخول';
+
+        if (error || !data.user || data.user.email.toLowerCase() !== 'nopalcore@hotmail.com') {
+          errEl.textContent = isEn ? 'Invalid or unauthorized credentials.' : 'بيانات الدخول غير صحيحة أو غير مصرح لها.';
+          errEl.classList.remove('hidden');
+        } else {
+          errEl.classList.add('hidden');
+          showDashboard();
+        }
+      } catch (err) {
+        loginBtn.disabled = false;
+        loginBtn.textContent = isEn ? 'Sign In' : 'تسجيل الدخول';
+        errEl.textContent = isEn ? 'Connection error, please try again.' : 'حدث خطأ في الاتصال، يرجى المحاولة مجدداً.';
+        errEl.classList.remove('hidden');
+      }
+    });
+
+    function showDashboard() {
+      document.getElementById('adminLoginBox').classList.add('hidden');
+      document.getElementById('adminDashboardContent').classList.remove('hidden');
+      loadLeads();
+    }
+
+    async function loadLeads() {
+      const tbody = document.getElementById('leadsTableBody');
+      const isEn = currentLang === 'en';
+      tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400">${isEn ? 'Loading requests...' : 'جاري تحميل الطلبات...'}</td></tr>`;
+
+      const { data, error } = await sb.from('farmer_leads').select('*').order('created_at', { ascending: false });
+
+      if (error) {
+        tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-red-600">${isEn ? 'Error loading data from Supabase' : 'خطأ في تحميل البيانات من Supabase'}</td></tr>`;
+        return;
+      }
+
+      cachedLeadsData = Array.isArray(data) ? data : [];
+      renderLeadsTable();
+    }
+
+    function renderLeadsTable() {
+      const tbody = document.getElementById('leadsTableBody');
+      const searchQuery = (document.getElementById('adminSearchInput')?.value || '').trim().toLowerCase();
+      const isEn = currentLang === 'en';
+
+      const filtered = cachedLeadsData.filter(row => {
+        if (!searchQuery) return true;
+        const name = String(row.farmer_name ?? row.full_name ?? row.name ?? '').toLowerCase();
+        const gov = String(row.governorate ?? row.region ?? row.location ?? '').toLowerCase();
+        const phone = String(row.phone ?? '').toLowerCase();
+        return name.includes(searchQuery) || gov.includes(searchQuery) || phone.includes(searchQuery);
+      });
+
+      const totalFeddan = filtered.reduce((acc, r) => acc + Number(r.area_feddan ?? r.area ?? r.land_area ?? 0), 0);
+      document.getElementById('kpiTotalLeads').textContent = filtered.length.toLocaleString();
+      document.getElementById('kpiTotalFeddan').textContent = isEn
+        ? `${totalFeddan.toLocaleString(undefined, { maximumFractionDigits: 2 })} Feddan`
+        : `${totalFeddan.toLocaleString(undefined, { maximumFractionDigits: 2 })} فدان`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400">${isEn ? 'No matching requests found' : 'لا توجد طلبات مسجلة مطابقة'}</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(row => {
+        const dateStr = row.created_at ? new Date(row.created_at).toLocaleDateString(isEn ? 'en-US' : 'ar-EG') : '—';
+        const farmerName = escapeHtml(row.farmer_name ?? row.full_name ?? row.name ?? '—');
+        const regionVal = escapeHtml(row.governorate ?? row.region ?? row.location ?? '—');
+        const cleanPhone = String(row.phone ?? '').replace(/\D/g, '');
+        const displayPhone = escapeHtml(row.phone ?? '—');
+        const areaVal = Number(row.area_feddan ?? row.area ?? row.land_area ?? 0);
+        const sqmApprox = Math.round(areaVal * SQM_PER_FEDDAN).toLocaleString();
+
+        const rentVal = Number(row.expected_rent);
+        const rentDisplay = (!isNaN(rentVal) && rentVal > 0)
+          ? `<span class="font-extrabold text-[#183D29]">${rentVal.toLocaleString()} ${isEn ? 'EGP / yr' : 'ج.م / سنوياً'}</span>`
+          : `<span class="text-xs px-2.5 py-1 rounded-full bg-amber-50 text-[#D19336] font-extrabold border border-amber-200/70">${isEn ? 'Negotiable' : 'تفاوض بعد المعاينة'}</span>`;
+
+        const waPhone = '2' + cleanPhone;
+
+        return `
+          <tr class="hover:bg-stone-50 transition">
+            <td class="p-4 text-xs text-slate-500 whitespace-nowrap">${escapeHtml(dateStr)}</td>
+            <td class="p-4 font-bold text-slate-800">${farmerName}</td>
+            <td class="p-4 font-mono text-left whitespace-nowrap" dir="ltr">${displayPhone}</td>
+            <td class="p-4">${regionVal}</td>
+            <td class="p-4 whitespace-nowrap">
+              <span class="font-extrabold brand-green">${escapeHtml(areaVal)} ${isEn ? 'Feddan' : 'فدان'}</span>
+              <span class="block text-[11px] text-slate-400">(${escapeHtml(sqmApprox)} ${isEn ? 'm²' : 'م²'})</span>
+            </td>
+            <td class="p-4 whitespace-nowrap">${rentDisplay}</td>
+            <td class="p-4 whitespace-nowrap">
+              <a href="https://wa.me/${encodeURIComponent(waPhone)}" target="_blank" rel="noopener" class="inline-block px-3.5 py-1.5 rounded-xl bg-[#25D366] text-slate-950 text-xs font-extrabold hover:brightness-105 transition">
+                ${isEn ? 'WhatsApp' : 'واتساب المزارع'}
+              </a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function exportLeadsToCSV() {
+      if (!cachedLeadsData || cachedLeadsData.length === 0) return;
+      const headers = ['Date', 'Landowner Name', 'Phone', 'Region', 'Area (Feddan)', 'Expected Rent (EGP)'];
+      const rows = cachedLeadsData.map(r => [
+        r.created_at ? new Date(r.created_at).toISOString().split('T')[0] : '',
+        `"${String(r.farmer_name ?? r.full_name ?? '').replace(/"/g, '""')}"`,
+        `"${String(r.phone ?? '')}"`,
+        `"${String(r.governorate ?? r.region ?? '').replace(/"/g, '""')}"`,
+        Number(r.area_feddan ?? r.area ?? r.land_area ?? 0),
+        r.expected_rent ?? 'Negotiable'
+      ]);
+      const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `Nopal_Core_Farmer_Leads_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    async function logoutAdmin() {
+      await sb.auth.signOut();
+      navigateToSection('home');
+    }
+  </script>
+</body>
+</html>

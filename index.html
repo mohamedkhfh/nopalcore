@@ -69,10 +69,104 @@
       padding-bottom: env(safe-area-inset-bottom, 0px);
       overflow-x: hidden;
       -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     html[dir="ltr"] body {
       font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+    }
+
+    /* ============================================================
+       ADAPTIVE ROYAL EMERALD DARK MODE (AUTO-SYSTEM + MANUAL)
+       ============================================================ */
+    html.dark body {
+      background-color: #09150F;
+      color: #E2E8F0;
+    }
+    html.dark header,
+    html.dark footer,
+    html.dark nav.fixed {
+      background-color: #0D1E16 !important;
+      border-color: #1C382A !important;
+    }
+    html.dark .bg-white {
+      background-color: #10241A !important;
+      border-color: #1E3D2D !important;
+    }
+    html.dark .bg-\[\#FAF9F6\],
+    html.dark .bg-stone-50,
+    html.dark .bg-stone-100,
+    html.dark .bg-stone-100\/80 {
+      background-color: #0B1912 !important;
+      border-color: #1C382A !important;
+    }
+    html.dark .border-stone-200,
+    html.dark .border-stone-200\/80,
+    html.dark .border-stone-200\/90,
+    html.dark .border-stone-300,
+    html.dark .border-stone-100,
+    html.dark .divide-stone-200 > :not([hidden]) ~ :not([hidden]),
+    html.dark .divide-stone-200\/70 > :not([hidden]) ~ :not([hidden]) {
+      border-color: #1D3A2B !important;
+    }
+    html.dark .brand-green {
+      color: #6EE7B7 !important;
+    }
+    html.dark .text-slate-800,
+    html.dark .text-slate-700 {
+      color: #F1F5F9 !important;
+    }
+    html.dark .text-slate-600 {
+      color: #CBD5E1 !important;
+    }
+    html.dark .text-slate-500,
+    html.dark .text-slate-400 {
+      color: #94A3B8 !important;
+    }
+    html.dark .bg-emerald-50,
+    html.dark .bg-emerald-50\/60,
+    html.dark .bg-emerald-50\/70,
+    html.dark .bg-emerald-50\/90 {
+      background-color: rgba(16, 185, 129, 0.14) !important;
+      border-color: rgba(52, 211, 153, 0.28) !important;
+    }
+    html.dark .bg-amber-50,
+    html.dark .bg-amber-50\/50,
+    html.dark .bg-amber-50\/70,
+    html.dark .bg-amber-50\/90 {
+      background-color: rgba(209, 147, 54, 0.15) !important;
+      border-color: rgba(209, 147, 54, 0.32) !important;
+    }
+    html.dark input,
+    html.dark select,
+    html.dark textarea {
+      background-color: #0A1710 !important;
+      color: #F8FAFC !important;
+      border-color: #244735 !important;
+    }
+    html.dark .tab-inactive,
+    html.dark .filter-inactive {
+      background-color: #10241A !important;
+      color: #CBD5E1 !important;
+      border-color: #1E3D2D !important;
+    }
+    html.dark .tab-inactive:hover,
+    html.dark .filter-inactive:hover {
+      background-color: #163224 !important;
+      color: #FBBF24 !important;
+    }
+    html.dark .os-node-active,
+    html.dark .os-output-lit {
+      background-color: #153123 !important;
+      border-color: #D19336 !important;
+    }
+    html.dark #heroRingsGroup ellipse,
+    html.dark header svg g stroke,
+    html.dark footer svg g stroke {
+      stroke: #6EE7B7;
+    }
+    html.dark .hover\:bg-stone-50:hover {
+      background-color: #142C20 !important;
     }
 
     .brand-green { color: #183D29; }
@@ -552,6 +646,13 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
             <span class="hidden md:inline" data-i18n="btn_install_app">تثبيت التطبيق</span>
+          </button>
+
+          <!-- Adaptive Dark / Light Mode Toggle -->
+          <button type="button" onclick="toggleThemeMode()" id="themeToggleBtn" aria-label="تبديل الوضع الليلي والنهاري"
+            class="tactile-btn px-2.5 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer">
+            <span id="themeIconSun" class="hidden">☀️</span>
+            <span id="themeIconMoon">🌙</span>
           </button>
 
           <!-- Bilingual Toggle -->
@@ -1333,6 +1434,16 @@
               <span class="w-7 h-7 rounded-xl bg-emerald-50 text-[#183D29] font-black flex items-center justify-center shrink-0 tabular-nums">04</span>
               <span data-i18n="sup_item4">قشور وتفل العصر (مخلفات رطبة مختلطة)</span>
             </div>
+          </div>
+
+          <div class="pt-2">
+            <button type="button" onclick="shareSupplyPortalLink()"
+              class="tactile-btn w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-300 hover:border-[#D19336] hover:bg-amber-50/50 text-xs sm:text-sm font-extrabold brand-green cursor-pointer shadow-xs">
+              <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+              <span data-i18n="btn_share_supply">مشاركة رابط بوابة توريد المحصول</span>
+            </button>
           </div>
         </div>
 
@@ -2478,6 +2589,57 @@
     let lastSupplySubmitTs = 0;
 
     // ==========================================
+    // 2B. ADAPTIVE AUTO DARK MODE (SYSTEM + MANUAL OVERRIDE)
+    // ==========================================
+    function applyThemeState(isDark) {
+      const htmlEl = document.documentElement;
+      const sunIcon = document.getElementById('themeIconSun');
+      const moonIcon = document.getElementById('themeIconMoon');
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        if (sunIcon) sunIcon.classList.remove('hidden');
+        if (moonIcon) moonIcon.classList.add('hidden');
+        if (metaTheme) metaTheme.setAttribute('content', '#09150F');
+      } else {
+        htmlEl.classList.remove('dark');
+        if (sunIcon) sunIcon.classList.add('hidden');
+        if (moonIcon) moonIcon.classList.remove('hidden');
+        if (metaTheme) metaTheme.setAttribute('content', '#183D29');
+      }
+    }
+
+    function initAdaptiveDarkMode() {
+      let savedTheme = null;
+      try { savedTheme = localStorage.getItem('nopal_theme'); } catch (e) {}
+      const systemDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        applyThemeState(savedTheme === 'dark');
+      } else {
+        applyThemeState(systemDarkQuery.matches);
+      }
+
+      systemDarkQuery.addEventListener('change', (e) => {
+        let manual = null;
+        try { manual = localStorage.getItem('nopal_theme'); } catch (err) {}
+        if (!manual) {
+          applyThemeState(e.matches);
+        }
+      });
+    }
+
+    function toggleThemeMode() {
+      const currentlyDark = document.documentElement.classList.contains('dark');
+      const nextDark = !currentlyDark;
+      applyThemeState(nextDark);
+      try { localStorage.setItem('nopal_theme', nextDark ? 'dark' : 'light'); } catch (e) {}
+    }
+
+    initAdaptiveDarkMode();
+
+    // ==========================================
     // 3. ROYAL CURTAIN, 3D TILT SEED, SPOTLIGHT & GSAP MOTION (60FPS GPU)
     // ==========================================
     function liftRoyalCurtain() {
@@ -3116,6 +3278,8 @@
       const isEn = currentLang === 'en';
       if (type === 'farmers') {
         toastText.textContent = isEn ? 'Land leasing portal link copied!' : 'تم نسخ رابط بوابة تأجير الأراضي!';
+      } else if (type === 'supply') {
+        toastText.textContent = isEn ? 'Crop supply portal link copied!' : 'تم نسخ رابط بوابة توريد المحصول!';
       } else if (type === 'email') {
         toastText.textContent = isEn ? 'Official email copied to clipboard!' : 'تم نسخ البريد الإلكتروني الرسمي!';
       } else {
@@ -3170,6 +3334,26 @@
         }
       }
       copyTextSafe(farmersUrl, 'farmers');
+    }
+
+    async function shareSupplyPortalLink() {
+      const baseUrl = window.location.href.split('#')[0];
+      const supplyUrl = `${baseUrl}#supply`;
+      const isEn = currentLang === 'en';
+      const shareTitle = isEn ? 'Nopal Core — Crop & Biomass Supply Portal' : 'Nopal Core — بوابة توريد محصول ومخلفات التين الشوكي';
+      const shareText = isEn
+        ? 'Supply fresh prickly pear fruit, green pads, or factory seed waste directly to Nopal Core:'
+        : 'سجّل عرض توريد ثمار التين الشوكي أو الألواح الخضراء أو مخلفات البذور مباشرة مع Nopal Core:';
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: shareTitle, text: shareText, url: supplyUrl });
+          return;
+        } catch (err) {
+          if (err && err.name === 'AbortError') return;
+        }
+      }
+      copyTextSafe(supplyUrl, 'supply');
     }
 
     // Smart Email Modal Handlers
@@ -3957,6 +4141,7 @@
         farm_f2: 'Free technical inspection to assess soil suitability',
         farm_f3: 'Full agricultural management & operational funding',
         btn_share_portal: 'Share Land Leasing Portal Link',
+        btn_share_supply: 'Share Crop Supply Portal Link',
         form_head: 'Land Inspection & Leasing Request',
         form_free: 'Free Inspection',
         form_note: 'Essential fields required before submission (expected rent is optional).',
@@ -4254,6 +4439,11 @@
       checkRoute();
     });
 
+    // Admin Login Brute-Force Protection (5 Failed Attempts -> 60s Lockout)
+    let failedLoginAttempts = 0;
+    let loginLockoutUntil = 0;
+    let loginCountdownTimer = null;
+
     document.getElementById('adminLoginForm').addEventListener('submit', async function (e) {
       e.preventDefault();
       const email = document.getElementById('adminEmail').value.trim();
@@ -4262,19 +4452,60 @@
       const loginBtn = document.getElementById('adminLoginBtn');
       const isEn = currentLang === 'en';
 
+      const now = Date.now();
+      if (now < loginLockoutUntil) {
+        const secsLeft = Math.ceil((loginLockoutUntil - now) / 1000);
+        errEl.textContent = isEn
+          ? `Too many failed attempts. Try again in ${secsLeft}s.`
+          : `تم تجاوز الحد المسموح (5 محاولات). يرجى الانتظار ${secsLeft} ثانية.`;
+        errEl.classList.remove('hidden');
+        return;
+      }
+
       loginBtn.disabled = true;
       loginBtn.textContent = isEn ? 'Verifying...' : 'جاري التحقق...';
       errEl.classList.add('hidden');
 
       try {
         const { data, error } = await sb.auth.signInWithPassword({ email, password });
-        loginBtn.disabled = false;
-        loginBtn.textContent = isEn ? 'Sign In' : 'تسجيل الدخول';
 
         if (error || !data.user || data.user.email.toLowerCase() !== 'nopalcore@hotmail.com') {
-          errEl.textContent = isEn ? 'Invalid or unauthorized credentials.' : 'بيانات الدخول غير صحيحة أو غير مصرح لها.';
+          failedLoginAttempts += 1;
+          if (failedLoginAttempts >= 5) {
+            loginLockoutUntil = Date.now() + 60000;
+            failedLoginAttempts = 0;
+            clearInterval(loginCountdownTimer);
+            loginCountdownTimer = setInterval(() => {
+              const rem = Math.ceil((loginLockoutUntil - Date.now()) / 1000);
+              if (rem <= 0) {
+                clearInterval(loginCountdownTimer);
+                loginBtn.disabled = false;
+                loginBtn.textContent = isEn ? 'Sign In' : 'تسجيل الدخول';
+                errEl.classList.add('hidden');
+              } else {
+                loginBtn.disabled = true;
+                loginBtn.textContent = isEn ? `Locked (${rem}s)` : `مقفل مؤقتاً (${rem}ث)`;
+                errEl.textContent = isEn
+                  ? `Security lockout active after 5 failed attempts. Wait ${rem}s.`
+                  : `تم إيقاف الدخول مؤقتاً بعد 5 محاولات خاطئة. انتظر ${rem} ثانية.`;
+                errEl.classList.remove('hidden');
+              }
+            }, 1000);
+            return;
+          }
+
+          loginBtn.disabled = false;
+          loginBtn.textContent = isEn ? 'Sign In' : 'تسجيل الدخول';
+          const remainingTries = 5 - failedLoginAttempts;
+          errEl.textContent = isEn
+            ? `Invalid credentials (${remainingTries} attempts remaining).`
+            : `بيانات الدخول غير صحيحة (متبقي ${remainingTries} محاولات قبل القفل المؤقت).`;
           errEl.classList.remove('hidden');
         } else {
+          failedLoginAttempts = 0;
+          loginLockoutUntil = 0;
+          loginBtn.disabled = false;
+          loginBtn.textContent = isEn ? 'Sign In' : 'تسجيل الدخول';
           errEl.classList.add('hidden');
           showDashboard();
         }

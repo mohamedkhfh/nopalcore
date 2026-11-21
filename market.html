@@ -926,9 +926,122 @@
         <a href="index.html" class="brand-green hover:underline">الموقع الرسمي للشركة</a>
         <a href="#listingsSection" class="hover:underline">الأراضي المتاحة</a>
         <a href="#exchangePortal" class="hover:underline">بوابة العرض والطلب</a>
+        <button type="button" onclick="openMarketAdminPortal()" class="text-slate-400 hover:text-[#183D29] font-extrabold cursor-pointer">Admin</button>
       </div>
     </div>
   </footer>
+
+  <!-- لوحة إدارة السوق (#admin) بنفس تصميم الموقع الأساسي -->
+  <section id="marketAdminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <!-- شاشة تسجيل دخول الإدارة -->
+    <div id="marketAdminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-sm border border-stone-200 mt-4">
+      <div class="flex flex-col items-center mb-6 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 p-2 mb-3 flex items-center justify-center">
+          <svg class="w-full h-full" viewBox="0 0 120 120" fill="none">
+            <g stroke="#183D29" stroke-width="6.5">
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+            </g>
+            <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+              <line x1="-14" y1="0" x2="14" y2="0" />
+            </g>
+          </svg>
+        </div>
+        <h2 class="text-xl font-black brand-green">لوحة إدارة سوق الأراضي (Nopal Land Market)</h2>
+        <p class="text-xs text-slate-500 mt-1">الدخول مقتصر على حساب الإدارة المعتمد</p>
+      </div>
+      <form onsubmit="handleMarketAdminLogin(event)" class="space-y-4">
+        <input type="email" id="marketAdminEmail" value="Nopalcore@hotmail.com" required
+          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
+        <input type="password" id="marketAdminPass" placeholder="كلمة المرور" required
+          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
+        <p id="marketAdminLoginError" class="hidden text-xs text-red-600 font-bold bg-red-50 p-3 rounded-xl"></p>
+        <button type="submit" id="marketAdminLoginBtn" class="tactile-btn w-full bg-brand-green text-white py-3.5 rounded-xl font-extrabold text-sm cursor-pointer">
+          تسجيل الدخول للإدارة
+        </button>
+      </form>
+      <div class="mt-5 text-center">
+        <button type="button" onclick="closeMarketAdminPortal()" class="text-xs font-bold text-slate-500 hover:text-[#183D29] cursor-pointer">
+          ← العودة إلى سوق الأراضي
+        </button>
+      </div>
+    </div>
+
+    <!-- محتوى لوحة التحكم بعد الدخول -->
+    <div id="marketAdminDashboard" class="hidden space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-stone-200 shadow-sm">
+        <div>
+          <h2 class="text-2xl font-black brand-green">مركز إدارة سوق الأراضي المعتمد</h2>
+          <p class="text-xs text-slate-500 mt-0.5">متصل مباشرة بـ Supabase (الأعضاء، طلبات المستأجرين، عروض الملاك، وطلبات المعاينة)</p>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          <button type="button" onclick="exportMarketAdminCSV()" class="tactile-btn px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-[#183D29] text-xs font-extrabold hover:border-[#D19336] cursor-pointer">
+            تصدير Excel / CSV
+          </button>
+          <button type="button" onclick="closeMarketAdminPortal()" class="tactile-btn px-4 py-2 rounded-xl border border-stone-300 text-xs font-bold hover:bg-stone-100 cursor-pointer">
+            صفحة السوق
+          </button>
+          <button type="button" onclick="refreshMarketAdminData()" class="tactile-btn px-4 py-2 rounded-xl bg-stone-200 text-xs font-bold hover:bg-stone-300 cursor-pointer">
+            تحديث البيانات
+          </button>
+          <button type="button" onclick="logoutMarketAdmin()" class="tactile-btn px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold cursor-pointer">
+            تسجيل خروج
+          </button>
+        </div>
+      </div>
+
+      <!-- ملخص الأرقام السريعة -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-bold">الأعضاء المسجلون (Google)</span>
+          <p id="kpiMarketUsers" class="text-2xl font-black brand-green mt-1">0</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-bold">طلبات الأراضي (المستأجرون)</span>
+          <p id="kpiMarketRequests" class="text-2xl font-black text-[#D19336] mt-1">0</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-bold">عروض الأراضي (الملاك)</span>
+          <p id="kpiMarketOffers" class="text-2xl font-black brand-green mt-1">0</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-bold">طلبات المعاينة والحجز</span>
+          <p id="kpiMarketBookings" class="text-2xl font-black text-[#D19336] mt-1">0</p>
+        </div>
+      </div>
+
+      <!-- أزرار التبديل بين الجداول الأربعة + شريط البحث -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-stone-200">
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" data-adm-tab="users" onclick="switchMarketAdminTab('users')" class="mkt-adm-tab portal-tab-active px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer">
+            الأعضاء (<span id="cntTabUsers">0</span>)
+          </button>
+          <button type="button" data-adm-tab="requests" onclick="switchMarketAdminTab('requests')" class="mkt-adm-tab portal-tab-inactive px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer">
+            طلبات الأراضي (<span id="cntTabRequests">0</span>)
+          </button>
+          <button type="button" data-adm-tab="offers" onclick="switchMarketAdminTab('offers')" class="mkt-adm-tab portal-tab-inactive px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer">
+            عروض الأراضي (<span id="cntTabOffers">0</span>)
+          </button>
+          <button type="button" data-adm-tab="bookings" onclick="switchMarketAdminTab('bookings')" class="mkt-adm-tab portal-tab-inactive px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer">
+            طلبات المعاينة (<span id="cntTabBookings">0</span>)
+          </button>
+        </div>
+
+        <input type="search" id="marketAdminSearch" oninput="renderMarketAdminTable()" placeholder="بحث بالاسم أو الواتساب أو المحافظة..."
+          class="w-full sm:w-72 px-3.5 py-2 rounded-xl border border-stone-300 text-xs font-bold focus:outline-none focus:border-[#183D29]" />
+      </div>
+
+      <!-- حاوية الجدول النشط -->
+      <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto">
+        <table class="w-full text-right text-sm">
+          <thead id="marketAdminTableHead" class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200"></thead>
+          <tbody id="marketAdminTableBody" class="divide-y divide-stone-200"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
   <!-- نافذة حجز المعاينة بإقرار الجدية -->
   <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/65 backdrop-blur-xs p-4">
@@ -1911,7 +2024,265 @@
         const curtain = document.getElementById('royalCurtain');
         if (curtain) curtain.classList.add('curtain-open');
       }, 650);
+
+      checkMarketAdminRoute();
     });
+
+    // =========================================================================
+    // لوحة إدارة سوق الأراضي (#admin) بنفس تجربة الموقع الأساسي
+    // =========================================================================
+    let marketAdminActiveTab = 'users';
+    let cachedMarketUsers = [];
+    let cachedMarketRequests = [];
+    let cachedMarketOffers = [];
+    let cachedMarketBookings = [];
+
+    window.addEventListener('hashchange', checkMarketAdminRoute);
+
+    async function checkMarketAdminRoute() {
+      const hash = (window.location.hash || '').replace('#', '');
+      const mainEl = document.getElementById('top');
+      const adminSec = document.getElementById('marketAdminView');
+      if (!mainEl || !adminSec) return;
+
+      if (hash === 'admin') {
+        mainEl.classList.add('hidden');
+        adminSec.classList.remove('hidden');
+        try {
+          const { data: { session } } = await sbMarket.auth.getSession();
+          if (session?.user?.email?.toLowerCase() === 'nopalcore@hotmail.com') {
+            showMarketAdminDashboard();
+          }
+        } catch (_) {}
+      } else {
+        adminSec.classList.add('hidden');
+        mainEl.classList.remove('hidden');
+      }
+    }
+
+    function openMarketAdminPortal() {
+      window.location.hash = '#admin';
+      checkMarketAdminRoute();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeMarketAdminPortal() {
+      window.location.hash = '';
+      checkMarketAdminRoute();
+    }
+
+    async function handleMarketAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('marketAdminEmail').value.trim();
+      const password = document.getElementById('marketAdminPass').value;
+      const errEl = document.getElementById('marketAdminLoginError');
+      const btn = document.getElementById('marketAdminLoginBtn');
+
+      btn.disabled = true;
+      btn.textContent = 'جاري التحقق...';
+      errEl.classList.add('hidden');
+
+      try {
+        const { data, error } = await sbMarket.auth.signInWithPassword({ email, password });
+        btn.disabled = false;
+        btn.textContent = 'تسجيل الدخول للإدارة';
+
+        if (error || !data.user || data.user.email.toLowerCase() !== 'nopalcore@hotmail.com') {
+          errEl.textContent = 'بيانات الدخول غير صحيحة أو الحساب غير مصرح له بالإدارة.';
+          errEl.classList.remove('hidden');
+          return;
+        }
+        showMarketAdminDashboard();
+      } catch (_) {
+        btn.disabled = false;
+        btn.textContent = 'تسجيل الدخول للإدارة';
+        errEl.textContent = 'حدث خطأ في الاتصال بـ Supabase.';
+        errEl.classList.remove('hidden');
+      }
+    }
+
+    function showMarketAdminDashboard() {
+      document.getElementById('marketAdminLoginBox').classList.add('hidden');
+      document.getElementById('marketAdminDashboard').classList.remove('hidden');
+      refreshMarketAdminData();
+    }
+
+    async function refreshMarketAdminData() {
+      const [uRes, rRes, oRes, bRes] = await Promise.all([
+        sbMarket.from('market_users').select('*').order('created_at', { ascending: false }),
+        sbMarket.from('tenant_requests').select('*').order('created_at', { ascending: false }),
+        sbMarket.from('land_offers').select('*').order('created_at', { ascending: false }),
+        sbMarket.from('inspection_bookings').select('*').order('created_at', { ascending: false })
+      ]);
+
+      cachedMarketUsers = Array.isArray(uRes.data) ? uRes.data : [];
+      cachedMarketRequests = Array.isArray(rRes.data) ? rRes.data : [];
+      cachedMarketOffers = Array.isArray(oRes.data) ? oRes.data : [];
+      cachedMarketBookings = Array.isArray(bRes.data) ? bRes.data : [];
+
+      document.getElementById('kpiMarketUsers').textContent = cachedMarketUsers.length;
+      document.getElementById('kpiMarketRequests').textContent = cachedMarketRequests.length;
+      document.getElementById('kpiMarketOffers').textContent = cachedMarketOffers.length;
+      document.getElementById('kpiMarketBookings').textContent = cachedMarketBookings.length;
+
+      document.getElementById('cntTabUsers').textContent = cachedMarketUsers.length;
+      document.getElementById('cntTabRequests').textContent = cachedMarketRequests.length;
+      document.getElementById('cntTabOffers').textContent = cachedMarketOffers.length;
+      document.getElementById('cntTabBookings').textContent = cachedMarketBookings.length;
+
+      renderMarketAdminTable();
+    }
+
+    function switchMarketAdminTab(tab) {
+      marketAdminActiveTab = tab;
+      document.querySelectorAll('.mkt-adm-tab').forEach(btn => {
+        if (btn.getAttribute('data-adm-tab') === tab) {
+          btn.className = 'mkt-adm-tab portal-tab-active px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer';
+        } else {
+          btn.className = 'mkt-adm-tab portal-tab-inactive px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer';
+        }
+      });
+      renderMarketAdminTable();
+    }
+
+    function renderMarketAdminTable() {
+      const thead = document.getElementById('marketAdminTableHead');
+      const tbody = document.getElementById('marketAdminTableBody');
+      const q = (document.getElementById('marketAdminSearch')?.value || '').trim().toLowerCase();
+      if (!thead || !tbody) return;
+
+      const waLink = (phone, msg) => {
+        const clean = String(phone || '').replace(/\D/g, '');
+        if (!clean) return '—';
+        return `<a href="https://wa.me/2${clean}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener" class="inline-block px-3 py-1.5 rounded-xl bg-[#25D366] text-slate-950 text-xs font-extrabold hover:brightness-105">واتساب</a>`;
+      };
+
+      if (marketAdminActiveTab === 'users') {
+        thead.innerHTML = `<tr>
+          <th class="p-4">التاريخ</th>
+          <th class="p-4">الاسم</th>
+          <th class="p-4">بريد Google</th>
+          <th class="p-4">رقم الواتساب</th>
+          <th class="p-4">الصفة</th>
+          <th class="p-4">تواصل</th>
+        </tr>`;
+        const rows = cachedMarketUsers.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q));
+        tbody.innerHTML = rows.length ? rows.map(r => `
+          <tr class="hover:bg-stone-50">
+            <td class="p-4 text-xs text-slate-500">${r.created_at ? new Date(r.created_at).toLocaleDateString('ar-EG') : '—'}</td>
+            <td class="p-4 font-bold text-slate-800">${escapeHtml(r.full_name || '—')}</td>
+            <td class="p-4 font-mono text-xs" dir="ltr">${escapeHtml(r.email || '—')}</td>
+            <td class="p-4 font-mono font-bold" dir="ltr">${escapeHtml(r.whatsapp || '—')}</td>
+            <td class="p-4 text-xs font-extrabold brand-green">${r.role === 'owner' ? 'مالك أرض' : 'مستأجر / مستثمر'}</td>
+            <td class="p-4">${waLink(r.whatsapp, `مرحباً ${r.full_name || ''}، نتواصل معك من إدارة سوق أراضي Nopal Core.`)}</td>
+          </tr>
+        `).join('') : `<tr><td colspan="6" class="p-6 text-center text-slate-400">لا يوجد أعضاء مسجلون بعد</td></tr>`;
+        return;
+      }
+
+      if (marketAdminActiveTab === 'requests') {
+        thead.innerHTML = `<tr>
+          <th class="p-4">التاريخ</th>
+          <th class="p-4">اسم المستأجر</th>
+          <th class="p-4">الواتساب</th>
+          <th class="p-4">المحافظة</th>
+          <th class="p-4">المساحة</th>
+          <th class="p-4">المواصفات</th>
+          <th class="p-4">تواصل</th>
+        </tr>`;
+        const rows = cachedMarketRequests.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q));
+        tbody.innerHTML = rows.length ? rows.map(r => `
+          <tr class="hover:bg-stone-50">
+            <td class="p-4 text-xs text-slate-500">${r.created_at ? new Date(r.created_at).toLocaleDateString('ar-EG') : '—'}</td>
+            <td class="p-4 font-bold text-slate-800">${escapeHtml(r.name || '—')}</td>
+            <td class="p-4 font-mono font-bold" dir="ltr">${escapeHtml(r.phone || '—')}</td>
+            <td class="p-4 font-bold">${escapeHtml(r.governorate || '—')}</td>
+            <td class="p-4 font-black brand-green">${escapeHtml(r.area || 0)} فدان</td>
+            <td class="p-4 text-xs text-slate-600">${escapeHtml(r.water || '')} • ${escapeHtml(r.soil || '')} • ${escapeHtml(r.power || '')}</td>
+            <td class="p-4">${waLink(r.phone, `مرحباً ${r.name || ''}، بخصوص طلبك لاستئجار ${r.area || ''} فدان في ${r.governorate || ''} عبر Nopal Land Market.`)}</td>
+          </tr>
+        `).join('') : `<tr><td colspan="7" class="p-6 text-center text-slate-400">لا توجد طلبات أراضٍ بعد</td></tr>`;
+        return;
+      }
+
+      if (marketAdminActiveTab === 'offers') {
+        thead.innerHTML = `<tr>
+          <th class="p-4">الكود</th>
+          <th class="p-4">المالك</th>
+          <th class="p-4">الواتساب (سري)</th>
+          <th class="p-4">المحافظة</th>
+          <th class="p-4">المساحة والسعر</th>
+          <th class="p-4">المواصفات</th>
+          <th class="p-4">تواصل</th>
+        </tr>`;
+        const rows = cachedMarketOffers.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q));
+        tbody.innerHTML = rows.length ? rows.map(r => `
+          <tr class="hover:bg-stone-50">
+            <td class="p-4 font-black brand-green">#${escapeHtml(r.code || '—')}</td>
+            <td class="p-4 font-bold text-slate-800">${escapeHtml(r.owner_name || '—')}</td>
+            <td class="p-4 font-mono font-bold" dir="ltr">${escapeHtml(r.phone || '—')}</td>
+            <td class="p-4 font-bold">${escapeHtml(r.governorate || '—')}</td>
+            <td class="p-4 text-xs"><strong class="brand-green">${escapeHtml(r.area || 0)} فدان</strong> • <span class="brand-gold font-black">${Number(r.annual_rent_per_feddan || 0).toLocaleString('en-US')} ج.م</span></td>
+            <td class="p-4 text-xs text-slate-600">${escapeHtml(r.water || '')} • ${escapeHtml(r.soil || '')}</td>
+            <td class="p-4">${waLink(r.phone, `مرحباً ${r.owner_name || ''}، بخصوص عرض أرضكم (${r.code || ''}) في ${r.governorate || ''} على منصة Nopal Land Market.`)}</td>
+          </tr>
+        `).join('') : `<tr><td colspan="7" class="p-6 text-center text-slate-400">لا توجد عروض أراضٍ بعد</td></tr>`;
+        return;
+      }
+
+      if (marketAdminActiveTab === 'bookings') {
+        thead.innerHTML = `<tr>
+          <th class="p-4">التاريخ</th>
+          <th class="p-4">كود الأرض</th>
+          <th class="p-4">طالب المعاينة</th>
+          <th class="p-4">الواتساب</th>
+          <th class="p-4">الموعد المقترح</th>
+          <th class="p-4">تواصل</th>
+        </tr>`;
+        const rows = cachedMarketBookings.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q));
+        tbody.innerHTML = rows.length ? rows.map(r => `
+          <tr class="hover:bg-stone-50">
+            <td class="p-4 text-xs text-slate-500">${r.created_at ? new Date(r.created_at).toLocaleDateString('ar-EG') : '—'}</td>
+            <td class="p-4 font-black brand-green">#${escapeHtml(r.land_id || '—')}</td>
+            <td class="p-4 font-bold text-slate-800">${escapeHtml(r.requester_name || '—')}</td>
+            <td class="p-4 font-mono font-bold" dir="ltr">${escapeHtml(r.phone || '—')}</td>
+            <td class="p-4 text-xs font-bold">${escapeHtml(r.preferred_date || 'مرن')}</td>
+            <td class="p-4">${waLink(r.phone, `مرحباً ${r.requester_name || ''}، لتأكيد موعد معاينة الأرض ${r.land_id || ''} (${r.governorate || ''}).`)}</td>
+          </tr>
+        `).join('') : `<tr><td colspan="6" class="p-6 text-center text-slate-400">لا توجد طلبات معاينة بعد</td></tr>`;
+      }
+    }
+
+    function exportMarketAdminCSV() {
+      const map = {
+        users: cachedMarketUsers,
+        requests: cachedMarketRequests,
+        offers: cachedMarketOffers,
+        bookings: cachedMarketBookings
+      };
+      const rows = map[marketAdminActiveTab] || [];
+      if (!rows.length) {
+        showToast('لا توجد بيانات للتصدير في هذا القسم حالياً');
+        return;
+      }
+      const headers = Object.keys(rows[0]);
+      const csv = '\uFEFF' + [
+        headers.join(','),
+        ...rows.map(row => headers.map(h => `"${String(row[h] ?? '').replace(/"/g, '""')}"`).join(','))
+      ].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `Nopal_Market_${marketAdminActiveTab}_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    async function logoutMarketAdmin() {
+      await sbMarket.auth.signOut();
+      closeMarketAdminPortal();
+    }
   </script>
 </body>
 </html>

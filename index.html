@@ -62,7 +62,6 @@
       box-sizing: border-box;
     }
 
-    /* STRICT iOS SAFARI + MOBILE HORIZONTAL VIEWPORT LOCK */
     html {
       scroll-behavior: smooth;
       overflow-x: hidden;
@@ -117,9 +116,6 @@
       font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
     }
 
-    /* ============================================================
-       ADAPTIVE ROYAL EMERALD DARK MODE (AUTO-SYSTEM + MANUAL)
-       ============================================================ */
     html.dark body {
       background-color: #09150F;
       color: #F1F5F9;
@@ -253,9 +249,6 @@
     .brand-gold { color: #D19336; }
     .bg-brand-gold { background-color: #D19336; }
 
-    /* ============================================================
-       ROYAL EMERALD CURTAIN REVEAL (0.75s GPU SLIDE-UP)
-       ============================================================ */
     #royalCurtain {
       position: fixed;
       inset: 0;
@@ -274,9 +267,6 @@
       pointer-events: none;
     }
 
-    /* ============================================================
-       3D TILT CARD & LIQUID GOLD GLITTER SHIMMER ON SEED
-       ============================================================ */
     .seed-3d-stage {
       perspective: 1000px;
     }
@@ -321,9 +311,6 @@
       50% { opacity: 1; transform: scale(1.25); }
     }
 
-    /* ============================================================
-       CURSOR SPOTLIGHT CARDS & GOLD BUTTON LIGHT SWEEP
-       ============================================================ */
     .spotlight-card {
       position: relative;
       overflow: hidden;
@@ -670,8 +657,11 @@
               المنتجات الصناعية
             </button>
             <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_farmers">
-              تأجير الأراضي
+              أجّر معنا
             </button>
+            <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold bg-amber-50 text-[#183D29] border border-amber-300/90 hover:border-[#D19336] transition whitespace-nowrap" data-i18n="tab_market_link">
+              للتأجير والعرض العام ↗
+            </a>
             <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_supply">
               توريد المحصول
             </button>
@@ -723,8 +713,11 @@
           المنتجات الصناعية
         </button>
         <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_farmers">
-          تأجير الأراضي
+          أجّر معنا
         </button>
+        <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-amber-50 text-[#183D29] border border-amber-300/90 whitespace-nowrap transition" data-i18n="tab_market_link">
+          للتأجير والعرض العام ↗
+        </a>
         <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_supply">
           توريد المحصول والمخلفات
         </button>
@@ -744,9 +737,7 @@
   <!-- MAIN PUBLIC CONTENT CONTAINER -->
   <main id="publicView" class="relative z-10 flex-grow divide-y divide-stone-200/70 w-full overflow-x-hidden">
 
-    <!-- ============================================================
-         SECTION 1: HERO + 3D GLITTER SEED CARD + BATCH PASSPORT
-         ============================================================ -->
+    <!-- SECTION 1: HERO + 3D GLITTER SEED CARD + BATCH PASSPORT -->
     <section id="page-home" class="page-section scroll-mt-24 py-10 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div class="bg-white rounded-3xl p-7 sm:p-12 lg:p-14 border border-stone-200 shadow-sm">
         <div class="grid lg:grid-cols-12 gap-10 items-center">
@@ -767,8 +758,12 @@
             <div class="hero-reveal flex flex-wrap gap-3.5 pt-2">
               <button type="button" onclick="navigateToSection('farmers')"
                 class="tactile-btn gold-sweep-btn bg-brand-green text-white px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base hover:bg-[#133121] shadow-sm cursor-pointer" data-i18n="hero_btn_farmer">
-                اعرض أرضك للإيجار أو ورّد خاماتك
+                أجّر أرضك لشركة Nopal Core
               </button>
+              <a href="https://mohamedkhfh.github.io/nopalcore/market.html"
+                class="tactile-btn bg-amber-50 text-[#183D29] border border-amber-300 hover:border-[#D19336] px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base" data-i18n="hero_btn_market">
+                للتأجير والعرض العام ↗
+              </a>
               <button type="button" onclick="navigateToSection('products')"
                 class="tactile-btn bg-[#FAF9F6] text-[#183D29] border border-stone-300 hover:border-[#183D29] px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base cursor-pointer" data-i18n="hero_btn_b2b">
                 استكشف المنتجات الصناعية (6 خامات)
@@ -925,9 +920,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SECTION 2: INDUSTRIAL PRODUCTS + LIQUID GOLD BENCHMARK + SIMULATOR
-         ============================================================ -->
+    <!-- SECTION 2: INDUSTRIAL PRODUCTS -->
     <section id="page-products" class="page-section scroll-mt-24 py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="gsap-reveal-section bg-white rounded-3xl p-7 sm:p-10 border border-stone-200 shadow-sm mb-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
@@ -951,7 +944,6 @@
         </div>
       </div>
 
-      <!-- Interactive Stream Filter Tabs -->
       <div class="flex flex-wrap items-center gap-2 mb-7" role="tablist" aria-label="Product Stream Filter">
         <button type="button" data-filter="all" onclick="filterProducts('all')" class="prod-filter-btn tactile-btn filter-active px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold cursor-pointer" data-i18n="flt_all">
           جميع الخامات (6)
@@ -967,9 +959,8 @@
         </button>
       </div>
 
-      <!-- Enriched 6-Card Industrial Portfolio Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
-        <!-- Product 1: Seed Oil -->
+        <!-- Product 1 -->
         <div data-category="cosmetics" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] flex flex-col justify-between space-y-5">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -1000,7 +991,7 @@
           </div>
         </div>
 
-        <!-- Product 2: Seedless Frozen Pulp -->
+        <!-- Product 2 -->
         <div data-category="food" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] flex flex-col justify-between space-y-5">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -1031,7 +1022,7 @@
           </div>
         </div>
 
-        <!-- Product 3: Dehydrated Cladode Powder -->
+        <!-- Product 3 -->
         <div data-category="food" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] flex flex-col justify-between space-y-5">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -1062,7 +1053,7 @@
           </div>
         </div>
 
-        <!-- Product 4: Bio-Mucilage -->
+        <!-- Product 4 -->
         <div data-category="cosmetics" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] flex flex-col justify-between space-y-5">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -1093,7 +1084,7 @@
           </div>
         </div>
 
-        <!-- Product 5: Exfoliating Seed-Cake Cosmetic Scrub -->
+        <!-- Product 5 -->
         <div data-category="cosmetics" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] flex flex-col justify-between space-y-5">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -1124,7 +1115,7 @@
           </div>
         </div>
 
-        <!-- Product 6: Sustainable Feed Concentrates -->
+        <!-- Product 6 -->
         <div data-category="feed" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] flex flex-col justify-between space-y-5">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -1156,7 +1147,7 @@
         </div>
       </div>
 
-      <!-- LIQUID GOLD BENCHMARK: PRICKLY PEAR SEED OIL VS. MOROCCAN ARGAN OIL -->
+      <!-- LIQUID GOLD BENCHMARK -->
       <div class="gsap-reveal-section mt-10 emerald-gold-surface text-white rounded-3xl p-7 sm:p-10 shadow-sm">
         <div class="grid lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-5 space-y-4">
@@ -1177,7 +1168,6 @@
           </div>
 
           <div class="lg:col-span-7 bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-5">
-            <!-- Metric 1 -->
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs font-extrabold">
                 <span data-i18n="bench_m1">فيتامين E الطبيعي (Gamma-Tocopherol) — أعلى بـ +150%</span>
@@ -1200,7 +1190,6 @@
               </div>
             </div>
 
-            <!-- Metric 2 -->
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs font-extrabold">
                 <span data-i18n="bench_m2">حمض اللينوليك الأساسي (Omega-6 Linoleic Acid)</span>
@@ -1223,7 +1212,6 @@
               </div>
             </div>
 
-            <!-- Metric 3 -->
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs font-extrabold">
                 <span data-i18n="bench_m3">الستيرولات النباتية لتجديد حاجز البشرة (Phytosterols)</span>
@@ -1249,7 +1237,7 @@
         </div>
       </div>
 
-      <!-- DUAL-FEEDSTOCK INTERACTIVE CIRCULAR BIOREFINERY YIELD SIMULATOR -->
+      <!-- DUAL-FEEDSTOCK SIMULATOR -->
       <div class="gsap-reveal-section mt-10 bg-white rounded-3xl p-7 sm:p-9 border border-stone-200 shadow-sm">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-stone-200/80">
           <div class="space-y-2">
@@ -1304,26 +1292,24 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SECTION 3: LAND LEASING PORTAL
-         ============================================================ -->
+    <!-- SECTION 3: LAND LEASING PORTAL (أجّر معنا vs للتأجير والعرض العام) -->
     <section id="page-farmers" class="page-section scroll-mt-24 py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-8 items-start">
         <div class="gsap-reveal-card spotlight-card lg:col-span-5 bg-white rounded-3xl p-7 sm:p-8 border border-stone-200 shadow-sm space-y-5">
           <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-50 brand-green text-xs font-extrabold" data-i18n="farm_badge">
-            بوابة أصحاب الأراضي
+            أجّر معنا • استثمار مباشر لشركة Nopal Core
           </span>
           <h2 class="text-2xl sm:text-3xl font-black brand-green leading-snug" data-i18n="farm_title">
-            استثمر أرضك غير المستغلة بعائد سنوي ثابت ومضمون
+            أجّر أرضك لشركة Nopal Core بعائد سنوي ثابت ومضمون
           </h2>
           <p class="text-sm text-slate-600 leading-relaxed" data-i18n="farm_desc">
-            إذا كانت لديك مساحة أرض فاضية أو هامشية، تقوم Nopal Core بمعاينتها وتأجيرها بعقود واضحة لزراعة وإدارة نبات التين الشوكي بأحدث النظم المستدامة.
+            إذا كانت لديك مساحة أرض فاضية أو هامشية، تقوم شركة Nopal Core نفسها بمعاينتها واستئجارها منك مباشرة بعقود واضحة لزراعتها وإدارة نبات التين الشوكي لحساب الشركة.
           </p>
 
           <ul class="space-y-3 text-sm font-bold text-slate-700 pt-2">
             <li class="flex items-center gap-2.5">
               <span class="w-5 h-5 rounded-full bg-brand-green text-white flex items-center justify-center text-xs shrink-0">✓</span>
-              <span data-i18n="farm_f1">مناسب للأراضي الصحراوية والهامشية والفاضية</span>
+              <span data-i18n="farm_f1">شركة Nopal Core هي المستأجر المباشر لأرضك</span>
             </li>
             <li class="flex items-center gap-2.5">
               <span class="w-5 h-5 rounded-full bg-brand-green text-white flex items-center justify-center text-xs shrink-0">✓</span>
@@ -1335,13 +1321,24 @@
             </li>
           </ul>
 
-          <div class="pt-2">
+          <div class="p-4 rounded-2xl bg-amber-50/90 border border-amber-200/90 space-y-2.5">
+            <span class="block text-xs font-black text-[#183D29]" data-i18n="market_diff_title">هل تبحث عن أرض للإيجار أو تريد عرض أرضك للجمهور العام؟</span>
+            <p class="text-[11px] font-bold text-slate-600 leading-relaxed" data-i18n="market_diff_desc">
+              انتقل لمنصة الوساطة الزراعية المستقلة لعرض أرضك للغير أو البحث المباشر عن أراضٍ معتمدة.
+            </p>
+            <a href="https://mohamedkhfh.github.io/nopalcore/market.html"
+              class="tactile-btn gold-sweep-btn w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#D19336] text-slate-950 text-xs sm:text-sm font-extrabold shadow-xs">
+              <span data-i18n="market_diff_btn">منصة للتأجير والعرض العام ↗</span>
+            </a>
+          </div>
+
+          <div class="pt-1">
             <button type="button" onclick="shareFarmersPortalLink()"
               class="tactile-btn w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-300 hover:border-[#D19336] hover:bg-amber-50/50 text-xs sm:text-sm font-extrabold brand-green cursor-pointer shadow-xs">
               <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
               </svg>
-              <span data-i18n="btn_share_portal">مشاركة رابط بوابة تأجير الأراضي</span>
+              <span data-i18n="btn_share_portal">مشاركة رابط بوابة أجّر معنا</span>
             </button>
           </div>
         </div>
@@ -1349,7 +1346,7 @@
         <!-- Land Leasing Form Column -->
         <div class="gsap-reveal-card lg:col-span-7 bg-white rounded-3xl p-7 sm:p-9 border border-stone-200 shadow-sm">
           <div class="flex items-center justify-between gap-2 mb-1">
-            <h3 class="text-xl font-black brand-green" data-i18n="form_head">طلب معاينة وتأجير أرض</h3>
+            <h3 class="text-xl font-black brand-green" data-i18n="form_head">طلب معاينة وتأجير أرض لشركة Nopal Core</h3>
             <span class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg bg-emerald-50 brand-green" data-i18n="form_free">معاينة مجانية</span>
           </div>
           <p class="text-xs text-slate-500 mb-6" data-i18n="form_note">جميع الحقول الأساسية مطلوبة قبل الإرسال (السعر المقترح اختياري).</p>
@@ -1445,9 +1442,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SECTION 3B: CROP & BIOMASS SUPPLY PORTAL (SUPABASE crop_suppliers)
-         ============================================================ -->
+    <!-- SECTION 3B: CROP & BIOMASS SUPPLY PORTAL -->
     <section id="page-supply" class="page-section scroll-mt-24 py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-8 items-start">
         <div class="gsap-reveal-card spotlight-card lg:col-span-5 bg-white rounded-3xl p-7 sm:p-8 border border-stone-200 shadow-sm space-y-5">
@@ -1491,7 +1486,6 @@
           </div>
         </div>
 
-        <!-- Supply Offer Form Column -->
         <div class="gsap-reveal-card lg:col-span-7 bg-white rounded-3xl p-7 sm:p-9 border border-stone-200 shadow-sm">
           <div class="flex items-center justify-between gap-2 mb-1">
             <h3 class="text-xl font-black brand-green" data-i18n="sup_form_head">تسجيل عرض توريد خامات أو مخلفات</h3>
@@ -1634,9 +1628,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SECTION 3C: INTERACTIVE EGYPT SUPPLY CHAIN MAP & CAM CLIMATE BENTO
-         ============================================================ -->
+    <!-- SECTION 3C: INTERACTIVE EGYPT SUPPLY CHAIN MAP & CAM CLIMATE BENTO -->
     <section id="page-impact" class="page-section scroll-mt-24 py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
       <div class="gsap-reveal-section space-y-6">
@@ -1786,7 +1778,7 @@
 
             <div class="pt-2 flex flex-wrap gap-3">
               <button type="button" onclick="navigateToSection('farmers')" class="tactile-btn gold-sweep-btn px-5 py-3 rounded-xl bg-brand-green text-white text-xs font-extrabold cursor-pointer" data-i18n="hub_cta_lease">
-                اعرض أرضاً في هذه المنطقة
+                أجّر أرضاً في هذه المنطقة معنا
               </button>
               <button type="button" onclick="navigateToSection('supply')" class="tactile-btn px-5 py-3 rounded-xl bg-white border border-stone-300 hover:border-[#183D29] text-[#183D29] text-xs font-extrabold cursor-pointer" data-i18n="hub_cta_supply">
                 سجّل عرض توريد خامات
@@ -1797,9 +1789,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SECTION 4: CIRCULAR SYSTEM & FOUNDING TEAM
-         ============================================================ -->
+    <!-- SECTION 4: CIRCULAR SYSTEM & FOUNDING TEAM -->
     <section id="page-about" class="page-section scroll-mt-24 py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
       <div class="gsap-reveal-section bg-white rounded-3xl p-7 sm:p-10 border border-stone-200 shadow-sm">
         <div class="max-w-3xl">
@@ -2079,9 +2069,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SECTION 5: B2B CORPORATE CONTACT
-         ============================================================ -->
+    <!-- SECTION 5: B2B CORPORATE CONTACT -->
     <section id="page-b2b" class="page-section scroll-mt-24 py-12 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="gsap-reveal-section bg-white rounded-3xl p-8 sm:p-12 border border-stone-200 shadow-sm text-center space-y-6">
         <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-[#D19336] border border-amber-200/80 text-xs font-extrabold" data-i18n="b2b_badge">
@@ -2120,9 +2108,7 @@
 
   </main>
 
-  <!-- ============================================================
-       ADMIN DASHBOARD (#admin) WITH LAND LEASES & CROP SUPPLIERS TABS
-       ============================================================ -->
+  <!-- ADMIN DASHBOARD (#admin) -->
   <section id="adminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow overflow-x-hidden">
     <div id="adminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-sm border border-stone-200 mt-6">
       <div class="flex flex-col items-center mb-6 text-center">
@@ -2159,7 +2145,6 @@
       </div>
     </div>
 
-    <!-- Admin Dashboard Content -->
     <div id="adminDashboardContent" class="hidden space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-stone-200 shadow-sm">
         <div>
@@ -2176,7 +2161,6 @@
         </div>
       </div>
 
-      <!-- Admin Module Switcher Tabs -->
       <div class="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-stone-200 w-fit max-w-full">
         <button type="button" id="admTabLeadsBtn" onclick="switchAdminTab('leads')" class="tactile-btn tab-active px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold cursor-pointer">
           <span data-i18n="adm_tab_leads">طلبات تأجير الأراضي (farmer_leads)</span>
@@ -2188,7 +2172,6 @@
         </button>
       </div>
 
-      <!-- TAB 1: LAND LEASING LEADS PANEL -->
       <div id="adminLeadsPanel" class="space-y-5">
         <div class="grid sm:grid-cols-4 gap-4">
           <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
@@ -2226,7 +2209,6 @@
         </div>
       </div>
 
-      <!-- TAB 2: CROP & BIOMASS SUPPLIERS PANEL -->
       <div id="adminSupplyPanel" class="hidden space-y-5">
         <div class="grid sm:grid-cols-4 gap-4">
           <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
@@ -2285,8 +2267,11 @@
         <span class="font-black brand-green text-sm">NOPAL CORE</span>
       </div>
 
-      <div class="flex items-center gap-4 text-xs text-slate-500">
+      <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500">
         <span>© 2026 Nopal Core Biotech. All rights reserved.</span>
+        <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="brand-green hover:text-[#D19336] font-extrabold transition" data-i18n="tab_market_link">
+          للتأجير والعرض العام ↗
+        </a>
         <button type="button" onclick="openInstallAppModal()" class="text-slate-500 hover:text-[#183D29] font-bold transition cursor-pointer" data-i18n="footer_app_btn">
           التطبيق (PWA)
         </button>
@@ -2569,12 +2554,12 @@
     </button>
     <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
       <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      <span data-i18n="dock_farmers">الأراضي</span>
+      <span data-i18n="dock_farmers">أجّر معنا</span>
     </button>
-    <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
-      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-      <span data-i18n="dock_about">الفريق</span>
-    </button>
+    <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold text-[#D19336] transition">
+      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+      <span data-i18n="dock_market">سوق الأراضي</span>
+    </a>
     <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
       <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
       <span data-i18n="dock_b2b">الشركات</span>
@@ -2582,16 +2567,10 @@
   </nav>
 
   <script>
-    // ==========================================
-    // 1. SUPABASE INITIALIZATION (UNCHANGED)
-    // ==========================================
     const SUPABASE_URL = 'https://ipwbibgzmmkrxzexfjkv.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_-S7HszdsUfwZZ3UMGWZiMg_qnc9rpGU';
     const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // ==========================================
-    // 2. XSS SANITIZATION & RATE LIMITING
-    // ==========================================
     function escapeHtml(unsafeStr) {
       if (unsafeStr === null || unsafeStr === undefined) return '';
       return String(unsafeStr)
@@ -2606,9 +2585,6 @@
     let lastFarmerSubmitTs = 0;
     let lastSupplySubmitTs = 0;
 
-    // ==========================================
-    // 2B. ADAPTIVE AUTO DARK MODE (SYSTEM + MANUAL OVERRIDE)
-    // ==========================================
     function applyThemeState(isDark) {
       const htmlEl = document.documentElement;
       const sunIcon = document.getElementById('themeIconSun');
@@ -2657,9 +2633,6 @@
 
     initAdaptiveDarkMode();
 
-    // ==========================================
-    // 3. ROYAL CURTAIN, 3D TILT SEED, SPOTLIGHT & GSAP MOTION
-    // ==========================================
     function liftRoyalCurtain() {
       const curtain = document.getElementById('royalCurtain');
       if (!curtain || curtain.classList.contains('curtain-lifted')) return;
@@ -2778,9 +2751,6 @@
       }
     }
 
-    // ==========================================
-    // 4. INTERACTIVE BATCH PROVENANCE PASSPORT
-    // ==========================================
     const PROVENANCE_STAGES = {
       1: {
         badgeAr: 'مرحلة التوريد الميداني والمصانع • Field & Factory Origin',
@@ -2873,9 +2843,6 @@
       });
     }
 
-    // ==========================================
-    // 5. EXECUTIVE INVESTOR PITCH MODAL
-    // ==========================================
     function openPitchModal() {
       document.getElementById('pitchModal').classList.remove('hidden');
     }
@@ -2888,9 +2855,6 @@
       if (e.target === this) closePitchModal();
     });
 
-    // ==========================================
-    // 6. DUAL-FEEDSTOCK INTERACTIVE YIELD SIMULATOR
-    // ==========================================
     let currentSimulatorMode = 'fruit';
 
     function setSimulatorFeedstock(mode) {
@@ -2967,9 +2931,6 @@
       }
     }
 
-    // ==========================================
-    // 7. DIGITAL COA DRAWER & INTERACTIVE EGYPT MAP
-    // ==========================================
     const COA_SPECS_DATA = {
       oil: {
         code: 'NC-OIL-01',
@@ -3138,7 +3099,6 @@
       if (e.target === this) closeCoaDrawer();
     });
 
-    // Interactive Egypt Operations Map Hubs
     const EGYPT_HUBS_DATA = {
       minya: {
         tagAr: 'مركز التوريد الرئيسي • الصعيد',
@@ -3222,9 +3182,6 @@
       });
     }
 
-    // ==========================================
-    // 8. WEB-TO-APP (PWA MANIFEST) & SHARE PORTAL
-    // ==========================================
     let deferredPwaPrompt = null;
 
     function initWebToAppCapabilities() {
@@ -3288,7 +3245,7 @@
       const toastText = document.getElementById('copyLinkToastText');
       const isEn = currentLang === 'en';
       if (type === 'farmers') {
-        toastText.textContent = isEn ? 'Land leasing portal link copied!' : 'تم نسخ رابط بوابة تأجير الأراضي!';
+        toastText.textContent = isEn ? 'Lease With Us portal link copied!' : 'تم نسخ رابط بوابة أجّر معنا!';
       } else if (type === 'supply') {
         toastText.textContent = isEn ? 'Crop supply portal link copied!' : 'تم نسخ رابط بوابة توريد المحصول!';
       } else if (type === 'email') {
@@ -3331,10 +3288,10 @@
       const baseUrl = window.location.href.split('#')[0];
       const farmersUrl = `${baseUrl}#farmers`;
       const isEn = currentLang === 'en';
-      const shareTitle = isEn ? 'Nopal Core — Idle Land Leasing Portal' : 'Nopal Core — بوابة تأجير واستثمار الأراضي غير المستغلة';
+      const shareTitle = isEn ? 'Nopal Core — Lease With Us Portal' : 'Nopal Core — بوابة أجّر معنا لاستثمار الأراضي';
       const shareText = isEn
-        ? 'Lease your unused or marginal land with Nopal Core for stable annual returns.'
-        : 'سجّل أرضك غير المستغلة أو الهامشية للتأجير بعائد سنوي ثابت مع شركة Nopal Core:';
+        ? 'Lease your unused or marginal land directly to Nopal Core for stable annual returns.'
+        : 'أجّر أرضك غير المستغلة أو الهامشية مباشرة لشركة Nopal Core بعائد سنوي ثابت:';
 
       if (navigator.share) {
         try {
@@ -3386,9 +3343,6 @@
       if (e.target === this) closeEmailModal();
     });
 
-    // ==========================================
-    // 9. SMOOTH NATIVE NAVIGATION & SCROLL PROGRESS
-    // ==========================================
     function setActiveTab(sectionId) {
       document.querySelectorAll('.nav-tab').forEach(btn => {
         if (btn.getAttribute('data-tab') === sectionId) {
@@ -3457,9 +3411,6 @@
       }
     }, { passive: true });
 
-    // ==========================================
-    // 10. PRODUCT PORTFOLIO FILTER & SAMPLE MODAL
-    // ==========================================
     function filterProducts(category) {
       document.querySelectorAll('.prod-filter-btn').forEach(btn => {
         if (btn.getAttribute('data-filter') === category) {
@@ -3539,9 +3490,6 @@
       }
     });
 
-    // ==========================================
-    // 11. LAND LEASING FORM & SUPABASE SUBMISSION
-    // ==========================================
     const SQM_PER_FEDDAN = 4200;
     const phoneInput = document.getElementById('phone');
     const govSelect = document.getElementById('governorateSelect');
@@ -3760,9 +3708,6 @@
       }
     });
 
-    // ==========================================
-    // 12. CROP & BIOMASS SUPPLY FORM -> SUPABASE (crop_suppliers)
-    // ==========================================
     const supPhoneInput = document.getElementById('supPhone');
     const supQtyInput = document.getElementById('supQty');
     const supQtyUnitSelect = document.getElementById('supQtyUnit');
@@ -3940,9 +3885,6 @@
       }
     });
 
-    // ==========================================
-    // 13. COMPLETE BILINGUAL SUPPORT (AR / EN + PLACEHOLDERS)
-    // ==========================================
     let currentLang = 'ar';
     const translations = {
       en: {
@@ -3952,15 +3894,16 @@
         tagline: 'Biotech & Land Utilization',
         tab_home: 'Home',
         tab_products: 'Industrial Products',
-        tab_farmers: 'Land Leasing',
+        tab_farmers: 'Lease With Us',
+        tab_market_link: 'Public Leasing & Market ↗',
         tab_supply: 'Crop & Biomass Supply',
         tab_impact: 'Impact & Map',
         tab_about: 'System & Team',
         tab_b2b: 'B2B Corporate',
         dock_home: 'Home',
         dock_products: 'Products',
-        dock_farmers: 'Lands',
-        dock_about: 'Team',
+        dock_farmers: 'Lease With Us',
+        dock_market: 'Land Market',
         dock_b2b: 'B2B',
         btn_install_app: 'Install App',
         tel_1: '100% Biomass Upcycling',
@@ -4071,7 +4014,7 @@
         hub_btn_fayoum: 'Fayoum & Valley',
         hub_lbl_soil: 'Soil & Water Profile',
         hub_lbl_stream: 'Active Operational Stream',
-        hub_cta_lease: 'Lease Land in This Region',
+        hub_cta_lease: 'Lease Land With Us Here',
         hub_cta_supply: 'Register Supply Offer',
         sim_mode_fruit: 'Input: Fresh Fruit (1–100 Tons)',
         sim_mode_seeds: 'Input: Factory Seeds (1–50 Tons)',
@@ -4081,7 +4024,8 @@
         hero_card_sub: 'Zero-Waste Biorefinery System',
         stat_zero_waste: 'Zero-Waste Valorization',
         stat_outputs: 'Industrial B2B Outputs',
-        hero_btn_farmer: 'Lease Land or Supply Raw Materials',
+        hero_btn_farmer: 'Lease Your Land to Nopal Core',
+        hero_btn_market: 'Public Leasing & Market ↗',
         hero_btn_b2b: 'Explore Industrial Products (6 Outputs)',
         strip1_t: 'Fruit & Seed Stream (Summer & Agro-Waste)',
         strip1_d: 'Cold-pressed virgin seed oil, seedless frozen fruit puree, exfoliating cosmetic scrub, and dried peel feed.',
@@ -4142,15 +4086,18 @@
         sim_out3_d: 'Natural microplastic alternative',
         sim_out4_t: 'Sustainable Feed Concentrates',
         sim_out4_d: 'Pectin & mineral-rich forage cubes',
-        farm_badge: 'Landowners Portal',
-        farm_title: 'Monetize Your Idle Land with Guaranteed Annual Returns',
-        farm_desc: 'If you own unused, marginal, or low-water land, Nopal Core inspects and leases it under clear contracts for sustainable Opuntia cultivation and management.',
-        farm_f1: 'Suitable for desert, marginal, and idle lands',
+        farm_badge: 'Lease With Us • Direct Nopal Core Operations',
+        farm_title: 'Lease Your Land Directly to Nopal Core for Fixed Annual Returns',
+        farm_desc: 'If you own unused, marginal, or low-water land, Nopal Core inspects and leases it directly under clear contracts for sustainable Opuntia cultivation managed by our company.',
+        farm_f1: 'Nopal Core is the direct lessee of your land',
         farm_f2: 'Free technical inspection to assess soil suitability',
         farm_f3: 'Full agricultural management & operational funding',
-        btn_share_portal: 'Share Land Leasing Portal Link',
+        market_diff_title: 'Looking to rent land or list your land for third parties?',
+        market_diff_desc: 'Visit our independent agricultural brokerage marketplace to list lands publicly or search verified lands.',
+        market_diff_btn: 'Public Leasing & Listings Market ↗',
+        btn_share_portal: 'Share Lease With Us Portal Link',
         btn_share_supply: 'Share Crop Supply Portal Link',
-        form_head: 'Land Inspection & Leasing Request',
+        form_head: 'Land Inspection & Leasing Request to Nopal Core',
         form_free: 'Free Inspection',
         form_note: 'Essential fields required before submission (expected rent is optional).',
         lbl_name: 'Landowner Full Name *',
@@ -4377,9 +4324,6 @@
       }
     }
 
-    // ==========================================
-    // 14. ADMIN DASHBOARD (LEADS + SUPPLIERS TABS & CSV EXPORT)
-    // ==========================================
     let cachedLeadsData = [];
     let cachedSuppliersData = [];
     let activeAdminTab = 'leads';
@@ -4447,7 +4391,6 @@
       checkRoute();
     });
 
-    // Admin Login Brute-Force Protection (5 Failed Attempts -> 60s Lockout)
     let failedLoginAttempts = 0;
     let loginLockoutUntil = 0;
     let loginCountdownTimer = null;

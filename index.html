@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta name="theme-color" content="#183D29" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -60,6 +60,11 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      max-width: 100%;
+      width: 100%;
+      touch-action: pan-y;
+      overscroll-behavior-x: none;
     }
 
     body {
@@ -68,8 +73,26 @@
       color: #1E293B;
       padding-bottom: env(safe-area-inset-bottom, 0px);
       overflow-x: hidden;
+      max-width: 100%;
+      width: 100%;
+      position: relative;
+      touch-action: pan-y;
+      overscroll-behavior-x: none;
       -webkit-tap-highlight-color: transparent;
       transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    main, section, header, footer {
+      max-width: 100%;
+    }
+
+    .no-scrollbar {
+      touch-action: pan-x pan-y;
+    }
+
+    .overflow-x-auto {
+      touch-action: pan-x pan-y;
+      max-width: 100%;
     }
 
     html[dir="ltr"] body {
@@ -209,7 +232,6 @@
       transition: transform 0.25s var(--spring-ease), box-shadow 0.3s var(--spring-ease), border-color 0.25s ease;
       will-change: transform;
     }
-    /* Liquid Gold Glitter Sheen Sweeping Across Seed Card */
     .seed-3d-card::before {
       content: "";
       position: absolute;
@@ -232,7 +254,6 @@
       68%, 100% { transform: translateX(120%) rotate(12deg); }
     }
 
-    /* Sparkling Glitter Dust Points Around Golden Seed */
     .glitter-spark {
       animation: glitterTwinkle 2.8s ease-in-out infinite;
       transform-origin: center;
@@ -274,7 +295,6 @@
       box-shadow: 0 16px 34px -12px rgba(24, 61, 41, 0.11);
     }
 
-    /* Gold Light Sweep on Primary Buttons */
     .gold-sweep-btn {
       position: relative;
       overflow: hidden;
@@ -303,14 +323,6 @@
     .tactile-btn:active {
       transform: scale(0.97);
       transition-duration: 0.08s;
-    }
-
-    .tactile-card {
-      transition: transform 0.28s var(--spring-ease), box-shadow 0.28s var(--spring-ease), border-color 0.22s ease;
-    }
-    .tactile-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 30px -10px rgba(24, 61, 41, 0.09);
     }
 
     .tab-active {
@@ -345,7 +357,6 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Custom Range Slider */
     input[type="range"].nopal-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -365,7 +376,6 @@
       cursor: pointer;
     }
 
-    /* Slide-Over Digital COA Drawer */
     .drawer-panel-rtl {
       animation: drawerSlideRtl 0.3s var(--snappy-ease) forwards;
     }
@@ -390,9 +400,6 @@
       background: linear-gradient(145deg, #183D29 0%, #102B1C 65%, #1A432D 100%);
     }
 
-    /* ============================================================
-       NOPAL OS SYSTEM ARCHITECTURE DIAGRAM INTERACTIVE STATES
-       ============================================================ */
     .os-node-card {
       transition: transform 0.24s var(--spring-ease), border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
     }
@@ -412,9 +419,6 @@
       opacity: 1 !important;
     }
 
-    /* ============================================================
-       NOPAL CORE AMBIENT GOLDEN STARS & SCROLL SHOOTING COMET BEAM
-       ============================================================ */
     .nopal-star-twinkle {
       animation: nopalStarPulse 3.6s ease-in-out infinite;
       will-change: opacity, transform;
@@ -427,7 +431,6 @@
       50% { opacity: 0.85; transform: scale(1.18) rotate(12deg); }
     }
 
-    /* Gentle Floating Pollen Drifts in White/Cream Canvas Areas */
     .pollen-drift {
       animation: pollenFloat 5.2s ease-in-out infinite;
       will-change: transform, opacity;
@@ -445,7 +448,6 @@
       50% { transform: translate3d(6px, 9px, 0) scale(0.85); opacity: 0.3; }
     }
 
-    /* Smooth Continuous Orbital Spin for Header Logo Rings */
     .header-logo-orbit {
       transform-origin: 60px 60px;
       animation: headerOrbitSpin 24s linear infinite;
@@ -481,9 +483,7 @@
 </head>
 <body class="antialiased flex flex-col min-h-screen selection:bg-[#D19336] selection:text-white pb-16 lg:pb-0">
 
-  <!-- ============================================================
-       ROYAL EMERALD CURTAIN REVEAL (LARGE LOGO ENTRY)
-       ============================================================ -->
+  <!-- ROYAL EMERALD CURTAIN REVEAL -->
   <div id="royalCurtain" aria-hidden="true">
     <div class="flex flex-col items-center text-center px-6">
       <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-white/5 border border-white/15 p-4 flex items-center justify-center shadow-2xl mb-5">
@@ -508,9 +508,8 @@
   <!-- Top Gold Scroll Progress Line -->
   <div id="scrollProgressBar" class="fixed top-0 inset-x-0 h-[2.5px] bg-[#D19336] z-50 origin-right scale-x-0 pointer-events-none"></div>
 
-  <!-- Ambient Golden Botanical Stars & Vertical Shooting Comet Beam (60fps GPU Layer) -->
-  <div id="ambientBioCosmos" aria-hidden="true" class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <!-- Subtle Geometric 4-Point Golden Stars -->
+  <!-- Ambient Golden Botanical Stars & Vertical Shooting Comet Beam -->
+  <div id="ambientBioCosmos" aria-hidden="true" class="fixed inset-0 pointer-events-none z-0 overflow-hidden max-w-full">
     <svg class="nopal-star-twinkle absolute top-[12%] right-[6%] w-4 h-4 text-[#D19336]" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 1L14.2 9.8L23 12L14.2 14.2L12 23L9.8 14.2L1 12L9.8 9.8L12 1Z"/>
     </svg>
@@ -533,7 +532,6 @@
       <path d="M12 1L14.2 9.8L23 12L14.2 14.2L12 23L9.8 14.2L1 12L9.8 9.8L12 1Z"/>
     </svg>
 
-    <!-- Dense Golden Botanical Pollen Grains Across Light Spaces -->
     <span class="pollen-drift absolute top-[14%] left-[14%] w-2 h-2 rounded-full bg-[#D19336]/75 shadow-[0_0_8px_rgba(209,147,54,0.6)]"></span>
     <span class="pollen-drift-alt absolute top-[19%] right-[15%] w-2 h-2 rounded-full bg-[#D19336]/70"></span>
     <span class="pollen-drift absolute top-[26%] left-[24%] w-1.5 h-1.5 rounded-full bg-[#183D29]/40"></span>
@@ -548,7 +546,6 @@
     <span class="pollen-drift-alt absolute top-[83%] right-[21%] w-2 h-2 rounded-full bg-[#D19336]/75"></span>
     <span class="pollen-drift absolute top-[91%] left-[11%] w-2 h-2 rounded-full bg-[#183D29]/40"></span>
 
-    <!-- Vertical Golden Shooting Comet Track & Glowing Head -->
     <div class="hidden sm:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1.5px] bg-gradient-to-b from-transparent via-[#D19336]/20 to-transparent">
       <div id="shootingCometHead" class="w-[3px] -ms-[0.75px] h-24 rounded-full relative">
         <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D19336] ring-4 ring-[#D19336]/25"></span>
@@ -562,7 +559,7 @@
   </a>
 
   <!-- Global Copy Link Toast Notification -->
-  <div id="copyLinkToast" role="status" aria-live="polite" class="hidden fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#183D29] text-white px-5 py-3 rounded-2xl shadow-lg border border-white/15 flex items-center gap-2.5 text-xs sm:text-sm font-extrabold">
+  <div id="copyLinkToast" role="status" aria-live="polite" class="hidden fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#183D29] text-white px-5 py-3 rounded-2xl shadow-lg border border-white/15 flex items-center gap-2.5 text-xs sm:text-sm font-extrabold max-w-[90vw]">
     <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
     </svg>
@@ -577,13 +574,13 @@
     <span class="text-xs font-extrabold hidden sm:inline" data-i18n="float_wa">تواصل مباشر</span>
   </a>
 
-  <!-- Lightweight Solid Header (Zero Mobile GPU Lag) -->
-  <header class="sticky top-0 z-40 bg-white border-b border-stone-200 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Lightweight Solid Header -->
+  <header class="sticky top-0 z-40 bg-white border-b border-stone-200 shadow-xs w-full overflow-hidden">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="h-18 sm:h-20 flex items-center justify-between gap-2">
         <!-- Official Geometric Core Brand Logo -->
-        <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-2.5 group text-start cursor-pointer shrink-0">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-1.5 transition-colors group-hover:border-[#D19336]">
+        <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-2 group text-start cursor-pointer shrink-0">
+          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-1.5 transition-colors group-hover:border-[#D19336]">
             <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nopal Core Logo">
               <g class="header-logo-orbit" stroke="#183D29" stroke-width="6.5">
                 <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
@@ -597,16 +594,16 @@
             </svg>
           </div>
           <div>
-            <div class="flex items-center gap-2">
-              <span class="block text-base sm:text-xl font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
+            <div class="flex items-center gap-1.5">
+              <span class="block text-sm sm:text-xl font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
               <span id="appModeBadge" class="hidden px-2 py-0.5 rounded-full bg-emerald-50 text-[#183D29] border border-emerald-200 text-[10px] font-extrabold">APP</span>
             </div>
-            <span class="block text-[10px] sm:text-[11px] font-semibold text-stone-500 mt-1" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
+            <span class="block text-[9.5px] sm:text-[11px] font-semibold text-stone-500 mt-1" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
           </div>
         </button>
 
-        <!-- Desktop Navigation Bar + Executive Pitch + PWA Installer + Language Switcher -->
-        <div class="flex items-center gap-1.5 sm:gap-2">
+        <!-- Desktop Navigation Bar + Executive Pitch + PWA Installer + Theme + Language -->
+        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
           <nav class="hidden xl:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-2xl border border-stone-200/80" aria-label="Main Navigation">
             <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_home">
               الرئيسية
@@ -631,40 +628,36 @@
             </button>
           </nav>
 
-          <!-- Executive Pitch Summary Button (For Incubators & Investors) -->
           <button type="button" onclick="openPitchModal()"
-            class="tactile-btn gold-sweep-btn inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-xs font-extrabold cursor-pointer shadow-xs">
-            <span class="w-2 h-2 rounded-full bg-[#D19336]"></span>
+            class="tactile-btn gold-sweep-btn inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-[11px] sm:text-xs font-extrabold cursor-pointer shadow-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D19336]"></span>
             <span class="hidden sm:inline" data-i18n="btn_pitch_deck">ملف المستثمرين</span>
             <span class="sm:hidden">Pitch</span>
           </button>
 
-          <!-- Web-to-App (PWA) Install Trigger Button -->
           <button type="button" id="installAppBtn" onclick="openInstallAppModal()"
-            class="tactile-btn inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-xs font-extrabold cursor-pointer">
+            class="tactile-btn inline-flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-xs font-extrabold cursor-pointer">
             <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
             <span class="hidden md:inline" data-i18n="btn_install_app">تثبيت التطبيق</span>
           </button>
 
-          <!-- Adaptive Dark / Light Mode Toggle -->
           <button type="button" onclick="toggleThemeMode()" id="themeToggleBtn" aria-label="تبديل الوضع الليلي والنهاري"
-            class="tactile-btn px-2.5 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer">
+            class="tactile-btn px-2 sm:px-2.5 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer">
             <span id="themeIconSun" class="hidden">☀️</span>
             <span id="themeIconMoon">🌙</span>
           </button>
 
-          <!-- Bilingual Toggle -->
           <button type="button" onclick="toggleLanguage()" id="langBtn"
-            class="tactile-btn px-3 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer">
+            class="tactile-btn px-2.5 sm:px-3 py-2 rounded-xl border border-stone-300 bg-white text-[11px] sm:text-xs font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer">
             English
           </button>
         </div>
       </div>
 
       <!-- Mobile & Tablet Horizontal Navigation Bar -->
-      <nav class="flex xl:hidden items-center gap-1.5 pb-2.5 overflow-x-auto no-scrollbar" aria-label="Mobile Navigation">
+      <nav class="flex xl:hidden items-center gap-1.5 pb-2.5 overflow-x-auto no-scrollbar max-w-full" aria-label="Mobile Navigation">
         <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_home">
           الرئيسية
         </button>
@@ -691,7 +684,7 @@
   </header>
 
   <!-- MAIN PUBLIC CONTENT CONTAINER -->
-  <main id="publicView" class="relative z-10 flex-grow divide-y divide-stone-200/70">
+  <main id="publicView" class="relative z-10 flex-grow divide-y divide-stone-200/70 w-full overflow-x-hidden">
 
     <!-- ============================================================
          SECTION 1: HERO + 3D GLITTER SEED CARD + BATCH PASSPORT
@@ -725,7 +718,7 @@
             </div>
           </div>
 
-          <!-- 3D Tilt & Liquid Gold Glitter Geometric Core Card (Centered Seed at 60,60) -->
+          <!-- 3D Tilt & Liquid Gold Glitter Geometric Core Card -->
           <div class="lg:col-span-4 flex justify-center seed-3d-stage">
             <div id="heroSeedTiltCard" class="hero-reveal seed-3d-card w-full max-w-xs rounded-3xl bg-[#FAF9F6] border border-stone-200 hover:border-[#D19336] p-8 flex flex-col items-center text-center shadow-sm">
               <div class="w-36 h-36 mb-3 flex items-center justify-center relative z-10">
@@ -737,23 +730,16 @@
                       <stop offset="100%" stop-color="#B67B22" />
                     </linearGradient>
                   </defs>
-                  <!-- Precision Reference Ring -->
                   <circle cx="60" cy="60" r="53" stroke="#183D29" stroke-opacity="0.09" stroke-width="1.5" stroke-dasharray="3 3" />
-
-                  <!-- Rotating Orbital Ellipses -->
                   <g id="heroRingsGroup" stroke="#183D29" stroke-width="6">
                     <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
                     <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
                     <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
                   </g>
-
-                  <!-- Golden Glitter Dust Sparkles Around Center -->
                   <circle class="glitter-spark" cx="38" cy="40" r="2.2" fill="#D19336" />
                   <circle class="glitter-spark glitter-spark-delay-1" cx="83" cy="42" r="2" fill="#F2C14E" />
                   <circle class="glitter-spark glitter-spark-delay-2" cx="40" cy="81" r="1.9" fill="#F2C14E" />
                   <circle class="glitter-spark glitter-spark-delay-3" cx="81" cy="79" r="2.3" fill="#D19336" />
-
-                  <!-- Golden Prickly Pear Seed Locked at Exact SVG Center (60, 60) -->
                   <g transform="translate(60 60) rotate(-42)" stroke="url(#liquidGoldGrad)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" fill="#D19336" fill-opacity="0.14" />
                     <line x1="-14" y1="0" x2="14" y2="0" />
@@ -803,7 +789,7 @@
         </div>
       </div>
 
-      <!-- LIVE OPERATIONAL TELEMETRY STRIP (COMMAND-CENTER PRECISION) -->
+      <!-- LIVE OPERATIONAL TELEMETRY STRIP -->
       <div class="gsap-reveal-section bg-[#183D29] text-white rounded-2xl px-5 py-4 border border-emerald-800/80 shadow-sm grid grid-cols-2 lg:grid-cols-4 gap-4 items-center">
         <div class="flex items-center gap-3">
           <span class="w-2 h-2 rounded-full bg-[#D19336] shrink-0"></span>
@@ -835,7 +821,7 @@
         </div>
       </div>
 
-      <!-- INTERACTIVE BATCH PROVENANCE PASSPORT (QUIET LUXURY TRACEABILITY) -->
+      <!-- INTERACTIVE BATCH PROVENANCE PASSPORT -->
       <div class="gsap-reveal-section bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-stone-200/80">
           <div>
@@ -923,7 +909,7 @@
         </button>
       </div>
 
-      <!-- Enriched 6-Card Industrial Portfolio Grid (With Cursor Spotlight) -->
+      <!-- Enriched 6-Card Industrial Portfolio Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
         <!-- Product 1: Seed Oil -->
         <div data-category="cosmetics" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] flex flex-col justify-between space-y-5">
@@ -1133,7 +1119,7 @@
           </div>
 
           <div class="lg:col-span-7 bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-5">
-            <!-- Metric 1: Vitamin E -->
+            <!-- Metric 1 -->
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs font-extrabold">
                 <span data-i18n="bench_m1">فيتامين E الطبيعي (Gamma-Tocopherol) — أعلى بـ +150%</span>
@@ -1156,7 +1142,7 @@
               </div>
             </div>
 
-            <!-- Metric 2: Linoleic Acid -->
+            <!-- Metric 2 -->
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs font-extrabold">
                 <span data-i18n="bench_m2">حمض اللينوليك الأساسي (Omega-6 Linoleic Acid)</span>
@@ -1179,7 +1165,7 @@
               </div>
             </div>
 
-            <!-- Metric 3: Phytosterols -->
+            <!-- Metric 3 -->
             <div class="space-y-2">
               <div class="flex items-center justify-between text-xs font-extrabold">
                 <span data-i18n="bench_m3">الستيرولات النباتية لتجديد حاجز البشرة (Phytosterols)</span>
@@ -1231,7 +1217,7 @@
               <span id="simTonsDisplay" class="text-2xl font-black brand-green tabular-nums">10 طن</span>
             </div>
             <input type="range" id="simTonsSlider" min="1" max="100" value="10" oninput="updateBiorefinerySimulator(this.value)"
-              aria-label="كمية المدخلات بالطن" class="nopal-slider w-36 sm:w-48" />
+              aria-label="كمية المدخلات بالطن" class="nopal-slider w-32 sm:w-48" />
           </div>
         </div>
 
@@ -1461,7 +1447,6 @@
               <input type="text" id="supplyTrap" name="supplyTrap" tabindex="-1" autocomplete="off" />
             </div>
 
-            <!-- 1. Commercial Identity -->
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label for="supName" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="sup_lbl_name">الاسم أو اسم المزرعة / المصنع *</label>
@@ -1488,7 +1473,6 @@
               </select>
             </div>
 
-            <!-- 2. Material Type (4 options only) -->
             <div>
               <label for="supMaterial" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="sup_lbl_mat">نوع الخامة / المخلفات *</label>
               <select id="supMaterial" required
@@ -1501,7 +1485,6 @@
               </select>
             </div>
 
-            <!-- 3. Material Condition (Single Choice Radio Cards) -->
             <div>
               <span class="block text-xs font-bold text-slate-700 mb-2" data-i18n="sup_lbl_cond">حالة الخامة (اختيار واحد) *</span>
               <div class="grid grid-cols-3 gap-2.5">
@@ -1526,7 +1509,6 @@
               </div>
             </div>
 
-            <!-- 4. Quantity & Logistics -->
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-1.5">
@@ -1562,7 +1544,6 @@
                 class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm focus:outline-none focus:border-[#183D29]" />
             </div>
 
-            <!-- Optional Expected Price per Ton + Checkbox -->
             <div class="p-4 rounded-2xl bg-[#FAF9F6] border border-stone-200 space-y-2.5">
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <label for="supPrice" class="text-xs font-bold text-slate-700" data-i18n="sup_lbl_price">
@@ -1578,7 +1559,6 @@
                 class="w-full px-4 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:border-[#183D29] disabled:bg-stone-100 disabled:text-slate-400" />
             </div>
 
-            <!-- Additional Notes -->
             <div>
               <label for="supNotes" class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="sup_lbl_notes">ملاحظات إضافية (اختياري)</label>
               <textarea id="supNotes" rows="2" maxlength="500" placeholder="أي تفاصيل حول التعبئة، نسبة الرطوبة، أو مواعيد التحميل..." data-i18n-placeholder="ph_sup_notes"
@@ -1601,7 +1581,6 @@
          ============================================================ -->
     <section id="page-impact" class="page-section scroll-mt-24 py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-      <!-- PART A: CAM PHOTOSYNTHESIS & ESG CLIMATE IMPACT BENTO GRID -->
       <div class="gsap-reveal-section space-y-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
@@ -1616,7 +1595,6 @@
         </div>
 
         <div class="grid md:grid-cols-12 gap-5">
-          <!-- Bento Tile 1 (Deep Emerald Surface): 80% Water Saving -->
           <div class="gsap-reveal-card md:col-span-7 emerald-gold-surface text-white rounded-3xl p-7 sm:p-9 shadow-sm flex flex-col justify-between relative overflow-hidden">
             <div class="space-y-3 relative z-10">
               <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-[11px] font-extrabold border border-white/15">
@@ -1646,7 +1624,6 @@
             </div>
           </div>
 
-          <!-- Bento Tile 2: Zero-Waste Livestock Feed & Upcycling -->
           <div class="gsap-reveal-card spotlight-card md:col-span-5 bg-white rounded-3xl p-7 sm:p-8 border border-stone-200 shadow-sm flex flex-col justify-between space-y-5">
             <div class="space-y-3">
               <span class="inline-block px-3 py-1 rounded-full bg-amber-50 text-[#D19336] border border-amber-200/80 text-[11px] font-extrabold" data-i18n="bento2_tag">
@@ -1672,7 +1649,7 @@
         </div>
       </div>
 
-      <!-- PART B: INTERACTIVE EGYPT SUPPLY CHAIN & OPERATIONS MAP -->
+      <!-- INTERACTIVE EGYPT SUPPLY CHAIN & OPERATIONS MAP -->
       <div class="gsap-reveal-section bg-white rounded-3xl p-7 sm:p-10 border border-stone-200 shadow-sm">
         <div class="max-w-3xl mb-8">
           <span class="inline-block px-3.5 py-1 rounded-full bg-amber-50 text-[#D19336] text-xs font-extrabold mb-2 border border-amber-200/80" data-i18n="map_badge">
@@ -1685,7 +1662,6 @@
         </div>
 
         <div class="grid lg:grid-cols-12 gap-8 items-center">
-          <!-- Lightweight Interactive Egypt Operations SVG Map -->
           <div class="lg:col-span-6 bg-[#FAF9F6] rounded-3xl p-6 border border-stone-200/90 flex flex-col items-center justify-center relative">
             <svg class="w-full max-w-sm h-auto" viewBox="0 0 360 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Egypt Operations Map">
               <path d="M72 48 L152 44 L175 38 L215 44 L248 56 L262 86 L252 122 L286 184 L318 278 L272 288 L72 288 L64 148 Z"
@@ -1695,28 +1671,24 @@
               <path d="M142 74 L182 78 L168 148 L154 112 L114 214"
                 stroke="#D19336" stroke-width="1.8" stroke-dasharray="4 4" />
 
-              <!-- HUB 1: Nubaria -->
               <g class="cursor-pointer" onclick="selectEgyptHub('nubaria')" role="button" tabindex="0" aria-label="Nubaria & Alex Desert Rd">
                 <circle cx="142" cy="74" r="13" fill="#D19336" fill-opacity="0.18" />
                 <circle id="hubDot-nubaria" cx="142" cy="74" r="7" fill="#183D29" stroke="#FFFFFF" stroke-width="2" />
                 <text x="128" y="64" text-anchor="end" fill="#183D29" font-size="10" font-weight="800">النوبارية والصحراوي</text>
               </g>
 
-              <!-- HUB 2: Khanka -->
               <g class="cursor-pointer" onclick="selectEgyptHub('khanka')" role="button" tabindex="0" aria-label="Khanka & Qalyubia">
                 <circle cx="184" cy="82" r="13" fill="#183D29" fill-opacity="0.15" />
                 <circle id="hubDot-khanka" cx="184" cy="82" r="7" fill="#183D29" stroke="#FFFFFF" stroke-width="2" />
                 <text x="197" y="85" text-anchor="start" fill="#183D29" font-size="10" font-weight="800">الخانكة والقليوبية</text>
               </g>
 
-              <!-- HUB 3: Minya -->
               <g class="cursor-pointer" onclick="selectEgyptHub('minya')" role="button" tabindex="0" aria-label="Minya & Western Desert">
                 <circle cx="166" cy="152" r="14" fill="#D19336" fill-opacity="0.24" />
                 <circle id="hubDot-minya" cx="166" cy="152" r="8.5" fill="#D19336" stroke="#183D29" stroke-width="2.5" />
                 <text x="180" y="156" text-anchor="start" fill="#183D29" font-size="10.5" font-weight="900">المنيا والظهير الصحراوي</text>
               </g>
 
-              <!-- HUB 4: Fayoum -->
               <g class="cursor-pointer" onclick="selectEgyptHub('fayoum')" role="button" tabindex="0" aria-label="Fayoum & New Valley">
                 <circle cx="122" cy="212" r="13" fill="#183D29" fill-opacity="0.15" />
                 <circle id="hubDot-fayoum" cx="122" cy="212" r="7" fill="#183D29" stroke="#FFFFFF" stroke-width="2" />
@@ -1724,7 +1696,6 @@
               </g>
             </svg>
 
-            <!-- Quick Hub Selector Pills -->
             <div class="flex flex-wrap justify-center gap-2 mt-3">
               <button type="button" data-hub="minya" onclick="selectEgyptHub('minya')" class="hub-pill-btn tactile-btn tab-active px-3 py-1.5 rounded-xl text-xs font-extrabold cursor-pointer" data-i18n="hub_btn_minya">المنيا</button>
               <button type="button" data-hub="khanka" onclick="selectEgyptHub('khanka')" class="hub-pill-btn tactile-btn tab-inactive px-3 py-1.5 rounded-xl text-xs font-extrabold cursor-pointer" data-i18n="hub_btn_khanka">الخانكة</button>
@@ -1733,7 +1704,6 @@
             </div>
           </div>
 
-          <!-- Dynamic Region Telemetry Dossier Card -->
           <div class="lg:col-span-6 bg-[#FAF9F6] rounded-3xl p-7 sm:p-8 border border-stone-200 space-y-5" id="hubDossierCard">
             <div class="flex items-center justify-between gap-2">
               <span id="hubDossierTag" class="px-3 py-1 rounded-full bg-amber-50 text-[#D19336] border border-amber-200/80 text-xs font-extrabold">مركز التوريد الرئيسي • الصعيد</span>
@@ -1784,7 +1754,6 @@
           </p>
         </div>
 
-        <!-- 3-Step Biorefinery Architecture -->
         <div class="grid md:grid-cols-3 gap-6 mt-8">
           <div class="gsap-reveal-card spotlight-card p-6 rounded-2xl bg-[#FAF9F6] border border-stone-200/90 space-y-2">
             <span class="text-xs font-extrabold text-[#D19336]" data-i18n="step1_kicker">المرحلة الأولى • التوريد والزراعة</span>
@@ -1809,9 +1778,7 @@
           </div>
         </div>
 
-        <!-- ============================================================
-             INTERACTIVE NOPAL OS SYSTEM ARCHITECTURE DIAGRAM
-             ============================================================ -->
+        <!-- INTERACTIVE NOPAL OS SYSTEM ARCHITECTURE DIAGRAM -->
         <div class="mt-10 pt-9 border-t border-stone-200/80 space-y-6">
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-3">
             <div>
@@ -1825,7 +1792,6 @@
 
           <div class="bg-[#FAF9F6] rounded-3xl p-5 sm:p-8 border border-stone-200/90">
             <div class="grid lg:grid-cols-12 gap-5 items-center">
-              <!-- Column 1: 3 Input Sources -->
               <div class="lg:col-span-4 space-y-3">
                 <span class="block text-[11px] font-black text-slate-400 uppercase tracking-wider mb-1" data-i18n="os_col_in">01. مصادر المدخلات (Inputs)</span>
                 <button type="button" data-os-in="all" onclick="selectNopalOsInput('all')" class="os-in-btn os-node-card os-node-active w-full text-start p-3.5 rounded-2xl bg-white border border-stone-200 cursor-pointer">
@@ -1846,7 +1812,6 @@
                 </button>
               </div>
 
-              <!-- Column 2: Central Nopal Core Processing Engine -->
               <div class="lg:col-span-4">
                 <div class="emerald-gold-surface text-white rounded-3xl p-6 border border-emerald-700/70 shadow-md text-center space-y-4">
                   <div class="w-14 h-14 mx-auto rounded-2xl bg-white/10 border border-white/15 p-2 flex items-center justify-center">
@@ -1883,7 +1848,6 @@
                 </div>
               </div>
 
-              <!-- Column 3: 4 Industrial Output Markets -->
               <div class="lg:col-span-4 space-y-3">
                 <span class="block text-[11px] font-black text-slate-400 uppercase tracking-wider mb-1" data-i18n="os_col_out">03. القطاعات الصناعية المستفيدة (Outputs)</span>
                 <div data-os-out="cosmetics" class="os-out-card os-node-card os-output-lit p-3.5 rounded-2xl bg-white border border-stone-200">
@@ -1907,9 +1871,7 @@
           </div>
         </div>
 
-        <!-- ============================================================
-             4 INDUSTRIAL SUITES + BEFORE VS AFTER ROI CASE CARDS
-             ============================================================ -->
+        <!-- 4 INDUSTRIAL SUITES + BEFORE VS AFTER ROI CASE CARDS -->
         <div class="mt-10 pt-9 border-t border-stone-200/80 space-y-8">
           <div>
             <span class="inline-block px-3 py-1 rounded-full bg-amber-50 text-[#D19336] border border-amber-200/80 text-[11px] font-extrabold mb-1.5" data-i18n="suites_badge">
@@ -1918,7 +1880,6 @@
             <h3 class="text-xl sm:text-2xl font-black brand-green" data-i18n="suites_title">حلول Nopal Core للقطاعات الصناعية الأربعة</h3>
           </div>
 
-          <!-- 4 Industry Suites Grid -->
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="spotlight-card p-5 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex flex-col justify-between space-y-3">
               <div>
@@ -1965,7 +1926,6 @@
             </div>
           </div>
 
-          <!-- Before vs. After Industrial ROI Comparison Cards -->
           <div class="grid md:grid-cols-3 gap-5">
             <div class="p-6 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-3">
               <span class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg bg-amber-50 text-[#D19336]" data-i18n="roi1_tag">مصانع العصائر والمربى</span>
@@ -2011,7 +1971,7 @@
           </div>
         </div>
 
-        <!-- Founding Team Cards (3 Co-Founders With Cursor Spotlight) -->
+        <!-- Founding Team Cards -->
         <div class="mt-10 pt-8 border-t border-stone-200/80">
           <h3 class="text-lg sm:text-xl font-black brand-green mb-5" data-i18n="team_heading">الفريق المؤسس (Founding Team)</h3>
           <div class="grid md:grid-cols-3 gap-6">
@@ -2102,9 +2062,7 @@
 
   </main>
 
-  <!-- ============================================================
-       EXECUTIVE INVESTOR & INCUBATOR PITCH MODAL (ROYAL DOSSIER)
-       ============================================================ -->
+  <!-- EXECUTIVE INVESTOR & INCUBATOR PITCH MODAL -->
   <div id="pitchModal" role="dialog" aria-modal="true" aria-labelledby="pitchModalHeading" class="hidden fixed inset-0 z-50 bg-slate-900/55 flex items-center justify-center p-4">
     <div class="emerald-gold-surface text-white rounded-3xl max-w-2xl w-full p-6 sm:p-9 border border-white/15 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
       <div class="flex items-start justify-between gap-3 pb-4 border-b border-white/15">
@@ -2165,7 +2123,7 @@
     </div>
   </div>
 
-  <!-- SMART CORPORATE EMAIL MODAL (Zero Browser Hang) -->
+  <!-- SMART CORPORATE EMAIL MODAL -->
   <div id="emailModal" role="dialog" aria-modal="true" aria-labelledby="emailModalHeading" class="hidden fixed inset-0 z-50 bg-slate-900/45 flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 border border-stone-200 shadow-xl space-y-4">
       <div class="flex items-start justify-between gap-3">
@@ -2365,7 +2323,7 @@
   <!-- ============================================================
        ADMIN DASHBOARD (#admin) WITH LAND LEASES & CROP SUPPLIERS TABS
        ============================================================ -->
-  <section id="adminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+  <section id="adminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow overflow-x-hidden">
     <div id="adminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-sm border border-stone-200 mt-6">
       <div class="flex flex-col items-center mb-6 text-center">
         <div class="w-14 h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 p-2 mb-3 flex items-center justify-center">
@@ -2419,7 +2377,7 @@
       </div>
 
       <!-- Admin Module Switcher Tabs -->
-      <div class="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-stone-200 w-fit">
+      <div class="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-stone-200 w-fit max-w-full">
         <button type="button" id="admTabLeadsBtn" onclick="switchAdminTab('leads')" class="tactile-btn tab-active px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold cursor-pointer">
           <span data-i18n="adm_tab_leads">طلبات تأجير الأراضي (farmer_leads)</span>
           <span id="badgeLeadsCount" class="ms-1.5 px-2 py-0.5 rounded-full bg-white/20 text-[11px] tabular-nums">0</span>
@@ -2448,7 +2406,7 @@
           </div>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto">
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto max-w-full">
           <table class="w-full text-right text-sm">
             <thead class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200">
               <tr>
@@ -2486,7 +2444,7 @@
           </div>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto">
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto max-w-full">
           <table class="w-full text-right text-sm">
             <thead class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200">
               <tr>
@@ -2510,7 +2468,7 @@
   </section>
 
   <!-- Clean Light Footer -->
-  <footer class="bg-white border-t border-stone-200 py-8 mt-auto">
+  <footer class="bg-white border-t border-stone-200 py-8 mt-auto w-full overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
         <svg class="w-8 h-8" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2539,8 +2497,8 @@
     </div>
   </footer>
 
-  <!-- Mobile App Bottom Navigation Dock (Exact 5 Original Icons Order Preserved) -->
-  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-stone-200 px-2 py-1.5 grid grid-cols-5 gap-1 shadow-lg" aria-label="Bottom App Navigation">
+  <!-- Mobile App Bottom Navigation Dock -->
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-stone-200 px-2 py-1.5 grid grid-cols-5 gap-1 shadow-lg w-full max-w-full overflow-hidden" aria-label="Bottom App Navigation">
     <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
       <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
       <span data-i18n="dock_home">الرئيسية</span>
@@ -2640,7 +2598,7 @@
     initAdaptiveDarkMode();
 
     // ==========================================
-    // 3. ROYAL CURTAIN, 3D TILT SEED, SPOTLIGHT & GSAP MOTION (60FPS GPU)
+    // 3. ROYAL CURTAIN, 3D TILT SEED, SPOTLIGHT & GSAP MOTION
     // ==========================================
     function liftRoyalCurtain() {
       const curtain = document.getElementById('royalCurtain');
@@ -2651,11 +2609,9 @@
       }, 800);
     }
 
-    // Guaranteed fail-safe curtain lift after 750ms
     setTimeout(liftRoyalCurtain, 750);
 
     function initInteractiveLuxuryEffects() {
-      // A. Interactive 3D Perspective Tilt on Hero Seed Card
       const tiltCard = document.getElementById('heroSeedTiltCard');
       if (tiltCard && window.matchMedia('(pointer: fine)').matches) {
         tiltCard.addEventListener('mousemove', (e) => {
@@ -2669,7 +2625,6 @@
         });
       }
 
-      // B. Cursor Spotlight Tracking on Cards
       if (window.matchMedia('(pointer: fine)').matches) {
         document.querySelectorAll('.spotlight-card').forEach(card => {
           card.addEventListener('mousemove', (e) => {
@@ -2680,13 +2635,11 @@
         });
       }
 
-      // C. Hardware-Accelerated GSAP Motion & Counters
       if (!window.gsap) return;
       if (window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
       }
 
-      // Centered Geometric Core Rings Gentle Rotation (Locked on SVG Center 60,60)
       gsap.to('#heroRingsGroup', {
         rotation: 360,
         duration: 28,
@@ -2705,7 +2658,6 @@
         clearProps: 'transform'
       });
 
-      // Animated Telemetry Counters
       document.querySelectorAll('.counter-num').forEach(el => {
         const target = parseFloat(el.getAttribute('data-target') || '0');
         const suffix = el.getAttribute('data-suffix') || '';
@@ -2773,7 +2725,7 @@
       1: {
         badgeAr: 'مرحلة التوريد الميداني والمصانع • Field & Factory Origin',
         badgeEn: 'Stage 01 • Certified Farms & Factory Sourcing',
-        textAr: 'تجميع ثمار التين الشوكي والألواح الخضراء وبذور مصانع العصائر المعتمدة مع فحص نسبة الرطوبة وخلوها من المبيدات قبل دخول خط المعالجة.',
+        textAr: 'تجميع ثمار التين الشوكي والألواح الخضراء وبذور مصانع العصير المعتمدة مع فحص نسبة الرطوبة وخلوها من المبيدات قبل دخول خط المعالجة.',
         textEn: 'Aggregating prickly pear fruit, green cladodes, and certified juice-factory seeds with moisture and pesticide screening prior to processing.',
         lblAr: 'معيار التتبع',
         lblEn: 'Traceability',
@@ -2831,7 +2783,6 @@
       });
     }
 
-    // Interactive Nopal OS Architecture Selector
     const NOPAL_OS_MAP = {
       all: ['cosmetics', 'food', 'pharma', 'feed'],
       lands: ['food', 'pharma', 'feed'],
@@ -3356,7 +3307,6 @@
       copyTextSafe(supplyUrl, 'supply');
     }
 
-    // Smart Email Modal Handlers
     function openEmailModal() {
       copyTextSafe('Nopalcore@hotmail.com', 'email');
       const toast = document.getElementById('emailToast');
@@ -3402,9 +3352,7 @@
           } else {
             history.replaceState(null, '', window.location.pathname + window.location.search + '#' + sectionId);
           }
-        } catch (err) {
-          // Fallback safely if History API is restricted in sandboxed preview
-        }
+        } catch (err) {}
       }
 
       setActiveTab(sectionId);

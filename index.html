@@ -122,7 +122,7 @@
        ============================================================ */
     html.dark body {
       background-color: #09150F;
-      color: #E2E8F0;
+      color: #F1F5F9;
     }
     html.dark header,
     html.dark footer,
@@ -150,33 +150,49 @@
     html.dark .divide-stone-200\/70 > :not([hidden]) ~ :not([hidden]) {
       border-color: #1D3A2B !important;
     }
-    html.dark .brand-green {
+    html.dark .brand-green,
+    html.dark .text-\[\#183D29\] {
       color: #6EE7B7 !important;
     }
+    html.dark .text-slate-900,
     html.dark .text-slate-800,
     html.dark .text-slate-700 {
-      color: #F1F5F9 !important;
+      color: #F8FAFC !important;
     }
     html.dark .text-slate-600 {
-      color: #CBD5E1 !important;
+      color: #E2E8F0 !important;
     }
     html.dark .text-slate-500,
-    html.dark .text-slate-400 {
-      color: #94A3B8 !important;
+    html.dark .text-slate-400,
+    html.dark .text-stone-500 {
+      color: #CBD5E1 !important;
     }
     html.dark .bg-emerald-50,
     html.dark .bg-emerald-50\/60,
     html.dark .bg-emerald-50\/70,
     html.dark .bg-emerald-50\/90 {
-      background-color: rgba(16, 185, 129, 0.14) !important;
-      border-color: rgba(52, 211, 153, 0.28) !important;
+      background-color: rgba(16, 185, 129, 0.16) !important;
+      border-color: rgba(52, 211, 153, 0.32) !important;
+      color: #6EE7B7 !important;
     }
     html.dark .bg-amber-50,
     html.dark .bg-amber-50\/50,
     html.dark .bg-amber-50\/70,
     html.dark .bg-amber-50\/90 {
-      background-color: rgba(209, 147, 54, 0.15) !important;
-      border-color: rgba(209, 147, 54, 0.32) !important;
+      background-color: rgba(209, 147, 54, 0.18) !important;
+      border-color: rgba(209, 147, 54, 0.36) !important;
+      color: #FCD34D !important;
+    }
+    html.dark .bg-red-50\/60 {
+      background-color: rgba(239, 68, 68, 0.16) !important;
+      border-color: rgba(248, 113, 113, 0.32) !important;
+    }
+    html.dark .text-red-700 {
+      color: #FCA5A5 !important;
+    }
+    html.dark .bg-brand-green {
+      background-color: #1E5638 !important;
+      color: #FFFFFF !important;
     }
     html.dark input,
     html.dark select,
@@ -185,21 +201,39 @@
       color: #F8FAFC !important;
       border-color: #244735 !important;
     }
+    html.dark input::placeholder,
+    html.dark textarea::placeholder {
+      color: #94A3B8 !important;
+    }
+    html.dark .tab-active,
+    html.dark .filter-active,
+    html.dark .peer:checked + div {
+      background-color: #D19336 !important;
+      color: #09150F !important;
+      border-color: #D19336 !important;
+    }
     html.dark .tab-inactive,
     html.dark .filter-inactive {
       background-color: #10241A !important;
-      color: #CBD5E1 !important;
+      color: #E2E8F0 !important;
       border-color: #1E3D2D !important;
     }
     html.dark .tab-inactive:hover,
     html.dark .filter-inactive:hover {
       background-color: #163224 !important;
-      color: #FBBF24 !important;
+      color: #FCD34D !important;
     }
     html.dark .os-node-active,
     html.dark .os-output-lit {
       background-color: #153123 !important;
       border-color: #D19336 !important;
+    }
+    html.dark svg text {
+      fill: #6EE7B7 !important;
+    }
+    html.dark svg path[fill="#FFFFFF"] {
+      fill: #10241A !important;
+      stroke: #6EE7B7 !important;
     }
     html.dark #heroRingsGroup ellipse,
     html.dark header svg g stroke,
@@ -208,6 +242,9 @@
     }
     html.dark .hover\:bg-stone-50:hover {
       background-color: #142C20 !important;
+    }
+    html.dark .hover\:text-\[\#183D29\]:hover {
+      color: #FCD34D !important;
     }
 
     .brand-green { color: #183D29; }
@@ -597,11 +634,11 @@
 
   <!-- Lightweight Solid Header -->
   <header class="sticky top-0 z-40 bg-white border-b border-stone-200 shadow-xs w-full overflow-hidden">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6">
       <div class="h-18 sm:h-20 flex items-center justify-between gap-2">
         <!-- Official Geometric Core Brand Logo -->
         <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-2 group text-start cursor-pointer shrink-0">
-          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-1.5 transition-colors group-hover:border-[#D19336]">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-1.5 transition-colors group-hover:border-[#D19336]">
             <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nopal Core Logo">
               <g class="header-logo-orbit" stroke="#183D29" stroke-width="6.5">
                 <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
@@ -616,62 +653,62 @@
           </div>
           <div>
             <div class="flex items-center gap-1.5">
-              <span class="block text-sm sm:text-xl font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
+              <span class="block text-sm sm:text-lg font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
               <span id="appModeBadge" class="hidden px-2 py-0.5 rounded-full bg-emerald-50 text-[#183D29] border border-emerald-200 text-[10px] font-extrabold">APP</span>
             </div>
-            <span class="block text-[9.5px] sm:text-[11px] font-semibold text-stone-500 mt-1" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
+            <span class="block text-[9.5px] sm:text-[10.5px] font-semibold text-stone-500 mt-0.5" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
           </div>
         </button>
 
         <!-- Desktop Navigation Bar + Executive Pitch + PWA Installer + Theme + Language -->
-        <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-          <nav class="hidden xl:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-2xl border border-stone-200/80" aria-label="Main Navigation">
-            <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_home">
+        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <nav class="hidden xl:flex items-center gap-0.5 bg-stone-100/80 p-1 rounded-2xl border border-stone-200/80" aria-label="Main Navigation">
+            <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_home">
               الرئيسية
             </button>
-            <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_products">
+            <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_products">
               المنتجات الصناعية
             </button>
-            <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_farmers">
+            <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_farmers">
               تأجير الأراضي
             </button>
-            <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_supply">
-              توريد المحصول والمخلفات
+            <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_supply">
+              توريد المحصول
             </button>
-            <button type="button" data-tab="impact" onclick="navigateToSection('impact')" class="nav-tab tab-inactive px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_impact">
+            <button type="button" data-tab="impact" onclick="navigateToSection('impact')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_impact">
               الأثر والخريطة
             </button>
-            <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_about">
+            <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_about">
               المنظومة والفريق
             </button>
-            <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-2.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer" data-i18n="tab_b2b">
+            <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_b2b">
               تواصل الشركات
             </button>
           </nav>
 
           <button type="button" onclick="openPitchModal()"
-            class="tactile-btn gold-sweep-btn inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-[11px] sm:text-xs font-extrabold cursor-pointer shadow-xs">
+            class="tactile-btn gold-sweep-btn inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-[11px] font-extrabold cursor-pointer shadow-xs whitespace-nowrap">
             <span class="w-1.5 h-1.5 rounded-full bg-[#D19336]"></span>
             <span class="hidden sm:inline" data-i18n="btn_pitch_deck">ملف المستثمرين</span>
             <span class="sm:hidden">Pitch</span>
           </button>
 
           <button type="button" id="installAppBtn" onclick="openInstallAppModal()"
-            class="tactile-btn inline-flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-xs font-extrabold cursor-pointer">
-            <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            class="tactile-btn inline-flex items-center gap-1 px-2 py-2 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-[11px] font-extrabold cursor-pointer whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
             <span class="hidden md:inline" data-i18n="btn_install_app">تثبيت التطبيق</span>
           </button>
 
           <button type="button" onclick="toggleThemeMode()" id="themeToggleBtn" aria-label="تبديل الوضع الليلي والنهاري"
-            class="tactile-btn px-2 sm:px-2.5 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer">
+            class="tactile-btn px-2 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer shrink-0">
             <span id="themeIconSun" class="hidden">☀️</span>
             <span id="themeIconMoon">🌙</span>
           </button>
 
           <button type="button" onclick="toggleLanguage()" id="langBtn"
-            class="tactile-btn px-2.5 sm:px-3 py-2 rounded-xl border border-stone-300 bg-white text-[11px] sm:text-xs font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer">
+            class="tactile-btn px-2.5 py-2 rounded-xl border border-stone-300 bg-white text-[11px] font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer shrink-0">
             English
           </button>
         </div>

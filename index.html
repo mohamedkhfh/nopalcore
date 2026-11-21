@@ -58,9 +58,15 @@
       --snappy-ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    /* STRICT iOS SAFARI + MOBILE HORIZONTAL VIEWPORT LOCK */
     html {
       scroll-behavior: smooth;
       overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100%;
       width: 100%;
       touch-action: pan-y;
@@ -73,13 +79,23 @@
       color: #1E293B;
       padding-bottom: env(safe-area-inset-bottom, 0px);
       overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100%;
       width: 100%;
+      margin: 0;
       position: relative;
       touch-action: pan-y;
       overscroll-behavior-x: none;
       -webkit-tap-highlight-color: transparent;
       transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #appViewportLock {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      overflow-x: clip;
+      position: relative;
     }
 
     main, section, header, footer {
@@ -88,10 +104,12 @@
 
     .no-scrollbar {
       touch-action: pan-x pan-y;
+      overscroll-behavior-x: contain;
     }
 
     .overflow-x-auto {
       touch-action: pan-x pan-y;
+      overscroll-behavior-x: contain;
       max-width: 100%;
     }
 
@@ -235,7 +253,7 @@
     .seed-3d-card::before {
       content: "";
       position: absolute;
-      inset: -40%;
+      inset: 0;
       background: linear-gradient(
         115deg,
         transparent 34%,
@@ -244,14 +262,14 @@
         rgba(209, 147, 54, 0.12) 57%,
         transparent 66%
       );
-      transform: translateX(-120%) rotate(12deg);
+      transform: translateX(-100%);
       animation: liquidGoldSweep 4.6s ease-in-out infinite;
       pointer-events: none;
       z-index: 2;
     }
     @keyframes liquidGoldSweep {
-      0%, 35% { transform: translateX(-120%) rotate(12deg); }
-      68%, 100% { transform: translateX(120%) rotate(12deg); }
+      0%, 35% { transform: translateX(-100%); }
+      68%, 100% { transform: translateX(100%); }
     }
 
     .glitter-spark {
@@ -445,7 +463,7 @@
     }
     @keyframes pollenFloatAlt {
       0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); opacity: 0.85; }
-      50% { transform: translate3d(6px, 9px, 0) scale(0.85); opacity: 0.3; }
+      50% { transform: translate3d(4px, 9px, 0) scale(0.85); opacity: 0.3; }
     }
 
     .header-logo-orbit {
@@ -573,6 +591,9 @@
     <span class="w-2.5 h-2.5 rounded-full bg-[#25D366]"></span>
     <span class="text-xs font-extrabold hidden sm:inline" data-i18n="float_wa">تواصل مباشر</span>
   </a>
+
+  <!-- STRICT VIEWPORT LOCK WRAPPER FOR iOS SAFARI -->
+  <div id="appViewportLock" class="flex flex-col min-h-screen w-full">
 
   <!-- Lightweight Solid Header -->
   <header class="sticky top-0 z-40 bg-white border-b border-stone-200 shadow-xs w-full overflow-hidden">
@@ -2062,6 +2083,185 @@
 
   </main>
 
+  <!-- ============================================================
+       ADMIN DASHBOARD (#admin) WITH LAND LEASES & CROP SUPPLIERS TABS
+       ============================================================ -->
+  <section id="adminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow overflow-x-hidden">
+    <div id="adminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-sm border border-stone-200 mt-6">
+      <div class="flex flex-col items-center mb-6 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 p-2 mb-3 flex items-center justify-center">
+          <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#183D29" stroke-width="6.5">
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+            </g>
+            <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+              <line x1="-14" y1="0" x2="14" y2="0" />
+            </g>
+          </svg>
+        </div>
+        <h2 class="text-xl font-black brand-green" data-i18n="adm_login_title">لوحة إدارة Nopal Core</h2>
+        <p class="text-xs text-slate-500 mt-1" data-i18n="adm_login_sub">الدخول مقتصر على حساب الإدارة المعتمد</p>
+      </div>
+      <form id="adminLoginForm" class="space-y-4">
+        <input type="email" id="adminEmail" value="Nopalcore@hotmail.com" required
+          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
+        <input type="password" id="adminPass" placeholder="كلمة المرور" data-i18n-placeholder="ph_admin_pass" required
+          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
+        <p id="loginError" class="hidden text-xs text-red-600 font-bold bg-red-50 p-3 rounded-xl"></p>
+        <button type="submit" id="adminLoginBtn" class="tactile-btn w-full bg-brand-green text-white py-3.5 rounded-xl font-extrabold text-sm cursor-pointer" data-i18n="adm_btn_login">
+          تسجيل الدخول
+        </button>
+      </form>
+      <div class="mt-5 text-center">
+        <button type="button" onclick="navigateToSection('home')" class="text-xs font-bold text-slate-500 hover:text-[#183D29] cursor-pointer" data-i18n="adm_back_home">
+          ← العودة للموقع الرئيسي
+        </button>
+      </div>
+    </div>
+
+    <!-- Admin Dashboard Content -->
+    <div id="adminDashboardContent" class="hidden space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-stone-200 shadow-sm">
+        <div>
+          <h2 class="text-2xl font-black brand-green" data-i18n="adm_dash_title">مركز إدارة العمليات والتوريد</h2>
+          <p class="text-xs text-slate-500 mt-0.5" data-i18n="adm_dash_sub">مربوط مباشرة بقاعدة بيانات Supabase (farmer_leads &amp; crop_suppliers)</p>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          <button type="button" onclick="exportActiveAdminCSV()" class="tactile-btn px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-[#183D29] text-xs font-extrabold hover:border-[#D19336] cursor-pointer" data-i18n="adm_btn_csv">
+            تصدير Excel / CSV
+          </button>
+          <button type="button" onclick="navigateToSection('home')" class="tactile-btn px-4 py-2 rounded-xl border border-stone-300 text-xs font-bold hover:bg-stone-100 cursor-pointer" data-i18n="adm_btn_site">الموقع الرئيسي</button>
+          <button type="button" onclick="refreshAllAdminData()" class="tactile-btn px-4 py-2 rounded-xl bg-stone-200 text-xs font-bold hover:bg-stone-300 cursor-pointer" data-i18n="adm_btn_refresh">تحديث البيانات</button>
+          <button type="button" onclick="logoutAdmin()" class="tactile-btn px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold cursor-pointer" data-i18n="adm_btn_logout">تسجيل خروج</button>
+        </div>
+      </div>
+
+      <!-- Admin Module Switcher Tabs -->
+      <div class="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-stone-200 w-fit max-w-full">
+        <button type="button" id="admTabLeadsBtn" onclick="switchAdminTab('leads')" class="tactile-btn tab-active px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold cursor-pointer">
+          <span data-i18n="adm_tab_leads">طلبات تأجير الأراضي (farmer_leads)</span>
+          <span id="badgeLeadsCount" class="ms-1.5 px-2 py-0.5 rounded-full bg-white/20 text-[11px] tabular-nums">0</span>
+        </button>
+        <button type="button" id="admTabSupplyBtn" onclick="switchAdminTab('supply')" class="tactile-btn tab-inactive px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold cursor-pointer">
+          <span data-i18n="adm_tab_supply">عروض توريد المحصول والمخلفات (crop_suppliers)</span>
+          <span id="badgeSupplyCount" class="ms-1.5 px-2 py-0.5 rounded-full bg-amber-100 text-[#183D29] text-[11px] tabular-nums">0</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: LAND LEASING LEADS PANEL -->
+      <div id="adminLeadsPanel" class="space-y-5">
+        <div class="grid sm:grid-cols-4 gap-4">
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_kpi_total">إجمالي طلبات الأراضي</span>
+            <p id="kpiTotalLeads" class="text-2xl font-black brand-green mt-1 tabular-nums">0</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_kpi_area">إجمالي المساحات المعروضة</span>
+            <p id="kpiTotalFeddan" class="text-2xl font-black text-[#D19336] mt-1 tabular-nums">0 فدان</p>
+          </div>
+          <div class="sm:col-span-2 bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-center">
+            <label for="adminSearchInput" class="text-xs text-slate-500 font-bold mb-1.5" data-i18n="adm_search_lbl">بحث سريع بالاسم أو المحافظة أو رقم الموبايل</label>
+            <input type="search" id="adminSearchInput" oninput="renderLeadsTable()" placeholder="ابحث هنا..." data-i18n-placeholder="ph_adm_search"
+              class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:border-[#183D29]" />
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto max-w-full">
+          <table class="w-full text-right text-sm">
+            <thead class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200">
+              <tr>
+                <th class="p-4" data-i18n="th_date">التاريخ</th>
+                <th class="p-4" data-i18n="th_name">الاسم</th>
+                <th class="p-4" data-i18n="th_phone">رقم الموبايل</th>
+                <th class="p-4" data-i18n="th_gov">المحافظة / المركز</th>
+                <th class="p-4" data-i18n="th_area">المساحة (فدان / م²)</th>
+                <th class="p-4" data-i18n="th_rent">الإيجار المتوقع / فدان</th>
+                <th class="p-4" data-i18n="th_action">إجراء سريع</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody" class="divide-y divide-stone-200">
+              <tr><td colspan="7" class="p-6 text-center text-slate-400">جاري تحميل الطلبات...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: CROP & BIOMASS SUPPLIERS PANEL -->
+      <div id="adminSupplyPanel" class="hidden space-y-5">
+        <div class="grid sm:grid-cols-4 gap-4">
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_sup_kpi_total">إجمالي عروض التوريد</span>
+            <p id="kpiTotalSuppliers" class="text-2xl font-black brand-green mt-1 tabular-nums">0</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_sup_kpi_tons">إجمالي الكميات المعروضة</span>
+            <p id="kpiTotalTons" class="text-2xl font-black text-[#D19336] mt-1 tabular-nums">0 طن</p>
+          </div>
+          <div class="sm:col-span-2 bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-center">
+            <label for="adminSupplySearchInput" class="text-xs text-slate-500 font-bold mb-1.5" data-i18n="adm_sup_search_lbl">بحث في الموردين بالاسم أو الخامة أو مكان التحميل</label>
+            <input type="search" id="adminSupplySearchInput" oninput="renderSupplyTable()" placeholder="ابحث هنا..." data-i18n-placeholder="ph_adm_search"
+              class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:border-[#183D29]" />
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto max-w-full">
+          <table class="w-full text-right text-sm">
+            <thead class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200">
+              <tr>
+                <th class="p-4" data-i18n="th_date">التاريخ</th>
+                <th class="p-4" data-i18n="th_sup_name">المورّد وصفته</th>
+                <th class="p-4" data-i18n="th_phone">رقم الموبايل</th>
+                <th class="p-4" data-i18n="th_sup_mat">نوع الخامة وحالتها</th>
+                <th class="p-4" data-i18n="th_sup_qty">الكمية وطبيعة التوريد</th>
+                <th class="p-4" data-i18n="th_sup_loc">مكان التحميل</th>
+                <th class="p-4" data-i18n="th_sup_price">السعر المتوقع / طن</th>
+                <th class="p-4" data-i18n="th_action">إجراء سريع</th>
+              </tr>
+            </thead>
+            <tbody id="supplyTableBody" class="divide-y divide-stone-200">
+              <tr><td colspan="8" class="p-6 text-center text-slate-400">جاري تحميل عروض التوريد...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean Light Footer -->
+  <footer class="bg-white border-t border-stone-200 py-8 mt-auto w-full overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <svg class="w-8 h-8" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#183D29" stroke-width="6.5">
+            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
+            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
+            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
+          </g>
+          <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
+            <line x1="-14" y1="0" x2="14" y2="0" />
+          </g>
+        </svg>
+        <span class="font-black brand-green text-sm">NOPAL CORE</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs text-slate-500">
+        <span>© 2026 Nopal Core Biotech. All rights reserved.</span>
+        <button type="button" onclick="openInstallAppModal()" class="text-slate-500 hover:text-[#183D29] font-bold transition cursor-pointer" data-i18n="footer_app_btn">
+          التطبيق (PWA)
+        </button>
+        <button type="button" onclick="openAdminPortal()" class="text-slate-400 hover:text-[#183D29] font-bold transition cursor-pointer">
+          Admin
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- END #appViewportLock -->
+
   <!-- EXECUTIVE INVESTOR & INCUBATOR PITCH MODAL -->
   <div id="pitchModal" role="dialog" aria-modal="true" aria-labelledby="pitchModalHeading" class="hidden fixed inset-0 z-50 bg-slate-900/55 flex items-center justify-center p-4">
     <div class="emerald-gold-surface text-white rounded-3xl max-w-2xl w-full p-6 sm:p-9 border border-white/15 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
@@ -2319,183 +2519,6 @@
       </button>
     </div>
   </div>
-
-  <!-- ============================================================
-       ADMIN DASHBOARD (#admin) WITH LAND LEASES & CROP SUPPLIERS TABS
-       ============================================================ -->
-  <section id="adminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow overflow-x-hidden">
-    <div id="adminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-sm border border-stone-200 mt-6">
-      <div class="flex flex-col items-center mb-6 text-center">
-        <div class="w-14 h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 p-2 mb-3 flex items-center justify-center">
-          <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="#183D29" stroke-width="6.5">
-              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
-              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
-              <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
-            </g>
-            <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
-              <line x1="-14" y1="0" x2="14" y2="0" />
-            </g>
-          </svg>
-        </div>
-        <h2 class="text-xl font-black brand-green" data-i18n="adm_login_title">لوحة إدارة Nopal Core</h2>
-        <p class="text-xs text-slate-500 mt-1" data-i18n="adm_login_sub">الدخول مقتصر على حساب الإدارة المعتمد</p>
-      </div>
-      <form id="adminLoginForm" class="space-y-4">
-        <input type="email" id="adminEmail" value="Nopalcore@hotmail.com" required
-          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
-        <input type="password" id="adminPass" placeholder="كلمة المرور" data-i18n-placeholder="ph_admin_pass" required
-          class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
-        <p id="loginError" class="hidden text-xs text-red-600 font-bold bg-red-50 p-3 rounded-xl"></p>
-        <button type="submit" id="adminLoginBtn" class="tactile-btn w-full bg-brand-green text-white py-3.5 rounded-xl font-extrabold text-sm cursor-pointer" data-i18n="adm_btn_login">
-          تسجيل الدخول
-        </button>
-      </form>
-      <div class="mt-5 text-center">
-        <button type="button" onclick="navigateToSection('home')" class="text-xs font-bold text-slate-500 hover:text-[#183D29] cursor-pointer" data-i18n="adm_back_home">
-          ← العودة للموقع الرئيسي
-        </button>
-      </div>
-    </div>
-
-    <!-- Admin Dashboard Content -->
-    <div id="adminDashboardContent" class="hidden space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-stone-200 shadow-sm">
-        <div>
-          <h2 class="text-2xl font-black brand-green" data-i18n="adm_dash_title">مركز إدارة العمليات والتوريد</h2>
-          <p class="text-xs text-slate-500 mt-0.5" data-i18n="adm_dash_sub">مربوط مباشرة بقاعدة بيانات Supabase (farmer_leads &amp; crop_suppliers)</p>
-        </div>
-        <div class="flex flex-wrap gap-2.5">
-          <button type="button" onclick="exportActiveAdminCSV()" class="tactile-btn px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-[#183D29] text-xs font-extrabold hover:border-[#D19336] cursor-pointer" data-i18n="adm_btn_csv">
-            تصدير Excel / CSV
-          </button>
-          <button type="button" onclick="navigateToSection('home')" class="tactile-btn px-4 py-2 rounded-xl border border-stone-300 text-xs font-bold hover:bg-stone-100 cursor-pointer" data-i18n="adm_btn_site">الموقع الرئيسي</button>
-          <button type="button" onclick="refreshAllAdminData()" class="tactile-btn px-4 py-2 rounded-xl bg-stone-200 text-xs font-bold hover:bg-stone-300 cursor-pointer" data-i18n="adm_btn_refresh">تحديث البيانات</button>
-          <button type="button" onclick="logoutAdmin()" class="tactile-btn px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold cursor-pointer" data-i18n="adm_btn_logout">تسجيل خروج</button>
-        </div>
-      </div>
-
-      <!-- Admin Module Switcher Tabs -->
-      <div class="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-stone-200 w-fit max-w-full">
-        <button type="button" id="admTabLeadsBtn" onclick="switchAdminTab('leads')" class="tactile-btn tab-active px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold cursor-pointer">
-          <span data-i18n="adm_tab_leads">طلبات تأجير الأراضي (farmer_leads)</span>
-          <span id="badgeLeadsCount" class="ms-1.5 px-2 py-0.5 rounded-full bg-white/20 text-[11px] tabular-nums">0</span>
-        </button>
-        <button type="button" id="admTabSupplyBtn" onclick="switchAdminTab('supply')" class="tactile-btn tab-inactive px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold cursor-pointer">
-          <span data-i18n="adm_tab_supply">عروض توريد المحصول والمخلفات (crop_suppliers)</span>
-          <span id="badgeSupplyCount" class="ms-1.5 px-2 py-0.5 rounded-full bg-amber-100 text-[#183D29] text-[11px] tabular-nums">0</span>
-        </button>
-      </div>
-
-      <!-- TAB 1: LAND LEASING LEADS PANEL -->
-      <div id="adminLeadsPanel" class="space-y-5">
-        <div class="grid sm:grid-cols-4 gap-4">
-          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_kpi_total">إجمالي طلبات الأراضي</span>
-            <p id="kpiTotalLeads" class="text-2xl font-black brand-green mt-1 tabular-nums">0</p>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_kpi_area">إجمالي المساحات المعروضة</span>
-            <p id="kpiTotalFeddan" class="text-2xl font-black text-[#D19336] mt-1 tabular-nums">0 فدان</p>
-          </div>
-          <div class="sm:col-span-2 bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-center">
-            <label for="adminSearchInput" class="text-xs text-slate-500 font-bold mb-1.5" data-i18n="adm_search_lbl">بحث سريع بالاسم أو المحافظة أو رقم الموبايل</label>
-            <input type="search" id="adminSearchInput" oninput="renderLeadsTable()" placeholder="ابحث هنا..." data-i18n-placeholder="ph_adm_search"
-              class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:border-[#183D29]" />
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto max-w-full">
-          <table class="w-full text-right text-sm">
-            <thead class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200">
-              <tr>
-                <th class="p-4" data-i18n="th_date">التاريخ</th>
-                <th class="p-4" data-i18n="th_name">الاسم</th>
-                <th class="p-4" data-i18n="th_phone">رقم الموبايل</th>
-                <th class="p-4" data-i18n="th_gov">المحافظة / المركز</th>
-                <th class="p-4" data-i18n="th_area">المساحة (فدان / م²)</th>
-                <th class="p-4" data-i18n="th_rent">الإيجار المتوقع / فدان</th>
-                <th class="p-4" data-i18n="th_action">إجراء سريع</th>
-              </tr>
-            </thead>
-            <tbody id="leadsTableBody" class="divide-y divide-stone-200">
-              <tr><td colspan="7" class="p-6 text-center text-slate-400">جاري تحميل الطلبات...</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- TAB 2: CROP & BIOMASS SUPPLIERS PANEL -->
-      <div id="adminSupplyPanel" class="hidden space-y-5">
-        <div class="grid sm:grid-cols-4 gap-4">
-          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_sup_kpi_total">إجمالي عروض التوريد</span>
-            <p id="kpiTotalSuppliers" class="text-2xl font-black brand-green mt-1 tabular-nums">0</p>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-            <span class="text-xs text-slate-500 font-bold" data-i18n="adm_sup_kpi_tons">إجمالي الكميات المعروضة</span>
-            <p id="kpiTotalTons" class="text-2xl font-black text-[#D19336] mt-1 tabular-nums">0 طن</p>
-          </div>
-          <div class="sm:col-span-2 bg-white p-5 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-center">
-            <label for="adminSupplySearchInput" class="text-xs text-slate-500 font-bold mb-1.5" data-i18n="adm_sup_search_lbl">بحث في الموردين بالاسم أو الخامة أو مكان التحميل</label>
-            <input type="search" id="adminSupplySearchInput" oninput="renderSupplyTable()" placeholder="ابحث هنا..." data-i18n-placeholder="ph_adm_search"
-              class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:border-[#183D29]" />
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-x-auto max-w-full">
-          <table class="w-full text-right text-sm">
-            <thead class="bg-stone-100 text-slate-700 font-extrabold border-b border-stone-200">
-              <tr>
-                <th class="p-4" data-i18n="th_date">التاريخ</th>
-                <th class="p-4" data-i18n="th_sup_name">المورّد وصفته</th>
-                <th class="p-4" data-i18n="th_phone">رقم الموبايل</th>
-                <th class="p-4" data-i18n="th_sup_mat">نوع الخامة وحالتها</th>
-                <th class="p-4" data-i18n="th_sup_qty">الكمية وطبيعة التوريد</th>
-                <th class="p-4" data-i18n="th_sup_loc">مكان التحميل</th>
-                <th class="p-4" data-i18n="th_sup_price">السعر المتوقع / طن</th>
-                <th class="p-4" data-i18n="th_action">إجراء سريع</th>
-              </tr>
-            </thead>
-            <tbody id="supplyTableBody" class="divide-y divide-stone-200">
-              <tr><td colspan="8" class="p-6 text-center text-slate-400">جاري تحميل عروض التوريد...</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clean Light Footer -->
-  <footer class="bg-white border-t border-stone-200 py-8 mt-auto w-full overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <svg class="w-8 h-8" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#183D29" stroke-width="6.5">
-            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
-            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
-            <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
-          </g>
-          <g transform="translate(60 60) rotate(-42)" stroke="#D19336" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M-15 0 C-9 -12 9 -12 15 0 C9 12 -9 12 -15 0 Z" />
-            <line x1="-14" y1="0" x2="14" y2="0" />
-          </g>
-        </svg>
-        <span class="font-black brand-green text-sm">NOPAL CORE</span>
-      </div>
-
-      <div class="flex items-center gap-4 text-xs text-slate-500">
-        <span>© 2026 Nopal Core Biotech. All rights reserved.</span>
-        <button type="button" onclick="openInstallAppModal()" class="text-slate-500 hover:text-[#183D29] font-bold transition cursor-pointer" data-i18n="footer_app_btn">
-          التطبيق (PWA)
-        </button>
-        <button type="button" onclick="openAdminPortal()" class="text-slate-400 hover:text-[#183D29] font-bold transition cursor-pointer">
-          Admin
-        </button>
-      </div>
-    </div>
-  </footer>
 
   <!-- Mobile App Bottom Navigation Dock -->
   <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-stone-200 px-2 py-1.5 grid grid-cols-5 gap-1 shadow-lg w-full max-w-full overflow-hidden" aria-label="Bottom App Navigation">

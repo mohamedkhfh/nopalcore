@@ -400,6 +400,15 @@
       font-variant-numeric: tabular-nums;
     }
 
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
     input[type="range"].nopal-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -671,12 +680,12 @@
   <div id="appViewportLock" class="flex flex-col min-h-screen w-full">
 
   <!-- Lightweight Solid Header -->
-  <header class="sticky top-0 z-40 bg-white border-b border-stone-200 shadow-xs w-full overflow-hidden">
-    <div class="w-full px-4 sm:px-8 lg:px-10">
-      <div class="h-20 sm:h-24 flex items-center justify-between gap-3 sm:gap-4">
+  <header class="sticky top-0 z-50 bg-white border-b border-stone-200 shadow-xs w-full overflow-hidden pt-[env(safe-area-inset-top,0px)]">
+    <div class="w-full px-3 sm:px-6 lg:px-8">
+      <div class="h-16 sm:h-20 flex items-center justify-between gap-2">
         <!-- Official Geometric Core Brand Logo -->
-        <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-3 group text-start cursor-pointer shrink-0">
-          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-2 transition-colors group-hover:border-[#D19336]">
+        <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-2.5 group text-start cursor-pointer shrink-0">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-1.5 transition-colors group-hover:border-[#D19336]">
             <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nopal Core Logo">
               <g class="header-logo-orbit" stroke="#183D29" stroke-width="6.5">
                 <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
@@ -690,63 +699,63 @@
             </svg>
           </div>
           <div>
-            <div class="flex items-center gap-2">
-              <span class="block text-lg sm:text-2xl font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
+            <div class="flex items-center gap-1.5">
+              <span class="block text-base sm:text-xl font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
               <span id="appModeBadge" class="hidden px-2 py-0.5 rounded-full bg-emerald-50 text-[#183D29] border border-emerald-200 text-[10px] font-extrabold">APP</span>
             </div>
-            <span class="block text-xs sm:text-sm font-bold text-stone-500 mt-1" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
+            <span class="block text-[11px] sm:text-xs font-bold text-stone-500 mt-1" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
           </div>
         </button>
 
         <!-- Desktop Navigation Bar + Executive Pitch + PWA Installer + Theme + Language -->
-        <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-          <nav class="hidden xl:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-2xl border border-stone-200/80" aria-label="Main Navigation">
-            <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_home">
+        <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <nav class="hidden xl:flex items-center gap-0.5 bg-stone-100/80 p-1 rounded-2xl border border-stone-200/80 min-w-0" aria-label="Main Navigation">
+            <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-2.5 2xl:px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_home">
               الرئيسية
             </button>
-            <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_products">
+            <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-2.5 2xl:px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_products">
               المنتجات الصناعية
             </button>
-            <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_farmers">
+            <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-2.5 2xl:px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_farmers">
               أجّر معنا
             </button>
-            <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_supply">
+            <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-2.5 2xl:px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_supply">
               توريد المحصول
             </button>
-            <button type="button" data-tab="impact" onclick="navigateToSection('impact')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_impact">
+            <button type="button" data-tab="impact" onclick="navigateToSection('impact')" class="nav-tab tab-inactive px-2.5 2xl:px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_impact">
               الأثر والخريطة
             </button>
-            <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_about">
+            <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-2.5 2xl:px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_about">
               المنظومة والفريق
             </button>
-            <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_b2b">
+            <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-2.5 2xl:px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_b2b">
               تواصل الشركات
             </button>
           </nav>
 
           <button type="button" onclick="openPitchModal()"
-            class="tactile-btn gold-sweep-btn inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-xs sm:text-sm font-extrabold cursor-pointer shadow-xs whitespace-nowrap">
-            <span class="w-2 h-2 rounded-full bg-[#D19336]"></span>
+            class="tactile-btn gold-sweep-btn inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-xs font-extrabold cursor-pointer shadow-xs whitespace-nowrap shrink-0">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D19336]"></span>
             <span class="hidden sm:inline" data-i18n="btn_pitch_deck">ملف المستثمرين</span>
             <span class="sm:hidden">Pitch</span>
           </button>
 
           <button type="button" id="installAppBtn" onclick="openInstallAppModal()"
-            class="tactile-btn inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-xs sm:text-sm font-extrabold cursor-pointer whitespace-nowrap">
-            <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            class="tactile-btn inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-xs font-extrabold cursor-pointer whitespace-nowrap shrink-0">
+            <svg class="w-3.5 h-3.5 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
-            <span class="hidden md:inline" data-i18n="btn_install_app">تثبيت التطبيق</span>
+            <span class="hidden 2xl:inline" data-i18n="btn_install_app">تثبيت التطبيق</span>
           </button>
 
           <button type="button" onclick="toggleThemeMode()" id="themeToggleBtn" aria-label="تبديل الوضع الليلي والنهاري"
-            class="tactile-btn px-3 py-2.5 rounded-xl border border-stone-300 bg-white text-sm font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer shrink-0">
+            class="tactile-btn px-2.5 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer shrink-0">
             <span id="themeIconSun" class="hidden">☀️</span>
             <span id="themeIconMoon">🌙</span>
           </button>
 
           <button type="button" onclick="toggleLanguage()" id="langBtn"
-            class="tactile-btn px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer shrink-0">
+            class="tactile-btn px-3 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer shrink-0">
             English
           </button>
         </div>
@@ -1434,7 +1443,8 @@
                 <span id="liveAreaConverted" class="text-[11px] font-extrabold text-[#D19336] tabular-nums"></span>
               </div>
               <div class="flex rounded-xl border border-stone-300 overflow-hidden focus-within:border-[#183D29] bg-white">
-                <input type="number" id="areaInput" required min="1" step="any" placeholder="مثال: 10" data-i18n-placeholder="ph_area"
+                <input type="text" inputmode="decimal" id="areaInput" required placeholder="مثال: 10" data-i18n-placeholder="ph_area"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                   class="w-full px-4 py-3 text-sm focus:outline-none" />
                 <select id="areaUnit" aria-label="وحدة المساحة"
                   class="bg-stone-100 border-s border-stone-300 px-4 py-3 text-xs sm:text-sm font-extrabold brand-green focus:outline-none cursor-pointer shrink-0">
@@ -1455,8 +1465,8 @@
                   <span data-i18n="lbl_nego">يُفضّل التفاوض بعد المعاينة</span>
                 </label>
               </div>
-
-              <input type="number" id="expectedRent" min="500" step="100" placeholder="اكتب السعر المتوقع بالجنيه المصري أو اختر التفاوض" data-i18n-placeholder="ph_rent"
+              <input type="text" inputmode="numeric" id="expectedRent" placeholder="اكتب السعر المتوقع بالجنيه المصري أو اختر التفاوض" data-i18n-placeholder="ph_rent"
+                oninput="this.value = this.value.replace(/\D/g, '')"
                 class="w-full px-4 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:border-[#183D29] disabled:bg-stone-100 disabled:text-slate-400" />
 
               <p class="text-[11px] text-slate-500 leading-relaxed" data-i18n="rent_reassure">
@@ -1601,7 +1611,8 @@
                   <span id="liveSupQtyConverted" class="text-[11px] font-extrabold text-[#D19336] tabular-nums"></span>
                 </div>
                 <div class="flex rounded-xl border border-stone-300 overflow-hidden focus-within:border-[#183D29] bg-white">
-                  <input type="number" id="supQty" required min="0.1" step="any" placeholder="مثال: 500" data-i18n-placeholder="ph_sup_qty"
+                  <input type="text" inputmode="decimal" id="supQty" required placeholder="مثال: 500" data-i18n-placeholder="ph_sup_qty"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                     class="w-full px-4 py-3 text-sm focus:outline-none" />
                   <select id="supQtyUnit" aria-label="وحدة الكمية"
                     class="bg-stone-100 border-s border-stone-300 px-3.5 py-3 text-xs sm:text-sm font-extrabold brand-green focus:outline-none cursor-pointer shrink-0">
@@ -1639,8 +1650,8 @@
                   <span data-i18n="sup_lbl_nego">السعر حسب الفحص والتفاوض</span>
                 </label>
               </div>
-
-              <input type="number" id="supPrice" min="100" step="50" placeholder="اكتب سعر الطن المتوقع (ج.م) أو اختر حسب الفحص والتفاوض" data-i18n-placeholder="ph_sup_price"
+              <input type="text" inputmode="numeric" id="supPrice" placeholder="اكتب سعر الطن المتوقع (ج.م) أو اختر حسب الفحص والتفاوض" data-i18n-placeholder="ph_sup_price"
+                oninput="this.value = this.value.replace(/\D/g, '')"
                 class="w-full px-4 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:border-[#183D29] disabled:bg-stone-100 disabled:text-slate-400" />
             </div>
 
@@ -2304,6 +2315,9 @@
         <span>© 2026 Nopal Core Biotech. All rights reserved.</span>
         <button type="button" onclick="openInstallAppModal()" class="text-slate-500 hover:text-[#183D29] font-bold transition cursor-pointer" data-i18n="footer_app_btn">
           التطبيق (PWA)
+        </button>
+        <button type="button" onclick="openAdminPortal()" class="text-slate-400 hover:text-[#183D29] font-extrabold transition cursor-pointer">
+          Admin
         </button>
       </div>
     </div>

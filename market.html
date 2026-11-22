@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#183D29" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://ipwbibgzmmkrxzexfjkv.supabase.co wss://ipwbibgzmmkrxzexfjkv.supabase.co; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://ipwbibgzmmkrxzexfjkv.supabase.co wss://ipwbibgzmmkrxzexfjkv.supabase.co; base-uri 'self'; form-action 'self' https://accounts.google.com https://ipwbibgzmmkrxzexfjkv.supabase.co;" />
   <title>Nopal Land Market | سوق الأراضي الزراعية المعتمد — وساطة Nopal Core</title>
   <meta name="description" content="سوق الأراضي الزراعية المعتمد من Nopal Core — اعرض أرضك الزراعية للإيجار أو ابحث عن أرض مطابقة لمشروعك بعمولة 10% من إيجار أول 6 شهور فقط." />
 
@@ -75,10 +75,6 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-    }
-    .curtain-ring {
-      animation: logoSpinSlow 14s linear infinite;
-      transform-origin: 32px 32px;
     }
     @keyframes logoSpinSlow {
       from { transform: rotate(0deg); }
@@ -212,16 +208,8 @@
       animation: logoSpinSlow 16s linear infinite;
       transform-origin: 60px 60px;
     }
-    .logo-orbit-inner {
-      animation: logoSpinReverse 11s linear infinite;
-      transform-origin: 60px 60px;
-    }
     .seed-core-glow {
       filter: drop-shadow(0 6px 18px rgba(209, 147, 54, 0.45));
-    }
-    @keyframes logoSpinReverse {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
     }
     .liquid-gold-pill {
       background: linear-gradient(120deg, #D19336, #F3C677, #B87B22);
@@ -387,7 +375,7 @@
           <span id="googleHeaderLabel">دخول بجوجل</span>
         </button>
 
-        <a href="index.html" class="hidden sm:inline-flex tactile-btn px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-[#183D29] text-xs font-extrabold hover:border-[#D19336]" data-i18n="btn_main_site">
+        <a href="https://mohamedkhfh.github.io/nopalcore/" class="hidden sm:inline-flex tactile-btn px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-[#183D29] text-xs font-extrabold hover:border-[#D19336]" data-i18n="btn_main_site">
           موقع Nopal Core
         </a>
         <button type="button" id="themeToggleBtn" onclick="toggleTheme()" aria-label="تبديل الوضع الليلي"
@@ -668,7 +656,7 @@
 
           <div id="reqOtherGovBox" class="hidden">
             <label class="block text-xs font-extrabold text-slate-700 mb-1.5">اكتب اسم المحافظة / المنطقة *</label>
-            <input type="text" id="reqOtherGovText" placeholder="مثال: شرق العوينات / توشكى / القليوبية"
+            <input type="text" id="reqOtherGovText" placeholder="مثال: جمصة / المنصورة / القليوبية"
               class="w-full px-4 py-3 rounded-2xl bg-[#FAF9F6] border border-stone-300 text-sm font-bold focus:outline-none focus:border-[#D19336]" />
           </div>
 
@@ -779,7 +767,7 @@
 
           <div id="offOtherGovBox" class="hidden">
             <label class="block text-xs font-extrabold text-slate-700 mb-1.5">اكتب اسم المحافظة / المنطقة *</label>
-            <input type="text" id="offOtherGovText" placeholder="مثال: الواحات البحرية / الصالحية الجديدة"
+            <input type="text" id="offOtherGovText" placeholder="مثال: المنصورة / جمصة / الصالحية الجديدة"
               class="w-full px-4 py-3 rounded-2xl bg-[#FAF9F6] border border-stone-300 text-sm font-bold focus:outline-none focus:border-[#D19336]" />
           </div>
 
@@ -923,7 +911,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-slate-500">
       <p>© 2026 Nopal Core — Nopal Land Market (سوق الأراضي الزراعية المعتمد). جميع الحقوق محفوظة.</p>
       <div class="flex items-center gap-4">
-        <a href="index.html" class="brand-green hover:underline">الموقع الرسمي للشركة</a>
+        <a href="https://mohamedkhfh.github.io/nopalcore/" class="brand-green hover:underline">الموقع الرسمي للشركة</a>
         <a href="#listingsSection" class="hover:underline">الأراضي المتاحة</a>
         <a href="#exchangePortal" class="hover:underline">بوابة العرض والطلب</a>
         <button type="button" onclick="openMarketAdminPortal()" class="text-slate-400 hover:text-[#183D29] font-extrabold cursor-pointer">Admin</button>
@@ -931,7 +919,7 @@
     </div>
   </footer>
 
-  <!-- لوحة إدارة السوق (#admin) بنفس تصميم الموقع الأساسي -->
+  <!-- لوحة إدارة السوق (#admin) بنفس تصميم الموقع الأساسي + تبويب المطابقات الذكية -->
   <section id="marketAdminView" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <!-- شاشة تسجيل دخول الإدارة -->
     <div id="marketAdminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-sm border border-stone-200 mt-4">
@@ -974,7 +962,7 @@
       <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-stone-200 shadow-sm">
         <div>
           <h2 class="text-2xl font-black brand-green">مركز إدارة سوق الأراضي المعتمد</h2>
-          <p class="text-xs text-slate-500 mt-0.5">متصل مباشرة بـ Supabase (الأعضاء، طلبات المستأجرين، عروض الملاك، وطلبات المعاينة)</p>
+          <p class="text-xs text-slate-500 mt-0.5">متصل مباشرة بـ Supabase (الأعضاء، طلبات المستأجرين، عروض الملاك، طلبات المعاينة، والمطابقات الذكية)</p>
         </div>
         <div class="flex flex-wrap gap-2.5">
           <button type="button" onclick="exportMarketAdminCSV()" class="tactile-btn px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-[#183D29] text-xs font-extrabold hover:border-[#D19336] cursor-pointer">
@@ -1012,7 +1000,7 @@
         </div>
       </div>
 
-      <!-- أزرار التبديل بين الجداول الأربعة + شريط البحث -->
+      <!-- أزرار التبديل بين الجداول الخمسة + شريط البحث -->
       <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-stone-200">
         <div class="flex flex-wrap items-center gap-2">
           <button type="button" data-adm-tab="users" onclick="switchMarketAdminTab('users')" class="mkt-adm-tab portal-tab-active px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer">
@@ -1026,6 +1014,9 @@
           </button>
           <button type="button" data-adm-tab="bookings" onclick="switchMarketAdminTab('bookings')" class="mkt-adm-tab portal-tab-inactive px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer">
             طلبات المعاينة (<span id="cntTabBookings">0</span>)
+          </button>
+          <button type="button" data-adm-tab="matches" onclick="switchMarketAdminTab('matches')" class="mkt-adm-tab portal-tab-inactive px-4 py-2 rounded-xl text-xs font-extrabold cursor-pointer border-amber-300">
+            ⚡ المطابقات الذكية (<span id="cntTabMatches">0</span>)
           </button>
         </div>
 
@@ -1161,6 +1152,9 @@
       </form>
     </div>
   </div>
+
+  <!-- صندوق التنبيهات الفورية (Toast) -->
+  <div id="toastBox" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] px-5 py-3 rounded-2xl bg-[#183D29] text-white text-xs sm:text-sm font-black shadow-2xl border border-[#D19336]/60 text-center max-w-[92vw]"></div>
 
   <script>
     const SUPABASE_URL = 'https://ipwbibgzmmkrxzexfjkv.supabase.co';
@@ -1383,20 +1377,173 @@
       renderLandListings();
     }
 
+    // =========================================================================
+    // محرك المطابقة الرياضي والجغرافي المتقدم (Nopal Agri-Match Engine v2.0)
+    // صيغة هافرسين لحساب المسافة الفعلية بالكيلومتر + دالة جاوس اللوغاريتمية للمساحة
+    // =========================================================================
+    const EGYPT_GEO_COORDS = [
+      { keys: ['المنصورة', 'منصورة', 'الدقهلية', 'دقهلية', 'طلخا', 'ميت غمر', 'السنبلاوين'], gov: 'الدقهلية', lat: 31.0409, lng: 31.3785 },
+      { keys: ['جمصة', 'جمصه', 'المنصورة الجديدة', 'بلقاس', 'شربين'], gov: 'الدقهلية', lat: 31.4426, lng: 31.5290 },
+      { keys: ['دمياط', 'دمياط الجديدة', 'راس البر', 'كفر سعد'], gov: 'دمياط', lat: 31.4175, lng: 31.8144 },
+      { keys: ['كفر الشيخ', 'بلطيم', 'الحامول', 'دسوق'], gov: 'كفر الشيخ', lat: 31.1107, lng: 30.9388 },
+      { keys: ['طنطا', 'الغربية', 'المحلة', 'زفتى'], gov: 'الغربية', lat: 30.7865, lng: 31.0004 },
+      { keys: ['المنوفية', 'شبين الكوم', 'السادات', 'مدينة السادات'], gov: 'المنوفية', lat: 30.5503, lng: 30.9969 },
+      { keys: ['الشرقية', 'الزقازيق', 'الصالحية', 'الصالحية الجديدة', 'بلبيس', 'العاشر'], gov: 'الشرقية', lat: 30.5877, lng: 31.5020 },
+      { keys: ['القليوبية', 'بنها', 'الخانكة', 'العبور'], gov: 'القليوبية', lat: 30.3292, lng: 31.2168 },
+      { keys: ['النوبارية', 'طريق الاسكندرية الصحراوي', 'الاسكندرية الصحراوي', 'برج العرب', 'الاسكندرية'], gov: 'البحيرة', lat: 30.6667, lng: 30.0667 },
+      { keys: ['وادي النطرون', 'البحيرة', 'دمنهور', 'بدر', 'التحرير'], gov: 'البحيرة', lat: 30.3833, lng: 30.3500 },
+      { keys: ['مطروح', 'مرسى مطروح', 'العلمين', 'الحمام', 'سيوة'], gov: 'مطروح', lat: 31.3543, lng: 27.2373 },
+      { keys: ['الاسماعيلية', 'القنطرة', 'فايد', 'التل الكبير', 'سيناء', 'شمال سيناء', 'جنوب سيناء'], gov: 'الإسماعيلية / سيناء', lat: 30.5965, lng: 32.2715 },
+      { keys: ['الجيزة', 'القاهرة', 'اكتوبر', 'طريق الواحات', 'الواحات البحرية', 'العياط', 'الصف'], gov: 'الجيزة', lat: 29.9792, lng: 31.1342 },
+      { keys: ['الفيوم', 'طامية', 'سنورس', 'يوسف الصديق'], gov: 'الفيوم', lat: 29.3084, lng: 30.8428 },
+      { keys: ['بني سويف', 'الواسطى', 'الفشن', 'سمسطا'], gov: 'بني سويف', lat: 29.0661, lng: 31.0994 },
+      { keys: ['المنيا', 'سمالوط', 'ملوي', 'بني مزار', 'مغاغة', 'غرب المنيا'], gov: 'المنيا', lat: 28.1099, lng: 30.7503 },
+      { keys: ['اسيوط', 'سوهاج', 'ديروط', 'منفلوط', 'اخميم', 'جرجا'], gov: 'أسيوط / سوهاج', lat: 27.1809, lng: 31.1837 },
+      { keys: ['قنا', 'الاقصر', 'نجع حمادي', 'اسنا'], gov: 'قنا / الأقصر', lat: 26.1551, lng: 32.7160 },
+      { keys: ['اسوان', 'توشكى', 'كوم امبو', 'ادفو'], gov: 'أسوان', lat: 24.0889, lng: 32.8998 },
+      { keys: ['الوادي الجديد', 'الفرافرة', 'الداخلة', 'الخارجة', 'شرق العوينات'], gov: 'الوادي الجديد', lat: 27.0567, lng: 27.9700 }
+    ];
+
+    function normalizeArText(text) {
+      return String(text || '')
+        .toLowerCase()
+        .replace(/[أإآ]/g, 'ا')
+        .replace(/ة/g, 'ه')
+        .replace(/ى/g, 'ي')
+        .replace(/[\u064B-\u065F]/g, '')
+        .replace(/[\/\-_,،]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function resolveGeoPoint(rawText) {
+      const norm = normalizeArText(rawText);
+      if (!norm) return null;
+      for (const item of EGYPT_GEO_COORDS) {
+        for (const k of item.keys) {
+          const nk = normalizeArText(k);
+          if (norm.includes(nk) || nk.includes(norm)) return item;
+        }
+      }
+      return null;
+    }
+
+    function calcHaversineKm(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const toRad = d => (d * Math.PI) / 180;
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+      return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
+    }
+
+    function evalWaterCompat(reqW, landW) {
+      const r = normalizeArText(reqW);
+      const l = normalizeArText(landW);
+      if (!r || r.includes('اي مصدر')) return 1.0;
+      if (r === l) return 1.0;
+      if (l.includes('بدون')) return 0.12;
+      const modern = ['بئر', 'تنقيط', 'رش', 'شمسيه'];
+      if (modern.some(k => r.includes(k)) && modern.some(k => l.includes(k))) return 0.84;
+      if (l.includes('غمر') || l.includes('بحاري') || l.includes('نيلي')) return 0.65;
+      return 0.45;
+    }
+
+    function evalPowerCompat(reqP, landP) {
+      const r = normalizeArText(reqP);
+      const l = normalizeArText(landP);
+      if (!r || r.includes('لا يشترط')) return 1.0;
+      if (r === l) return 1.0;
+      if (l.includes('بدون')) return 0.18;
+      if ((r.includes('حكوميه') && l.includes('شمسيه')) || (r.includes('شمسيه') && l.includes('حكوميه'))) return 0.85;
+      if (l.includes('ديزل')) return 0.60;
+      return 0.50;
+    }
+
+    function evalSoilCompat(reqS, landS) {
+      const r = normalizeArText(reqS);
+      const l = normalizeArText(landS);
+      if (!r || r.includes('اي نوع')) return 1.0;
+      if (r === l) return 1.0;
+      if ((r.includes('رمليه') && l.includes('صفراء')) || (r.includes('صفراء') && l.includes('رمليه'))) return 0.85;
+      if ((r.includes('طمييه') && l.includes('صفراء')) || (r.includes('صفراء') && l.includes('طمييه'))) return 0.80;
+      return 0.55;
+    }
+
+    function evaluateSmartMatch(land, req) {
+      let geoScore = 0.25;
+      let distanceKm = null;
+      let geoSummary = 'نطاق بديل مقترح';
+
+      const normLand = normalizeArText(land.governorate);
+      const normReq = normalizeArText(req.governorate);
+      const gLand = resolveGeoPoint(land.governorate);
+      const gReq = resolveGeoPoint(req.governorate);
+
+      if (normLand && normLand === normReq) {
+        geoScore = 1.0;
+        distanceKm = 0;
+        geoSummary = 'نفس المنطقة المطلوبة تماماً';
+      } else if (gLand && gReq) {
+        distanceKm = Math.round(calcHaversineKm(gLand.lat, gLand.lng, gReq.lat, gReq.lng));
+        const sameGov = gLand.gov === gReq.gov;
+        geoScore = Math.exp(-Math.pow(distanceKm / 120, 1.35));
+        if (sameGov) {
+          geoScore = Math.min(0.96, Math.max(geoScore, 0.78) + 0.14);
+          geoSummary = distanceKm > 0
+            ? `نفس المحافظة (${gLand.gov}) • تبعد ~${distanceKm} كم`
+            : `نفس المحافظة (${gLand.gov})`;
+        } else if (distanceKm <= 95) {
+          geoSummary = `قريبة جغرافياً (~${distanceKm} كم)`;
+        } else if (distanceKm <= 200) {
+          geoSummary = `محافظة مجاورة (~${distanceKm} كم)`;
+        } else {
+          geoSummary = `بديل في نطاق آخر (~${distanceKm} كم)`;
+        }
+      }
+
+      const reqArea = Math.max(0.5, parseFloat(req.area) || 10);
+      const landArea = Math.max(0.5, parseFloat(land.area) || 10);
+      const logRatio = Math.log(landArea / reqArea);
+      const sigma = logRatio >= 0 ? 0.72 : 0.52;
+      const areaScore = Math.exp(-(logRatio * logRatio) / (2 * sigma * sigma));
+
+      const waterScore = evalWaterCompat(req.water, land.water);
+      const powerScore = evalPowerCompat(req.power, land.power);
+      const soilScore = evalSoilCompat(req.soil, land.soil);
+
+      const totalWeighted =
+        0.38 * geoScore +
+        0.28 * areaScore +
+        0.16 * waterScore +
+        0.10 * powerScore +
+        0.08 * soilScore;
+
+      const score = Math.min(99, Math.max(28, Math.round(totalWeighted * 100)));
+
+      let tierLabel = 'بديل مقترح';
+      let badgeClass = 'bg-amber-100 text-amber-900';
+      if (score >= 82) {
+        tierLabel = 'تطابق مثالي';
+        badgeClass = 'bg-emerald-100 text-[#183D29]';
+      } else if (score >= 65) {
+        tierLabel = 'تطابق قوي وقريب';
+        badgeClass = 'bg-emerald-50 text-[#183D29] border border-emerald-200';
+      } else if (score >= 48) {
+        tierLabel = 'فرصة بديلة جيدة';
+        badgeClass = 'bg-amber-50 text-[#183D29] border border-amber-200';
+      }
+
+      const reasons = [geoSummary];
+      if (areaScore >= 0.85) reasons.push('مساحة شبه مطابقة');
+      else if (areaScore >= 0.60) reasons.push(landArea > reqArea ? 'مساحة أكبر قليلاً (مرونة توسع)' : 'مساحة قريبة');
+      if (waterScore >= 0.80) reasons.push('ري متوافق');
+
+      return { score, distanceKm, geoSummary, tierLabel, badgeClass, reasons };
+    }
+
     function computeMatchScore(land, req) {
-      let score = 0;
-      if (land.governorate === req.governorate) score += 40;
-      else score += 15;
-
-      const reqArea = parseFloat(req.area) || 10;
-      const diffRatio = Math.abs(land.area - reqArea) / Math.max(reqArea, 1);
-      score += Math.max(0, Math.round(35 * (1 - Math.min(diffRatio, 1))));
-
-      if (req.water === 'أي مصدر ري متاح' || land.water === req.water) score += 10;
-      if (req.soil === 'أي نوع تربة صالحة للزراعة' || land.soil === req.soil) score += 5;
-      if (req.power === 'لا يشترط توفر كهرباء' || land.power === req.power) score += 10;
-
-      return Math.min(99, Math.max(45, score));
+      return evaluateSmartMatch(land, req).score;
     }
 
     function syncMemberFieldsToForms() {
@@ -1535,7 +1682,6 @@
           btn.innerHTML = '<span>جاري التحويل إلى Google...</span>';
         }
 
-        // نستخدم الرابط الرسمي للسوق إن كان متاحاً، وإلا الرابط الحالي بدون hash
         const isHttp = /^https?:\/\//i.test(window.location.href);
         const redirectTarget = isHttp
           ? window.location.href.split('#')[0]
@@ -1551,7 +1697,7 @@
 
         if (error) {
           console.error('Google OAuth Error:', error);
-          showToast('تعذّر بدء تسجيل الدخول بجوجل: تأكد من تفعيل Google Provider وحفظ Client ID و Secret في Supabase');
+          showToast('تعذّر بدء تسجيل الدخول بجوجل: تأكد من تفعيل Google Provider في Supabase');
           if (btn) {
             btn.disabled = false;
             btn.innerHTML = originalHtml;
@@ -1559,7 +1705,6 @@
           return;
         }
 
-        // احتياطي: لو لم يتم التحويل تلقائياً خلال ثانية وكان هناك رابط OAuth جاهز
         if (data && data.url) {
           setTimeout(() => {
             try {
@@ -1629,7 +1774,7 @@
       }
     }
 
-    // معالجة نموذج طلب الأرض وحفظه في Supabase + عرض أقرب 3 أراضٍ متاحة
+    // معالجة نموذج طلب الأرض وحفظه في Supabase + عرض أقرب 3 أراضٍ متاحة بالخوارزمية الجغرافية
     function handleTenantRequestSubmit(e) {
       e.preventDefault();
       const phone = document.getElementById('reqPhone')?.value.trim();
@@ -1666,23 +1811,34 @@
 
       const availableLands = allLandListings
         .filter(l => l.status === 'available')
-        .map(l => ({ ...l, matchScore: computeMatchScore(l, reqData) }))
+        .map(l => {
+          const evalDetails = evaluateSmartMatch(l, reqData);
+          return { ...l, matchScore: evalDetails.score, evalDetails };
+        })
         .sort((a, b) => b.matchScore - a.matchScore)
         .slice(0, 3);
 
       const refCode = 'REQ-' + Math.floor(1000 + Math.random() * 9000);
       document.getElementById('reqReferenceBadge').textContent = `كود الطلب: ${refCode}`;
 
+      const topScore = availableLands[0]?.matchScore || 0;
+      const sparseBanner = topScore < 65
+        ? `<div class="col-span-full p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-xs font-bold text-[#183D29]">
+             💡 ملاحظة ذكية: لا توجد حالياً أرض متطابقة 100% في نفس موقعك، لكننا حفظنا طلبك برقم <strong>${refCode}</strong> وسنرسل لك إشعاراً فور إضافة أرض في نطاقك. وهذه أقرب البدائل المتاحة حالياً بناءً على المسافة بالكيلومتر:
+           </div>`
+        : '';
+
       const container = document.getElementById('matchedCardsContainer');
-      container.innerHTML = availableLands.map(item => `
+      container.innerHTML = sparseBanner + availableLands.map(item => `
         <div class="p-4 rounded-2xl bg-[#FAF9F6] border border-stone-200 space-y-2.5 flex flex-col justify-between">
           <div class="space-y-1.5">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-1">
               <span class="text-xs font-black brand-green">${escapeHtml(item.id)}</span>
-              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#183D29] text-[11px] font-black">تطابق ${item.matchScore}%</span>
+              <span class="px-2.5 py-0.5 rounded-full ${item.evalDetails.badgeClass} text-[11px] font-black">${escapeHtml(item.evalDetails.tierLabel)} ${item.matchScore}%</span>
             </div>
             <p class="text-sm font-black text-slate-800">${escapeHtml(item.governorate)}</p>
             <p class="text-xs font-bold text-slate-600">${escapeHtml(item.area)} فدان • ${Number(item.annualRentPerFeddan).toLocaleString('en-US')} ج.م/فدان</p>
+            <p class="text-[11px] font-bold text-[#183D29]">📍 ${escapeHtml(item.evalDetails.reasons.join(' • '))}</p>
             <p class="text-[11px] text-slate-500">${escapeHtml(item.water)} • ${escapeHtml(item.soil)}</p>
           </div>
           <button type="button" onclick="openBookingModal('${escapeHtml(item.id)}')" class="w-full py-2.5 rounded-xl bg-[#183D29] text-white text-xs font-black cursor-pointer">
@@ -1968,76 +2124,18 @@
       if (comet) comet.style.top = pct + '%';
     });
 
-    // التهيئة عند التحميل
-    window.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('nopal_market_theme') === 'dark') {
-        document.documentElement.classList.add('dark-theme');
-        const btn = document.getElementById('themeToggleBtn');
-        if (btn) btn.textContent = '☀️';
-      }
-
-      loadMemberSession();
-      renderLandListings();
-      updateCommissionCalculator();
-
-      // توليد جزيئات اللقاح الذهبية الطافية
-      const pollenField = document.getElementById('pollenField');
-      if (pollenField) {
-        for (let i = 0; i < 18; i++) {
-          const dot = document.createElement('span');
-          dot.className = 'pollen-dot';
-          const size = (4 + (i % 5) * 2) + 'px';
-          dot.style.width = size;
-          dot.style.height = size;
-          dot.style.top = ((i * 19) % 96) + '%';
-          dot.style.left = ((i * 29) % 96) + '%';
-          dot.style.setProperty('--dur', (10 + (i % 7) * 2) + 's');
-          dot.style.animationDelay = (i * 0.4) + 's';
-          pollenField.appendChild(dot);
-        }
-      }
-
-      // تفعيل إمالة كارت اللوجو ثلاثي الأبعاد بالماوس
-      const seedCard = document.getElementById('seedCard3D');
-      if (seedCard) {
-        seedCard.addEventListener('mousemove', (ev) => {
-          const rect = seedCard.getBoundingClientRect();
-          const x = (ev.clientX - rect.left) / rect.width - 0.5;
-          const y = (ev.clientY - rect.top) / rect.height - 0.5;
-          seedCard.style.transform = `perspective(900px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg)`;
-        });
-        seedCard.addEventListener('mouseleave', () => {
-          seedCard.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
-        });
-      }
-
-      // تفعيل تأثير Spotlight على جميع الكروت
-      document.addEventListener('mousemove', (ev) => {
-        document.querySelectorAll('.spotlight-card').forEach(card => {
-          const rect = card.getBoundingClientRect();
-          card.style.setProperty('--mx', (ev.clientX - rect.left) + 'px');
-          card.style.setProperty('--my', (ev.clientY - rect.top) + 'px');
-        });
-      });
-
-      setTimeout(() => {
-        const curtain = document.getElementById('royalCurtain');
-        if (curtain) curtain.classList.add('curtain-open');
-      }, 650);
-
-      checkMarketAdminRoute();
-    });
-
     // =========================================================================
-    // لوحة إدارة سوق الأراضي (#admin) بنفس تجربة الموقع الأساسي
+    // لوحة إدارة سوق الأراضي (#admin) بنفس تجربة الموقع الأساسي + المطابقات الذكية
     // =========================================================================
     let marketAdminActiveTab = 'users';
     let cachedMarketUsers = [];
     let cachedMarketRequests = [];
     let cachedMarketOffers = [];
     let cachedMarketBookings = [];
-
-    window.addEventListener('hashchange', checkMarketAdminRoute);
+    let cachedSmartMatches = [];
+    let marketAdminFailedAttempts = 0;
+    let marketAdminLockUntil = 0;
+    let marketAdminLockInterval = null;
 
     async function checkMarketAdminRoute() {
       const hash = (window.location.hash || '').replace('#', '');
@@ -2078,20 +2176,56 @@
       const errEl = document.getElementById('marketAdminLoginError');
       const btn = document.getElementById('marketAdminLoginBtn');
 
+      const now = Date.now();
+      if (now < marketAdminLockUntil) {
+        const secs = Math.ceil((marketAdminLockUntil - now) / 1000);
+        errEl.textContent = `تم قفل الدخول مؤقتاً بعد 5 محاولات خاطئة. انتظر ${secs} ثانية.`;
+        errEl.classList.remove('hidden');
+        return;
+      }
+
       btn.disabled = true;
       btn.textContent = 'جاري التحقق...';
       errEl.classList.add('hidden');
 
       try {
         const { data, error } = await sbMarket.auth.signInWithPassword({ email, password });
-        btn.disabled = false;
-        btn.textContent = 'تسجيل الدخول للإدارة';
 
         if (error || !data.user || data.user.email.toLowerCase() !== 'nopalcore@hotmail.com') {
-          errEl.textContent = 'بيانات الدخول غير صحيحة أو الحساب غير مصرح له بالإدارة.';
+          marketAdminFailedAttempts += 1;
+          if (marketAdminFailedAttempts >= 5) {
+            marketAdminLockUntil = Date.now() + 60000;
+            marketAdminFailedAttempts = 0;
+            clearInterval(marketAdminLockInterval);
+            marketAdminLockInterval = setInterval(() => {
+              const rem = Math.ceil((marketAdminLockUntil - Date.now()) / 1000);
+              if (rem <= 0) {
+                clearInterval(marketAdminLockInterval);
+                btn.disabled = false;
+                btn.textContent = 'تسجيل الدخول للإدارة';
+                errEl.classList.add('hidden');
+              } else {
+                btn.disabled = true;
+                btn.textContent = `مقفل مؤقتاً (${rem}ث)`;
+                errEl.textContent = `تم إيقاف الدخول مؤقتاً بعد 5 محاولات خاطئة. انتظر ${rem} ثانية.`;
+                errEl.classList.remove('hidden');
+              }
+            }, 1000);
+            return;
+          }
+
+          btn.disabled = false;
+          btn.textContent = 'تسجيل الدخول للإدارة';
+          const remTries = 5 - marketAdminFailedAttempts;
+          errEl.textContent = `بيانات الدخول غير صحيحة (متبقي ${remTries} محاولات قبل القفل المؤقت).`;
           errEl.classList.remove('hidden');
           return;
         }
+
+        marketAdminFailedAttempts = 0;
+        marketAdminLockUntil = 0;
+        btn.disabled = false;
+        btn.textContent = 'تسجيل الدخول للإدارة';
         showMarketAdminDashboard();
       } catch (_) {
         btn.disabled = false;
@@ -2120,6 +2254,45 @@
       cachedMarketOffers = Array.isArray(oRes.data) ? oRes.data : [];
       cachedMarketBookings = Array.isArray(bRes.data) ? bRes.data : [];
 
+      const computedPairs = [];
+      cachedMarketRequests.forEach(req => {
+        cachedMarketOffers.forEach(off => {
+          const evalRes = evaluateSmartMatch(
+            {
+              governorate: off.governorate,
+              area: off.area,
+              water: off.water,
+              soil: off.soil,
+              power: off.power
+            },
+            {
+              governorate: req.governorate,
+              area: req.area,
+              water: req.water,
+              soil: req.soil,
+              power: req.power
+            }
+          );
+          if (evalRes.score >= 52) {
+            computedPairs.push({
+              score: evalRes.score,
+              tierLabel: evalRes.tierLabel,
+              reasons: evalRes.reasons.join(' • '),
+              tenantName: req.name || '—',
+              tenantPhone: req.phone || '',
+              tenantGov: req.governorate || '—',
+              tenantArea: req.area || 0,
+              offerCode: off.code || '—',
+              ownerName: off.owner_name || '—',
+              ownerPhone: off.phone || '',
+              offerGov: off.governorate || '—',
+              offerArea: off.area || 0
+            });
+          }
+        });
+      });
+      cachedSmartMatches = computedPairs.sort((a, b) => b.score - a.score);
+
       document.getElementById('kpiMarketUsers').textContent = cachedMarketUsers.length;
       document.getElementById('kpiMarketRequests').textContent = cachedMarketRequests.length;
       document.getElementById('kpiMarketOffers').textContent = cachedMarketOffers.length;
@@ -2129,6 +2302,8 @@
       document.getElementById('cntTabRequests').textContent = cachedMarketRequests.length;
       document.getElementById('cntTabOffers').textContent = cachedMarketOffers.length;
       document.getElementById('cntTabBookings').textContent = cachedMarketBookings.length;
+      const cntMatchesEl = document.getElementById('cntTabMatches');
+      if (cntMatchesEl) cntMatchesEl.textContent = cachedSmartMatches.length;
 
       renderMarketAdminTable();
     }
@@ -2250,6 +2425,39 @@
             <td class="p-4">${waLink(r.phone, `مرحباً ${r.requester_name || ''}، لتأكيد موعد معاينة الأرض ${r.land_id || ''} (${r.governorate || ''}).`)}</td>
           </tr>
         `).join('') : `<tr><td colspan="6" class="p-6 text-center text-slate-400">لا توجد طلبات معاينة بعد</td></tr>`;
+        return;
+      }
+
+      if (marketAdminActiveTab === 'matches') {
+        thead.innerHTML = `<tr>
+          <th class="p-4">نسبة التطابق</th>
+          <th class="p-4">المستأجر وطلبُه</th>
+          <th class="p-4">المالك والأرض المعروضة</th>
+          <th class="p-4">التحليل الجغرافي والفني</th>
+          <th class="p-4">تواصل سريع</th>
+        </tr>`;
+        const rows = cachedSmartMatches.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q));
+        tbody.innerHTML = rows.length ? rows.map(r => `
+          <tr class="hover:bg-stone-50">
+            <td class="p-4">
+              <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-[#183D29] text-xs font-black">${r.score}%</span>
+              <span class="block text-[11px] font-bold text-slate-500 mt-1">${escapeHtml(r.tierLabel)}</span>
+            </td>
+            <td class="p-4 text-xs">
+              <strong class="text-slate-800 block text-sm">${escapeHtml(r.tenantName)}</strong>
+              <span class="text-slate-600">${escapeHtml(r.tenantGov)} • ${escapeHtml(r.tenantArea)} فدان</span>
+            </td>
+            <td class="p-4 text-xs">
+              <strong class="brand-green block text-sm">#${escapeHtml(r.offerCode)} — ${escapeHtml(r.ownerName)}</strong>
+              <span class="text-slate-600">${escapeHtml(r.offerGov)} • ${escapeHtml(r.offerArea)} فدان</span>
+            </td>
+            <td class="p-4 text-xs font-bold text-slate-700">${escapeHtml(r.reasons)}</td>
+            <td class="p-4 space-y-1.5">
+              <div>${waLink(r.tenantPhone, `مرحباً ${r.tenantName}، وجدنا لك أرضاً مطابقة بنسبة ${r.score}% (${r.offerGov} - ${r.offerArea} فدان) كود #${r.offerCode} عبر Nopal Land Market.`)}</div>
+              <div>${waLink(r.ownerPhone, `مرحباً ${r.ownerName}، لدينا مستأجر جاد يبحث عن أرض مطابقة لأرضك #${r.offerCode} بنسبة ${r.score}%.`)}</div>
+            </td>
+          </tr>
+        `).join('') : `<tr><td colspan="5" class="p-6 text-center text-slate-400">لا توجد مطابقات فوق 52% بين الطلبات والعروض حالياً</td></tr>`;
       }
     }
 
@@ -2258,7 +2466,8 @@
         users: cachedMarketUsers,
         requests: cachedMarketRequests,
         offers: cachedMarketOffers,
-        bookings: cachedMarketBookings
+        bookings: cachedMarketBookings,
+        matches: cachedSmartMatches
       };
       const rows = map[marketAdminActiveTab] || [];
       if (!rows.length) {
@@ -2283,6 +2492,68 @@
       await sbMarket.auth.signOut();
       closeMarketAdminPortal();
     }
+
+    window.addEventListener('hashchange', checkMarketAdminRoute);
+
+    // التهيئة عند التحميل
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('nopal_market_theme') === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.textContent = '☀️';
+      }
+
+      loadMemberSession();
+      renderLandListings();
+      updateCommissionCalculator();
+
+      // توليد جزيئات اللقاح الذهبية الطافية
+      const pollenField = document.getElementById('pollenField');
+      if (pollenField) {
+        for (let i = 0; i < 18; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'pollen-dot';
+          const size = (4 + (i % 5) * 2) + 'px';
+          dot.style.width = size;
+          dot.style.height = size;
+          dot.style.top = ((i * 19) % 96) + '%';
+          dot.style.left = ((i * 29) % 96) + '%';
+          dot.style.setProperty('--dur', (10 + (i % 7) * 2) + 's');
+          dot.style.animationDelay = (i * 0.4) + 's';
+          pollenField.appendChild(dot);
+        }
+      }
+
+      // تفعيل إمالة كارت اللوجو ثلاثي الأبعاد بالماوس
+      const seedCard = document.getElementById('seedCard3D');
+      if (seedCard) {
+        seedCard.addEventListener('mousemove', (ev) => {
+          const rect = seedCard.getBoundingClientRect();
+          const x = (ev.clientX - rect.left) / rect.width - 0.5;
+          const y = (ev.clientY - rect.top) / rect.height - 0.5;
+          seedCard.style.transform = `perspective(900px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg)`;
+        });
+        seedCard.addEventListener('mouseleave', () => {
+          seedCard.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
+        });
+      }
+
+      // تفعيل تأثير Spotlight على جميع الكروت
+      document.addEventListener('mousemove', (ev) => {
+        document.querySelectorAll('.spotlight-card').forEach(card => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (ev.clientX - rect.left) + 'px');
+          card.style.setProperty('--my', (ev.clientY - rect.top) + 'px');
+        });
+      });
+
+      setTimeout(() => {
+        const curtain = document.getElementById('royalCurtain');
+        if (curtain) curtain.classList.add('curtain-open');
+      }, 650);
+
+      checkMarketAdminRoute();
+    });
   </script>
 </body>
 </html>

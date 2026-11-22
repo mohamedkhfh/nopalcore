@@ -10,6 +10,7 @@
   <meta name="description" content="شركة Nopal Core للتقنيات الحيوية واستغلال الأراضي — استخلاص زيت بذور التين الشوكي البكر، اللب المجمد خالي البذور، مقشر الكُسب التجميلي، بودرة الكلادود، والهلام الحيوي ضمن منظومة اقتصاد دائري صفرية الفاقد." />
   <meta name="keywords" content="Nopal Core, نوبال كور, زيت التين الشوكي, بودرة الكلادود, الهلام الحيوي, تأجير الأراضي الزراعية, توريد التين الشوكي, الاقتصاد الدائري, Prickly Pear Seed Oil, Opuntia ficus-indica Egypt" />
   <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; manifest-src 'self' blob:; connect-src 'self' https://ipwbibgzmmkrxzexfjkv.supabase.co wss://ipwbibgzmmkrxzexfjkv.supabase.co; form-action 'self' https://accounts.google.com;" />
 
   <!-- Open Graph / Social Sharing Metadata -->
   <meta property="og:type" content="website" />
@@ -42,8 +43,8 @@
   }
   </script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
   <!-- Hardware-Accelerated GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -490,12 +491,24 @@
       50% { transform: translate3d(4px, 9px, 0) scale(0.85); opacity: 0.3; }
     }
 
+    @keyframes starDrift {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(0.92); opacity: 0.35; }
+      50% { transform: translate3d(-6px, -12px, 0) rotate(18deg) scale(1.2); opacity: 0.95; }
+    }
+
+    @keyframes pollenWander {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(0.9); opacity: 0.35; }
+      33% { transform: translate3d(8px, -12px, 0) scale(1.18); opacity: 0.88; }
+      66% { transform: translate3d(-7px, -5px, 0) scale(1.02); opacity: 0.55; }
+    }
+
     .header-logo-orbit {
-      transform-origin: 60px 60px;
-      animation: headerOrbitSpin 24s linear infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: headerOrbitSpin 16s linear infinite;
     }
     .group:hover .header-logo-orbit {
-      animation-duration: 7s;
+      animation-duration: 5s;
     }
     @keyframes headerOrbitSpin {
       from { transform: rotate(0deg); }
@@ -504,7 +517,35 @@
 
     #shootingCometHead {
       background: linear-gradient(180deg, rgba(209, 147, 54, 0) 0%, rgba(209, 147, 54, 0.55) 55%, #D19336 92%, #FFF3C4 100%);
-      box-shadow: 0 6px 18px rgba(209, 147, 54, 0.75);
+      box-shadow: 0 6px 22px rgba(209, 147, 54, 0.85), 0 0 12px rgba(255, 243, 196, 0.5);
+      will-change: transform;
+    }
+
+    #heroRingsGroup {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: headerOrbitSpin 18s linear infinite;
+    }
+    .group:hover .header-logo-orbit {
+      animation-duration: 7s;
+    .header-logo-orbit,
+    #heroRingsGroup {
+      transform-origin: 60px 60px;
+      animation: headerOrbitSpin 14s linear infinite;
+      will-change: transform;
+    }
+    .group:hover .header-logo-orbit,
+    #heroSeedTiltCard:hover #heroRingsGroup {
+      animation-duration: 5s;
+    }
+    @keyframes headerOrbitSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    #shootingCometHead {
+      background: linear-gradient(180deg, rgba(209, 147, 54, 0) 0%, rgba(209, 147, 54, 0.55) 55%, #D19336 92%, #FFF3C4 100%);
+      box-shadow: 0 6px 22px rgba(209, 147, 54, 0.85), 0 0 12px rgba(255, 243, 196, 0.5);
       will-change: transform;
     }
 
@@ -521,6 +562,16 @@
         display: none !important;
       }
     }
+
+    /* تخفيف الحركة وتحسين الأداء على الموبايل */
+    @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}#royalCurtain{display:none!important}}
+    .nopal-star-twinkle {
+      animation: starDrift 4.2s ease-in-out infinite;
+    }
+    .pollen-drift,
+    .pollen-drift-alt {
+      animation: pollenWander 5.6s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen selection:bg-[#D19336] selection:text-white pb-16 lg:pb-0">
@@ -530,7 +581,7 @@
     <div class="flex flex-col items-center text-center px-6">
       <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-white/5 border border-white/15 p-4 flex items-center justify-center shadow-2xl mb-5">
         <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#FFFFFF" stroke-width="5.5">
+          <g class="header-logo-orbit" stroke="#FFFFFF" stroke-width="5.5">
             <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
             <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
             <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
@@ -588,7 +639,7 @@
     <span class="pollen-drift-alt absolute top-[83%] right-[21%] w-2 h-2 rounded-full bg-[#D19336]/75"></span>
     <span class="pollen-drift absolute top-[91%] left-[11%] w-2 h-2 rounded-full bg-[#183D29]/40"></span>
 
-    <div class="hidden sm:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1.5px] bg-gradient-to-b from-transparent via-[#D19336]/20 to-transparent">
+    <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1.5px] bg-gradient-to-b from-transparent via-[#D19336]/20 to-transparent">
       <div id="shootingCometHead" class="w-[3px] -ms-[0.75px] h-24 rounded-full relative">
         <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#D19336] ring-4 ring-[#D19336]/25"></span>
       </div>
@@ -621,11 +672,11 @@
 
   <!-- Lightweight Solid Header -->
   <header class="sticky top-0 z-40 bg-white border-b border-stone-200 shadow-xs w-full overflow-hidden">
-    <div class="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6">
-      <div class="h-18 sm:h-20 flex items-center justify-between gap-2">
+    <div class="w-full px-4 sm:px-8 lg:px-10">
+      <div class="h-20 sm:h-24 flex items-center justify-between gap-3 sm:gap-4">
         <!-- Official Geometric Core Brand Logo -->
-        <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-2 group text-start cursor-pointer shrink-0">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-1.5 transition-colors group-hover:border-[#D19336]">
+        <button type="button" onclick="navigateToSection('home')" class="flex items-center gap-3 group text-start cursor-pointer shrink-0">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 flex items-center justify-center p-2 transition-colors group-hover:border-[#D19336]">
             <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nopal Core Logo">
               <g class="header-logo-orbit" stroke="#183D29" stroke-width="6.5">
                 <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
@@ -639,66 +690,63 @@
             </svg>
           </div>
           <div>
-            <div class="flex items-center gap-1.5">
-              <span class="block text-sm sm:text-lg font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
+            <div class="flex items-center gap-2">
+              <span class="block text-lg sm:text-2xl font-black tracking-tight brand-green leading-none">NOPAL CORE</span>
               <span id="appModeBadge" class="hidden px-2 py-0.5 rounded-full bg-emerald-50 text-[#183D29] border border-emerald-200 text-[10px] font-extrabold">APP</span>
             </div>
-            <span class="block text-[9.5px] sm:text-[10.5px] font-semibold text-stone-500 mt-0.5" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
+            <span class="block text-xs sm:text-sm font-bold text-stone-500 mt-1" data-i18n="tagline">التقنيات الحيوية واستغلال الأراضي</span>
           </div>
         </button>
 
         <!-- Desktop Navigation Bar + Executive Pitch + PWA Installer + Theme + Language -->
-        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
-          <nav class="hidden xl:flex items-center gap-0.5 bg-stone-100/80 p-1 rounded-2xl border border-stone-200/80" aria-label="Main Navigation">
-            <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_home">
+        <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <nav class="hidden xl:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-2xl border border-stone-200/80" aria-label="Main Navigation">
+            <button type="button" data-tab="home" onclick="navigateToSection('home')" class="nav-tab tab-active px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_home">
               الرئيسية
             </button>
-            <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_products">
+            <button type="button" data-tab="products" onclick="navigateToSection('products')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_products">
               المنتجات الصناعية
             </button>
-            <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_farmers">
+            <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_farmers">
               أجّر معنا
             </button>
-            <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold bg-amber-50 text-[#183D29] border border-amber-300/90 hover:border-[#D19336] transition whitespace-nowrap" data-i18n="tab_market_link">
-              للتأجير والعرض العام ↗
-            </a>
-            <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_supply">
+            <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_supply">
               توريد المحصول
             </button>
-            <button type="button" data-tab="impact" onclick="navigateToSection('impact')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_impact">
+            <button type="button" data-tab="impact" onclick="navigateToSection('impact')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_impact">
               الأثر والخريطة
             </button>
-            <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_about">
+            <button type="button" data-tab="about" onclick="navigateToSection('about')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_about">
               المنظومة والفريق
             </button>
-            <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-2 py-1.5 rounded-xl text-[11.5px] font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_b2b">
+            <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer whitespace-nowrap" data-i18n="tab_b2b">
               تواصل الشركات
             </button>
           </nav>
 
           <button type="button" onclick="openPitchModal()"
-            class="tactile-btn gold-sweep-btn inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-[11px] font-extrabold cursor-pointer shadow-xs whitespace-nowrap">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#D19336]"></span>
+            class="tactile-btn gold-sweep-btn inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#183D29] text-white border border-[#183D29] hover:bg-[#133121] text-xs sm:text-sm font-extrabold cursor-pointer shadow-xs whitespace-nowrap">
+            <span class="w-2 h-2 rounded-full bg-[#D19336]"></span>
             <span class="hidden sm:inline" data-i18n="btn_pitch_deck">ملف المستثمرين</span>
             <span class="sm:hidden">Pitch</span>
           </button>
 
           <button type="button" id="installAppBtn" onclick="openInstallAppModal()"
-            class="tactile-btn inline-flex items-center gap-1 px-2 py-2 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-[11px] font-extrabold cursor-pointer whitespace-nowrap">
-            <svg class="w-3.5 h-3.5 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            class="tactile-btn inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-amber-50 border border-amber-200/90 text-[#183D29] hover:border-[#D19336] text-xs sm:text-sm font-extrabold cursor-pointer whitespace-nowrap">
+            <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
             <span class="hidden md:inline" data-i18n="btn_install_app">تثبيت التطبيق</span>
           </button>
 
           <button type="button" onclick="toggleThemeMode()" id="themeToggleBtn" aria-label="تبديل الوضع الليلي والنهاري"
-            class="tactile-btn px-2 py-2 rounded-xl border border-stone-300 bg-white text-xs font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer shrink-0">
+            class="tactile-btn px-3 py-2.5 rounded-xl border border-stone-300 bg-white text-sm font-extrabold text-slate-700 hover:border-[#D19336] cursor-pointer shrink-0">
             <span id="themeIconSun" class="hidden">☀️</span>
             <span id="themeIconMoon">🌙</span>
           </button>
 
           <button type="button" onclick="toggleLanguage()" id="langBtn"
-            class="tactile-btn px-2.5 py-2 rounded-xl border border-stone-300 bg-white text-[11px] font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer shrink-0">
+            class="tactile-btn px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm font-extrabold text-slate-700 hover:border-[#183D29] hover:text-[#183D29] cursor-pointer shrink-0">
             English
           </button>
         </div>
@@ -715,9 +763,6 @@
         <button type="button" data-tab="farmers" onclick="navigateToSection('farmers')" class="nav-tab tab-inactive px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_farmers">
           أجّر معنا
         </button>
-        <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-amber-50 text-[#183D29] border border-amber-300/90 whitespace-nowrap transition" data-i18n="tab_market_link">
-          للتأجير والعرض العام ↗
-        </a>
         <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap transition cursor-pointer" data-i18n="tab_supply">
           توريد المحصول والمخلفات
         </button>
@@ -760,13 +805,9 @@
                 class="tactile-btn gold-sweep-btn bg-brand-green text-white px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base hover:bg-[#133121] shadow-sm cursor-pointer" data-i18n="hero_btn_farmer">
                 أجّر أرضك لشركة Nopal Core
               </button>
-              <a href="https://mohamedkhfh.github.io/nopalcore/market.html"
-                class="tactile-btn bg-amber-50 text-[#183D29] border border-amber-300 hover:border-[#D19336] px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base" data-i18n="hero_btn_market">
-                للتأجير والعرض العام ↗
-              </a>
               <button type="button" onclick="navigateToSection('products')"
                 class="tactile-btn bg-[#FAF9F6] text-[#183D29] border border-stone-300 hover:border-[#183D29] px-7 py-3.5 rounded-2xl font-extrabold text-sm sm:text-base cursor-pointer" data-i18n="hero_btn_b2b">
-                استكشف المنتجات الصناعية (6 خامات)
+                استكشف المنتجات الصناعية (9 خامات)
               </button>
             </div>
           </div>
@@ -946,13 +987,13 @@
 
       <div class="flex flex-wrap items-center gap-2 mb-7" role="tablist" aria-label="Product Stream Filter">
         <button type="button" data-filter="all" onclick="filterProducts('all')" class="prod-filter-btn tactile-btn filter-active px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold cursor-pointer" data-i18n="flt_all">
-          جميع الخامات (6)
+          جميع الخامات (9)
         </button>
         <button type="button" data-filter="cosmetics" onclick="filterProducts('cosmetics')" class="prod-filter-btn tactile-btn filter-inactive px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold cursor-pointer" data-i18n="flt_cosmetics">
-          التجميل والمستحضرات الطبية (3)
+          التجميل والمستحضرات الطبية (4)
         </button>
         <button type="button" data-filter="food" onclick="filterProducts('food')" class="prod-filter-btn tactile-btn filter-inactive px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold cursor-pointer" data-i18n="flt_food">
-          الأغذية والمكملات الحيوية (2)
+          الأغذية والمكملات والتغليف الحيوي (4)
         </button>
         <button type="button" data-filter="feed" onclick="filterProducts('feed')" class="prod-filter-btn tactile-btn filter-inactive px-4 py-2 rounded-xl border text-xs sm:text-sm font-extrabold cursor-pointer" data-i18n="flt_feed">
           الأعلاف المستدامة (1)
@@ -1145,94 +1186,97 @@
             <button type="button" onclick="openSampleModal('feed')" class="tactile-btn text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
           </div>
         </div>
-      </div>
 
-      <!-- LIQUID GOLD BENCHMARK -->
-      <div class="gsap-reveal-section mt-10 emerald-gold-surface text-white rounded-3xl p-7 sm:p-10 shadow-sm">
-        <div class="grid lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-5 space-y-4">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-amber-300 border border-white/15 text-xs font-extrabold" data-i18n="bench_badge">
-              مقياس التفوّق التجميلي • Liquid Gold Benchmark
-            </span>
-            <h3 class="text-2xl sm:text-3xl font-black leading-snug" data-i18n="bench_title">
-              لماذا يتفوّق زيت بذور التين الشوكي على زيت الأرجان المغربي؟
-            </h3>
-            <p class="text-xs sm:text-sm text-emerald-100/90 leading-relaxed" data-i18n="bench_sub">
-              بفضل العصر البارد الدقيق (&lt;35°م) للبذور المصرية النقية، يوفر زيت Nopal Core تركيزاً مضاعفاً من مضادات الأكسدة والأحماض الدهنية الأساسية بامتصاص فوري دون أي ملمس دهني.
+        <!-- Product 7 -->
+        <div data-category="cosmetics" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#D19336] flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-amber-50 text-[#D19336] font-black text-base flex items-center justify-center tabular-nums">07</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p7_tag">تجميل وترطيب عميق</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p7_t">مستخلص الهلام الحيوي النقي (Cosmetic &amp; Pharma Mucilage Extract)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p7_d">
+              بوليمر حيوي طبيعي عالي النقاء لصناعة مستحضرات التجميل والترطيب العميق والأدوية.
             </p>
-            <div class="pt-1">
-              <button type="button" onclick="openCoaDrawer('oil')" class="tactile-btn gold-sweep-btn px-5 py-3 rounded-2xl bg-[#D19336] text-slate-950 font-extrabold text-xs cursor-pointer">
-                <span data-i18n="bench_btn">استعرض شهادة تحليل الزيت COA ←</span>
-              </button>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_grade">درجة النقاء</span>
+                <span class="font-extrabold brand-green" data-i18n="p7_ext">نقاء تجميلي ودوائي</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">الاستخدام التجاري</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p7_app">مستحضرات التجميل والترطيب والأدوية</span>
+              </div>
             </div>
           </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between gap-2 text-xs font-bold">
+            <button type="button" onclick="openCoaDrawer('pure_mucilage')" class="tactile-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50/90 text-[#183D29] border border-amber-200/80 hover:border-[#D19336] font-extrabold cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-[#D19336]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span data-i18n="btn_lab_spec">المواصفات المعملية</span>
+            </button>
+            <button type="button" onclick="openSampleModal('pure_mucilage')" class="tactile-btn text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
 
-          <div class="lg:col-span-7 bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-5">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs font-extrabold">
-                <span data-i18n="bench_m1">فيتامين E الطبيعي (Gamma-Tocopherol) — أعلى بـ +150%</span>
-                <span class="text-amber-300 tabular-nums">1,020 mg/kg</span>
+        <!-- Product 8 -->
+        <div data-category="food" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-emerald-50 text-[#183D29] font-black text-base flex items-center justify-center tabular-nums">08</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p8_tag">تغليف غذائي مستدام</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p8_t">طلاء التغليف الحيوي القابل للأكل (Edible Bio-Coating)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p8_d">
+              محلول تغليف طبيعي قابل للتحلل لإطالة العمر الافتراضي للفاكهة والخضروات المصدرة وتقليل الهدر.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_grade">الخصائص الحيوية</span>
+                <span class="font-extrabold brand-green" data-i18n="p8_ext">طبيعي 100% وقابل للتحلل</span>
               </div>
-              <div class="space-y-1.5">
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="w-24 text-amber-300 font-extrabold shrink-0">Nopal Core</span>
-                  <div class="flex-1 h-2.5 rounded-full bg-white/10 overflow-hidden">
-                    <div class="h-full rounded-full bg-[#D19336]" style="width: 94%;"></div>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="w-24 text-emerald-200/70 font-bold shrink-0" data-i18n="bench_argan">زيت الأرجان</span>
-                  <div class="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
-                    <div class="h-full rounded-full bg-white/35" style="width: 38%;"></div>
-                  </div>
-                  <span class="text-emerald-200/70 tabular-nums">400 mg/kg</span>
-                </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">الاستخدام التجاري</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p8_app">تصدير الفاكهة والخضروات الطازجة</span>
               </div>
             </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between gap-2 text-xs font-bold">
+            <button type="button" onclick="openCoaDrawer('bio_coating')" class="tactile-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50/90 text-[#183D29] border border-emerald-200/80 hover:border-[#183D29] font-extrabold cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-[#183D29]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span data-i18n="btn_lab_spec">المواصفات المعملية</span>
+            </button>
+            <button type="button" onclick="openSampleModal('bio_coating')" class="tactile-btn text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
+          </div>
+        </div>
 
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs font-extrabold">
-                <span data-i18n="bench_m2">حمض اللينوليك الأساسي (Omega-6 Linoleic Acid)</span>
-                <span class="text-amber-300 tabular-nums">61.5%</span>
+        <!-- Product 9 -->
+        <div data-category="food" class="product-card spotlight-card bg-white rounded-3xl p-7 border border-stone-200 hover:border-[#183D29] flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="w-11 h-11 rounded-2xl bg-emerald-50 text-[#183D29] font-black text-base flex items-center justify-center tabular-nums">09</span>
+              <span class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-stone-100 text-slate-700" data-i18n="p9_tag">مكملات وأغذية صحية</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black brand-green mb-2" data-i18n="p9_t">الألياف الوظيفية النشطة (Lipophilic Functional Bio-Fibers)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4" data-i18n="p9_d">
+              ألياف نباتية نشطة لربط الدهون تدخل في صناعة المكملات الغذائية والأغذية الصحية.
+            </p>
+            <div class="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-200/80 text-xs">
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_grade">الفاعلية الوظيفية</span>
+                <span class="font-extrabold brand-green" data-i18n="p9_ext">ارتباط دهني عالي الكفاءة</span>
               </div>
-              <div class="space-y-1.5">
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="w-24 text-amber-300 font-extrabold shrink-0">Nopal Core</span>
-                  <div class="flex-1 h-2.5 rounded-full bg-white/10 overflow-hidden">
-                    <div class="h-full rounded-full bg-[#D19336]" style="width: 88%;"></div>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="w-24 text-emerald-200/70 font-bold shrink-0" data-i18n="bench_argan">زيت الأرجان</span>
-                  <div class="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
-                    <div class="h-full rounded-full bg-white/35" style="width: 52%;"></div>
-                  </div>
-                  <span class="text-emerald-200/70 tabular-nums">36.0%</span>
-                </div>
+              <div>
+                <span class="block text-slate-400 font-bold mb-0.5" data-i18n="lbl_apps">الاستخدام التجاري</span>
+                <span class="font-extrabold text-slate-700" data-i18n="p9_app">المكملات الغذائية والأغذية الصحية</span>
               </div>
             </div>
-
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs font-extrabold">
-                <span data-i18n="bench_m3">الستيرولات النباتية لتجديد حاجز البشرة (Phytosterols)</span>
-                <span class="text-amber-300 tabular-nums">10 g/kg</span>
-              </div>
-              <div class="space-y-1.5">
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="w-24 text-amber-300 font-extrabold shrink-0">Nopal Core</span>
-                  <div class="flex-1 h-2.5 rounded-full bg-white/10 overflow-hidden">
-                    <div class="h-full rounded-full bg-[#D19336]" style="width: 92%;"></div>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="w-24 text-emerald-200/70 font-bold shrink-0" data-i18n="bench_argan">زيت الأرجان</span>
-                  <div class="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
-                    <div class="h-full rounded-full bg-white/35" style="width: 24%;"></div>
-                  </div>
-                  <span class="text-emerald-200/70 tabular-nums">2.2 g/kg</span>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between gap-2 text-xs font-bold">
+            <button type="button" onclick="openCoaDrawer('bio_fibers')" class="tactile-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50/90 text-[#183D29] border border-emerald-200/80 hover:border-[#183D29] font-extrabold cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-[#183D29]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span data-i18n="btn_lab_spec">المواصفات المعملية</span>
+            </button>
+            <button type="button" onclick="openSampleModal('bio_fibers')" class="tactile-btn text-[#183D29] hover:text-[#D19336] font-extrabold underline cursor-pointer" data-i18n="card_req_sample">اطلب عينة ←</button>
           </div>
         </div>
       </div>
@@ -1270,8 +1314,8 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6">
           <div class="p-4 rounded-2xl bg-amber-50/50 border border-amber-200/70">
             <span class="text-[11px] font-extrabold text-[#D19336] block" data-i18n="sim_out1_t">زيت بذور التين الشوكي البكر</span>
-            <p id="simOilOut" class="text-xl sm:text-2xl font-black brand-green mt-1 tabular-nums">25 لتر</p>
-            <span id="simOilDesc" class="text-[11px] text-slate-500" data-i18n="sim_out1_d">عصر بارد فائق النقاء (Cosmetic)</span>
+            <p id="simOilOut" class="text-xl sm:text-2xl font-black brand-green mt-1 tabular-nums">10 – 18 لتر</p>
+            <span id="simOilDesc" class="text-[11px] text-slate-500" data-i18n="sim_out1_d">نطاق تحفظي (1 – 1.8 لتر / طن ثمار)</span>
           </div>
           <div class="p-4 rounded-2xl bg-[#FAF9F6] border border-stone-200/80">
             <span id="simOut2Title" class="text-[11px] font-extrabold text-[#183D29] block" data-i18n="sim_out2_t">اللب المجمد خالي البذور</span>
@@ -1300,7 +1344,7 @@
             أجّر معنا • استثمار مباشر لشركة Nopal Core
           </span>
           <h2 class="text-2xl sm:text-3xl font-black brand-green leading-snug" data-i18n="farm_title">
-            أجّر أرضك لشركة Nopal Core بعائد سنوي ثابت ومضمون
+            أجّر أرضك لشركة Nopal Core بعائد سنوي محدد بعقد واضح
           </h2>
           <p class="text-sm text-slate-600 leading-relaxed" data-i18n="farm_desc">
             إذا كانت لديك مساحة أرض فاضية أو هامشية، تقوم شركة Nopal Core نفسها بمعاينتها واستئجارها منك مباشرة بعقود واضحة لزراعتها وإدارة نبات التين الشوكي لحساب الشركة.
@@ -1321,18 +1365,7 @@
             </li>
           </ul>
 
-          <div class="p-4 rounded-2xl bg-amber-50/90 border border-amber-200/90 space-y-2.5">
-            <span class="block text-xs font-black text-[#183D29]" data-i18n="market_diff_title">هل تبحث عن أرض للإيجار أو تريد عرض أرضك للجمهور العام؟</span>
-            <p class="text-[11px] font-bold text-slate-600 leading-relaxed" data-i18n="market_diff_desc">
-              انتقل لمنصة الوساطة الزراعية المستقلة لعرض أرضك للغير أو البحث المباشر عن أراضٍ معتمدة.
-            </p>
-            <a href="https://mohamedkhfh.github.io/nopalcore/market.html"
-              class="tactile-btn gold-sweep-btn w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#D19336] text-slate-950 text-xs sm:text-sm font-extrabold shadow-xs">
-              <span data-i18n="market_diff_btn">منصة للتأجير والعرض العام ↗</span>
-            </a>
-          </div>
-
-          <div class="pt-1">
+          <div class="pt-2">
             <button type="button" onclick="shareFarmersPortalLink()"
               class="tactile-btn w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-[#FAF9F6] border border-stone-300 hover:border-[#D19336] hover:bg-amber-50/50 text-xs sm:text-sm font-extrabold brand-green cursor-pointer shadow-xs">
               <svg class="w-4 h-4 text-[#D19336] shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
@@ -1864,7 +1897,7 @@
                 <div class="emerald-gold-surface text-white rounded-3xl p-6 border border-emerald-700/70 shadow-md text-center space-y-4">
                   <div class="w-14 h-14 mx-auto rounded-2xl bg-white/10 border border-white/15 p-2 flex items-center justify-center">
                     <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g stroke="#FFFFFF" stroke-width="6">
+                      <g class="header-logo-orbit" stroke="#FFFFFF" stroke-width="6">
                         <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
                         <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
                         <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
@@ -1967,7 +2000,7 @@
                 <span class="text-[11px] font-black text-[#183D29] tabular-nums">04. LAND &amp; UPCYCLING SUITE</span>
                 <h4 class="text-sm font-black brand-green mt-1" data-i18n="suite4_t">جناح استثمار الأراضي وتدوير المخلفات</h4>
                 <p class="text-xs text-slate-600 mt-2 leading-relaxed" data-i18n="suite4_d">
-                  تحويل الأراضي الهامشية غير المستغلة أو مخلفات مصانع العصير والمربى إلى عقود إيجار وتوريد بعائد مالي مضمون.
+                  تحويل الأراضي الهامشية غير المستغلة أو مخلفات مصانع العصير والمربى إلى عقود إيجار وتوريد بعائد مالي بعقد واضح.
                 </p>
               </div>
               <button type="button" onclick="navigateToSection('supply')" class="text-start text-[11px] font-extrabold brand-green hover:text-[#D19336] underline cursor-pointer" data-i18n="suite4_link">سجّل عرض توريد ←</button>
@@ -1984,7 +2017,7 @@
                 </div>
                 <div class="p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-200/70 text-slate-800 font-bold">
                   <strong class="brand-green" data-i18n="roi_after">مع Nopal Core:</strong>
-                  <span data-i18n="roi1_a">تحويل المخلفات إلى مصدر دخل إضافي مستمر بعقود شراء مباشرة.</span>
+                  <span data-i18n="roi2_a">توفير 80% من المياه مع عائد إيجاري سنوي محدد بعقد واضح.</span>
                 </div>
               </div>
             </div>
@@ -2114,7 +2147,7 @@
       <div class="flex flex-col items-center mb-6 text-center">
         <div class="w-14 h-14 rounded-2xl bg-[#FAF9F6] border border-stone-200 p-2 mb-3 flex items-center justify-center">
           <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="#183D29" stroke-width="6.5">
+            <g class="header-logo-orbit" stroke="#183D29" stroke-width="6.5">
               <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
               <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
               <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
@@ -2129,7 +2162,7 @@
         <p class="text-xs text-slate-500 mt-1" data-i18n="adm_login_sub">الدخول مقتصر على حساب الإدارة المعتمد</p>
       </div>
       <form id="adminLoginForm" class="space-y-4">
-        <input type="email" id="adminEmail" value="Nopalcore@hotmail.com" required
+        <input type="email" id="adminEmail" placeholder="Email" autocomplete="username" required
           class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
         <input type="password" id="adminPass" placeholder="كلمة المرور" data-i18n-placeholder="ph_admin_pass" required
           class="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm text-left" dir="ltr" />
@@ -2254,7 +2287,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
         <svg class="w-8 h-8" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#183D29" stroke-width="6.5">
+          <g class="header-logo-orbit" stroke="#183D29" stroke-width="6.5">
             <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
             <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
             <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
@@ -2269,14 +2302,8 @@
 
       <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500">
         <span>© 2026 Nopal Core Biotech. All rights reserved.</span>
-        <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="brand-green hover:text-[#D19336] font-extrabold transition" data-i18n="tab_market_link">
-          للتأجير والعرض العام ↗
-        </a>
         <button type="button" onclick="openInstallAppModal()" class="text-slate-500 hover:text-[#183D29] font-bold transition cursor-pointer" data-i18n="footer_app_btn">
           التطبيق (PWA)
-        </button>
-        <button type="button" onclick="openAdminPortal()" class="text-slate-400 hover:text-[#183D29] font-bold transition cursor-pointer">
-          Admin
         </button>
       </div>
     </div>
@@ -2297,10 +2324,10 @@
 
       <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm">
         <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
-          <span class="text-amber-300 font-black text-xs tabular-nums">01 • YEAR-ROUND UTILIZATION</span>
-          <h4 class="font-black text-base" data-i18n="pitch_p1_t">تشغيل المصنع 12 شهراً بلا توقف</h4>
-          <p class="text-emerald-100/85 text-xs leading-relaxed" data-i18n="pitch_p1_d">
-            نتغلب على موسمية التين الشوكي بتشغيل خط مشترك: الثمار والبذور صيفاً، والألواح الخضراء (الكلادود والهلام الحيوي والأعلاف) طوال العام.
+          <span class="text-amber-300 font-black text-xs tabular-nums">02 • 30–45 L/TON SEED VALORIZATION</span>
+          <h4 class="font-black text-base" data-i18n="pitch_p2_t">تعظيم الربحية من مخلفات المصانع</h4>
+          <p class="text-emerald-100/85 text-xs leading-relaxed" data-i18n="pitch_p2_d">
+            شراء بذور التين الشوكي المهدرة من مصانع العصائر والمربى واستخلاص 30 – 45 لتر زيت بكر لكل طن بذور (و1 – 1.8 لتر لكل طن ثمار) مع مقشر الكُسب.
           </p>
         </div>
 
@@ -2405,6 +2432,9 @@
             <option value="mucilage" data-i18n="p3_t">الهلام الحيوي (Bio-Mucilage)</option>
             <option value="scrub" data-i18n="p6_t">مقشر الكُسب التجميلي (Seed-Cake Scrub)</option>
             <option value="feed" data-i18n="p4_t">مركزات الأعلاف المستدامة (قشور وألواح)</option>
+            <option value="pure_mucilage" data-i18n="p7_t">مستخلص الهلام الحيوي النقي (Cosmetic &amp; Pharma Mucilage Extract)</option>
+            <option value="bio_coating" data-i18n="p8_t">طلاء التغليف الحيوي القابل للأكل (Edible Bio-Coating)</option>
+            <option value="bio_fibers" data-i18n="p9_t">الألياف الوظيفية النشطة (Lipophilic Functional Bio-Fibers)</option>
           </select>
         </div>
         <div class="grid grid-cols-2 gap-2.5">
@@ -2439,7 +2469,7 @@
         <div class="flex items-start justify-between gap-3 pb-4 border-b border-stone-200">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-md bg-amber-50 text-[#D19336] border border-amber-200/80 text-[11px] font-extrabold" data-i18n="coa_kicker">بطاقة المواصفات المعملية • Digital COA</span>
+              <span class="px-2.5 py-0.5 rounded-md bg-amber-50 text-[#D19336] border border-amber-200/80 text-[11px] font-extrabold" data-i18n="coa_kicker">مواصفات مرجعية مستهدفة (ليست شهادة تحليل رسمية بعد)</span>
               <span id="coaBatchCode" class="text-[11px] font-mono font-bold text-slate-400">NC-SPEC-01</span>
             </div>
             <h3 id="coaDrawerTitle" class="text-xl font-black brand-green mt-1.5">زيت بذور التين الشوكي البكر</h3>
@@ -2487,7 +2517,7 @@
         <div class="flex items-center gap-3">
           <div class="w-12 h-12 rounded-2xl bg-[#183D29] p-2 flex items-center justify-center shrink-0">
             <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#ffffff" stroke-width="6.5">
+              <g class="header-logo-orbit" stroke="#ffffff" stroke-width="6.5">
                 <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(0 60 60)" />
                 <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(60 60 60)" />
                 <ellipse cx="60" cy="60" rx="26" ry="46" transform="rotate(120 60 60)" />
@@ -2556,10 +2586,10 @@
       <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       <span data-i18n="dock_farmers">أجّر معنا</span>
     </button>
-    <a href="https://mohamedkhfh.github.io/nopalcore/market.html" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold text-[#D19336] transition">
-      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-      <span data-i18n="dock_market">سوق الأراضي</span>
-    </a>
+    <button type="button" data-tab="supply" onclick="navigateToSection('supply')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
+      <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+      <span data-i18n="dock_supply">التوريد</span>
+    </button>
     <button type="button" data-tab="b2b" onclick="navigateToSection('b2b')" class="nav-tab tab-inactive flex flex-col items-center justify-center py-1.5 rounded-xl text-[10px] font-extrabold transition cursor-pointer">
       <svg class="w-4 h-4 mb-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
       <span data-i18n="dock_b2b">الشركات</span>
@@ -2638,11 +2668,17 @@
       if (!curtain || curtain.classList.contains('curtain-lifted')) return;
       curtain.classList.add('curtain-lifted');
       setTimeout(() => {
-        if (curtain && curtain.parentNode) curtain.remove();
+        if (curtain && curtain.parentNode) curtain.style.display = 'none';
       }, 800);
     }
 
-    setTimeout(liftRoyalCurtain, 750);
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(liftRoyalCurtain, 850);
+    });
+    window.addEventListener('load', () => {
+      setTimeout(liftRoyalCurtain, 650);
+    });
+    setTimeout(liftRoyalCurtain, 2200);
 
     function initInteractiveLuxuryEffects() {
       const tiltCard = document.getElementById('heroSeedTiltCard');
@@ -2669,85 +2705,90 @@
       }
 
       if (!window.gsap) return;
-      if (window.ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger);
-      }
-
-      gsap.to('#heroRingsGroup', {
-        rotation: 360,
-        duration: 28,
+      gsap.to('.nopal-star-twinkle', {
+        y: -14,
+        x: 6,
+        rotation: 22,
+        scale: 1.22,
+        opacity: 0.95,
+        duration: 2.8,
         repeat: -1,
-        ease: 'none',
-        svgOrigin: '60 60'
+        yoyo: true,
+        stagger: 0.22,
+        ease: 'sine.inOut'
       });
 
-      gsap.from('.hero-reveal', {
-        y: 16,
-        opacity: 0,
-        duration: 0.5,
-        delay: 0.45,
-        stagger: 0.07,
-        ease: 'power2.out',
-        clearProps: 'transform'
-      });
-
-      document.querySelectorAll('.counter-num').forEach(el => {
-        const target = parseFloat(el.getAttribute('data-target') || '0');
-        const suffix = el.getAttribute('data-suffix') || '';
-        const obj = { val: 0 };
-        const runCounter = () => {
-          gsap.to(obj, {
-            val: target,
-            duration: 1.2,
-            ease: 'power2.out',
-            onUpdate: () => {
-              el.textContent = Math.round(obj.val) + suffix;
-            }
-          });
-        };
-        if (window.ScrollTrigger) {
-          ScrollTrigger.create({
-            trigger: el,
-            start: 'top 94%',
-            once: true,
-            onEnter: runCounter
-          });
-        } else {
-          setTimeout(runCounter, 600);
-        }
+      gsap.to('.pollen-drift, .pollen-drift-alt', {
+        y: -18,
+        x: 11,
+        scale: 1.25,
+        opacity: 0.9,
+        duration: 3.4,
+        repeat: -1,
+        yoyo: true,
+        stagger: 0.16,
+        ease: 'sine.inOut'
       });
 
       if (window.ScrollTrigger) {
-        gsap.utils.toArray('.gsap-reveal-section').forEach(sec => {
-          gsap.from(sec, {
-            y: 18,
-            opacity: 0,
-            duration: 0.45,
-            ease: 'power2.out',
-            clearProps: 'transform',
-            scrollTrigger: {
-              trigger: sec,
-              start: 'top 92%',
-              once: true
-            }
-          });
+        document.querySelectorAll('.counter-num').forEach(el => {
+          const target = parseFloat(el.getAttribute('data-target') || '0');
+          const suffix = el.getAttribute('data-suffix') || '';
+          const obj = { val: 0 };
+          const runCounter = () => {
+            gsap.to(obj, {
+              val: target,
+              duration: 1.2,
+              ease: 'power2.out',
+              onUpdate: () => {
+                el.textContent = Math.round(obj.val) + suffix;
+              }
+            });
+          };
+          if (window.ScrollTrigger) {
+            ScrollTrigger.create({
+              trigger: el,
+              start: 'top 94%',
+              once: true,
+              onEnter: runCounter
+            });
+          } else {
+            setTimeout(runCounter, 600);
+          }
         });
 
-        gsap.utils.toArray('.gsap-reveal-card').forEach((card, i) => {
-          gsap.from(card, {
-            y: 16,
-            opacity: 0,
-            duration: 0.4,
-            delay: (i % 3) * 0.05,
-            ease: 'power2.out',
-            clearProps: 'transform',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 94%',
-              once: true
-            }
+        if (window.ScrollTrigger) {
+          gsap.utils.toArray('.gsap-reveal-section').forEach(sec => {
+            gsap.from(sec, {
+              y: 18,
+              opacity: 0,
+              duration: 0.45,
+              ease: 'power2.out',
+              clearProps: 'transform',
+              scrollTrigger: {
+                trigger: sec,
+                start: 'top 92%',
+                once: true
+              }
+            });
           });
-        });
+
+          gsap.utils.toArray('.gsap-reveal-card').forEach((card, i) => {
+            gsap.from(card, {
+              y: 16,
+              opacity: 0,
+              duration: 0.4,
+              delay: (i % 3) * 0.05,
+              ease: 'power2.out',
+              clearProps: 'transform',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 94%',
+                once: true
+              }
+            });
+          });
+        }
       }
     }
 
@@ -2894,12 +2935,13 @@
       document.getElementById('simTonsDisplay').textContent = isEn ? `${tons} Tons` : `${tons} طن`;
 
       if (currentSimulatorMode === 'seeds') {
-        const oilLiters = (tons * 60).toLocaleString();
+        const oilMin = (tons * 30).toLocaleString();
+        const oilMax = (tons * 45).toLocaleString();
         const scrubKg = (tons * 930).toLocaleString();
         const cakeKg = (tons * 10).toLocaleString();
 
-        document.getElementById('simOilOut').textContent = isEn ? `${oilLiters} L` : `${oilLiters} لتر`;
-        document.getElementById('simOilDesc').textContent = isEn ? 'High-yield cold press (~60 L/ton)' : 'استخلاص مكثف على البارد (~60 لتر/طن)';
+        document.getElementById('simOilOut').textContent = isEn ? `${oilMin} – ${oilMax} L` : `${oilMin} – ${oilMax} لتر`;
+        document.getElementById('simOilDesc').textContent = isEn ? 'Conservative yield (30 – 45 L / ton seeds)' : 'نطاق تحفظي (30 – 45 لتر / طن بذور)';
 
         document.getElementById('simOut2Title').textContent = isEn ? 'Fruit Pulp (Already Separated)' : 'اللب المفصول مسبقاً بالمصنع';
         document.getElementById('simPulpOut').textContent = isEn ? 'Seed Input Only' : 'مدخلات بذور صافية';
@@ -2911,13 +2953,14 @@
         document.getElementById('simFeedOut').textContent = isEn ? `${cakeKg} kg` : `${cakeKg} كجم`;
         document.getElementById('simOut4Desc').textContent = isEn ? '100% zero-waste seed valorization' : 'استغلال 100% من نواتج الفلترة';
       } else {
-        const oilLiters = (tons * 2.5).toLocaleString(undefined, { maximumFractionDigits: 1 });
+        const oilMin = (tons * 1.0).toLocaleString(undefined, { maximumFractionDigits: 1 });
+        const oilMax = (tons * 1.8).toLocaleString(undefined, { maximumFractionDigits: 1 });
         const pulpKg = (tons * 520).toLocaleString();
         const scrubKg = (tons * 47.5).toLocaleString(undefined, { maximumFractionDigits: 1 });
         const feedKg = (tons * 430).toLocaleString();
 
-        document.getElementById('simOilOut').textContent = isEn ? `${oilLiters} L` : `${oilLiters} لتر`;
-        document.getElementById('simOilDesc').textContent = isEn ? 'Ultra-pure cold pressed (Cosmetic)' : 'عصر بارد فائق النقاء (Cosmetic)';
+        document.getElementById('simOilOut').textContent = isEn ? `${oilMin} – ${oilMax} L` : `${oilMin} – ${oilMax} لتر`;
+        document.getElementById('simOilDesc').textContent = isEn ? 'Conservative yield (1 – 1.8 L / ton fruit)' : 'نطاق تحفظي (1 – 1.8 لتر / طن ثمار)';
 
         document.getElementById('simOut2Title').textContent = isEn ? 'Seedless Frozen Pulp' : 'اللب المجمد خالي البذور';
         document.getElementById('simPulpOut').textContent = isEn ? `${pulpKg} kg` : `${pulpKg} كجم`;
@@ -3044,6 +3087,60 @@
           { labelAr: 'البكتين والكربوهيدرات الذائبة للطاقة', labelEn: 'Energy-Rich Pectin & Soluble Carbs', valText: '29.0%', pct: 80, color: '#D19336' },
           { labelAr: 'المعادن الطبيعية (كالسيوم وبوتاسيوم)', labelEn: 'Essential Minerals (Ca, K, P)', valText: '11.2%', pct: 74, color: '#183D29' },
           { labelAr: 'البروتين الخام وتوفير تكلفة العليقة', labelEn: 'Crude Protein & Ration Cost Saving', valText: '8.4% (~25% Save)', pct: 68, color: '#D19336' }
+        ]
+      },
+      pure_mucilage: {
+        code: 'NC-PMUC-07',
+        titleAr: 'مستخلص الهلام الحيوي النقي (Cosmetic & Pharma Mucilage Extract)',
+        titleEn: 'Cosmetic & Pharma Mucilage Extract',
+        subAr: 'High-Purity Natural Biopolymer • Deep Hydration & Pharma Grade',
+        subEn: 'High-Purity Natural Biopolymer • Deep Hydration & Pharma Grade',
+        overviewAr: 'بوليمر حيوي طبيعي عالي النقاء لصناعة مستحضرات التجميل والترطيب العميق والأدوية.',
+        overviewEn: 'High-purity natural biopolymer engineered for cosmetic formulations, deep hydration skincare, and pharmaceutical applications.',
+        packAr: 'عبوات 5 كجم و25 كجم محكمة الغلق (درجة تجميلية ودوائية)',
+        packEn: '5 kg & 25 kg sealed pharmaceutical & cosmetic grade drums',
+        shelfAr: '18 شهراً في مكان جاف وبارد • خالي من المذيبات',
+        shelfEn: '18 months cool & dry storage • Solvent-free',
+        metrics: [
+          { labelAr: 'نقاء السكريات المتعددة النشطة (Polysaccharides)', labelEn: 'Active Polysaccharide Purity', valText: '92.0%', pct: 92, color: '#D19336' },
+          { labelAr: 'كفاءة الاحتفاظ بالرطوبة العميقة', labelEn: 'Deep Hydration Retention Capacity', valText: '96.0%', pct: 96, color: '#183D29' },
+          { labelAr: 'التوافق الجلدي والدوائي', labelEn: 'Dermal & Pharma Biocompatibility', valText: '100% Pure', pct: 98, color: '#D19336' }
+        ]
+      },
+      bio_coating: {
+        code: 'NC-COAT-08',
+        titleAr: 'طلاء التغليف الحيوي القابل للأكل (Edible Bio-Coating)',
+        titleEn: 'Edible Bio-Coating Solution',
+        subAr: 'Biodegradable Natural Coating • Fresh Produce Export Shelf-Life',
+        subEn: 'Biodegradable Natural Coating • Fresh Produce Export Shelf-Life',
+        overviewAr: 'محلول تغليف طبيعي قابل للتحلل لإطالة العمر الافتراضي للفاكهة والخضروات المصدرة وتقليل الهدر.',
+        overviewEn: 'Biodegradable natural edible coating solution designed to extend the shelf life of exported fruits and vegetables and reduce post-harvest waste.',
+        packAr: 'جراكن غذائية 20 لتر وبراميل 200 لتر لمحطات التعبئة والتصدير',
+        packEn: '20 L food-grade jerrycans & 200 L drums for export packhouses',
+        shelfAr: '12 شهراً • آمن غذائياً وقابل للأكل بنسبة 100%',
+        shelfEn: '12 months • 100% food-safe & edible',
+        metrics: [
+          { labelAr: 'إطالة العمر الافتراضي للثمار المصدرة', labelEn: 'Export Shelf-Life Extension', valText: '+40% – 60%', pct: 88, color: '#183D29' },
+          { labelAr: 'تقليل فقد الرطوبة والهدر بعد الحصاد', labelEn: 'Post-Harvest Moisture & Waste Reduction', valText: 'High Barrier', pct: 85, color: '#D19336' },
+          { labelAr: 'القابلية للتحلل الحيوي والأمان الغذائي', labelEn: 'Biodegradability & Food Safety', valText: '100% Natural', pct: 100, color: '#183D29' }
+        ]
+      },
+      bio_fibers: {
+        code: 'NC-FIB-09',
+        titleAr: 'الألياف الوظيفية النشطة (Lipophilic Functional Bio-Fibers)',
+        titleEn: 'Lipophilic Functional Bio-Fibers',
+        subAr: 'Active Fat-Binding Botanical Fibers • Nutraceutical & Health Food Grade',
+        subEn: 'Active Fat-Binding Botanical Fibers • Nutraceutical & Health Food Grade',
+        overviewAr: 'ألياف نباتية نشطة لربط الدهون تدخل في صناعة المكملات الغذائية والأغذية الصحية.',
+        overviewEn: 'Active lipophilic plant fibers engineered to bind dietary fats for nutraceutical supplements and functional health foods.',
+        packAr: 'شكائر كرافت مبطنة 25 كجم أو عبوات 10 كجم للمصانع الدوائية',
+        packEn: '25 kg lined Kraft bags or 10 kg foil pouches for supplement plants',
+        shelfAr: '24 شهراً • ألياف طبيعية غير معدلة وراثياً',
+        shelfEn: '24 months • 100% natural non-GMO plant fibers',
+        metrics: [
+          { labelAr: 'القدرة على ربط الدهون (Lipophilic Binding)', labelEn: 'Lipophilic Fat-Binding Capacity', valText: 'High Affinity', pct: 90, color: '#183D29' },
+          { labelAr: 'محتوى الألياف الغذائية الوظيفية', labelEn: 'Functional Dietary Fiber Content', valText: '52.0%', pct: 86, color: '#D19336' },
+          { labelAr: 'النقاء الميكروبيولوجي والغذائي', labelEn: 'Nutraceutical Purity Standard', valText: 'Pharma Grade', pct: 95, color: '#183D29' }
         ]
       }
     };
@@ -3895,7 +3992,6 @@
         tab_home: 'Home',
         tab_products: 'Industrial Products',
         tab_farmers: 'Lease With Us',
-        tab_market_link: 'Public Leasing & Market ↗',
         tab_supply: 'Crop & Biomass Supply',
         tab_impact: 'Impact & Map',
         tab_about: 'System & Team',
@@ -3903,7 +3999,7 @@
         dock_home: 'Home',
         dock_products: 'Products',
         dock_farmers: 'Lease With Us',
-        dock_market: 'Land Market',
+        dock_supply: 'Supply',
         dock_b2b: 'B2B',
         btn_install_app: 'Install App',
         tel_1: '100% Biomass Upcycling',
@@ -3950,7 +4046,7 @@
         suite3_t: 'Agro-Feed & Livestock Suite',
         suite3_d: 'Cutting ration costs by up to 25% with aflatoxin-free pectin and calcium feed concentrates from peels & pads.',
         suite4_t: 'Land & Agro-Waste Suite',
-        suite4_d: 'Turning idle marginal lands and juice factory by-products into guaranteed leasing and supply contracts.',
+        suite4_d: 'Turning idle marginal lands and juice factory by-products into leasing and supply contracts.',
         suite_link: 'View Lab Specs ←',
         suite4_link: 'Submit Supply Offer ←',
         roi1_tag: 'Juice & Jam Factories',
@@ -3960,7 +4056,7 @@
         roi1_a: 'Converting agro-waste into a recurring revenue stream via direct purchase contracts.',
         roi2_tag: 'Desert & Marginal Lands',
         roi2_b: 'Idle acreage with zero yield or high water draw from conventional crops.',
-        roi2_a: '80% irrigation water savings with fixed, guaranteed annual land lease returns.',
+        roi2_a: '80% irrigation water savings with fixed, annual land lease returns set by a clear contract.',
         roi3_tag: 'Dairy & Fattening Farms',
         roi3_b: 'High reliance on expensive imported feed ingredients.',
         roi3_a: 'Up to 25% feed cost reduction and improved rumen digestibility via natural pectin.',
@@ -3977,7 +4073,7 @@
         pitch_p1_t: '12-Month Uninterrupted Plant Operation',
         pitch_p1_d: 'Overcoming seasonal harvest limits via a dual-stream line: fruit & seeds in summer, and green cladodes (powder, mucilage, feed) year-round.',
         pitch_p2_t: 'High-Margin Factory Seed Valorization',
-        pitch_p2_d: 'Procuring discarded seeds from juice/jam plants to extract ~60 L of virgin seed oil per ton alongside natural exfoliating scrub.',
+        pitch_p2_d: 'Procuring discarded seeds from juice/jam plants to extract 30–45 L of virgin seed oil per ton of seeds (1–1.8 L per ton of fruit) alongside natural exfoliating scrub.',
         pitch_p3_t: '100% Zero-Waste = 6 Revenue Streams',
         pitch_p3_d: 'Converting peels and spent cladodes into pectin- and calcium-rich livestock feed concentrates, covering operational overhead cleanly.',
         pitch_p4_t: 'Egyptian Cost & Water Efficiency Edge',
@@ -3985,7 +4081,7 @@
         pitch_footer_note: 'Ready to share full financial feasibility & unit economics.',
         pitch_btn_wa: 'Connect with CEO & Founders',
         btn_lab_spec: 'Lab Spec & COA',
-        coa_kicker: 'Digital Lab Specification • COA',
+        coa_kicker: 'Target Reference Specs (not an official COA yet)',
         coa_sec_metrics: 'Analytical Composition & Active Profile',
         coa_lbl_pack: 'Industrial Packaging Options',
         coa_lbl_shelf: 'Shelf Life & Compliance',
@@ -4025,8 +4121,7 @@
         stat_zero_waste: 'Zero-Waste Valorization',
         stat_outputs: 'Industrial B2B Outputs',
         hero_btn_farmer: 'Lease Your Land to Nopal Core',
-        hero_btn_market: 'Public Leasing & Market ↗',
-        hero_btn_b2b: 'Explore Industrial Products (6 Outputs)',
+        hero_btn_b2b: 'Explore Industrial Products (9 Outputs)',
         strip1_t: 'Fruit & Seed Stream (Summer & Agro-Waste)',
         strip1_d: 'Cold-pressed virgin seed oil, seedless frozen fruit puree, exfoliating cosmetic scrub, and dried peel feed.',
         strip2_t: 'Cladode Green Pad Stream (Year-Round)',
@@ -4037,11 +4132,12 @@
         prod_title: 'Integrated Industrial Products & Raw Materials',
         prod_sub: 'Standardized, clean-processed natural raw materials across our dual fruit and cladode streams for luxury cosmetics, food & beverage, nutraceuticals, and sustainable feeds.',
         btn_sample: 'Request Lab Sample & COA',
-        flt_all: 'All Raw Materials (6)',
-        flt_cosmetics: 'Cosmetics & Pharma (3)',
-        flt_food: 'Food & Nutraceuticals (2)',
+        flt_all: 'All Raw Materials (9)',
+        flt_cosmetics: 'Cosmetics & Pharma (4)',
+        flt_food: 'Food, Nutraceuticals & Bio-Coating (4)',
         flt_feed: 'Sustainable Feed (1)',
         card_req_sample: 'Request Sample →',
+        lbl_grade: 'Grade & Properties',
         p1_tag: 'Luxury Skincare',
         p1_t: 'Virgin Prickly Pear Seed Oil',
         p1_d: 'Cold-pressed from pure seeds without chemical solvents, exceptionally rich in Vitamin E (tocopherols) and linoleic acid for skin rejuvenation.',
@@ -4074,12 +4170,27 @@
         p4_d: 'Upcycling post-extraction pectin, digestible fiber, calcium, and potassium into balanced forage pellets that boost livestock feed conversion and reduce ration costs by up to 25%.',
         p4_ext: 'Thermal Drying & Pelleting',
         p4_app: 'Dairy/fattening farms & feed mills',
+        p7_tag: 'Cosmetics & Deep Hydration',
+        p7_t: 'Cosmetic & Pharma Mucilage Extract',
+        p7_d: 'High-purity natural biopolymer for cosmetics, deep hydration skincare, and pharmaceutical manufacturing.',
+        p7_ext: 'Cosmetic & Pharma Grade Purity',
+        p7_app: 'Cosmetics, deep hydration & pharma',
+        p8_tag: 'Sustainable Food Packaging',
+        p8_t: 'Edible Bio-Coating',
+        p8_d: 'Natural biodegradable coating solution to extend the shelf life of exported fruits and vegetables and reduce waste.',
+        p8_ext: '100% Natural & Biodegradable',
+        p8_app: 'Fresh fruit & vegetable exports',
+        p9_tag: 'Supplements & Health Foods',
+        p9_t: 'Lipophilic Functional Bio-Fibers',
+        p9_d: 'Active fat-binding plant fibers used in dietary supplements and functional health foods.',
+        p9_ext: 'High-Efficiency Lipid Binding',
+        p9_app: 'Dietary supplements & health foods',
         sim_badge: 'Dual-Feedstock Biorefinery Simulator',
         sim_title: 'Zero-Waste Circular Conversion Calculator',
         sim_sub: 'Compare processing whole fresh prickly pear fruit vs. pure seeds sourced from juice and jam plants.',
         sim_input_lbl: 'Fresh Prickly Pear Input',
         sim_out1_t: 'Virgin Prickly Pear Seed Oil',
-        sim_out1_d: 'Ultra-pure cold pressed (Cosmetic)',
+        sim_out1_d: 'Conservative yield (1 – 1.8 L / ton fruit)',
         sim_out2_t: 'Seedless Frozen Pulp',
         sim_out2_d: 'Ready puree for juice factories',
         sim_out3_t: 'Cosmetic Seed-Cake Scrub',
@@ -4092,9 +4203,6 @@
         farm_f1: 'Nopal Core is the direct lessee of your land',
         farm_f2: 'Free technical inspection to assess soil suitability',
         farm_f3: 'Full agricultural management & operational funding',
-        market_diff_title: 'Looking to rent land or list your land for third parties?',
-        market_diff_desc: 'Visit our independent agricultural brokerage marketplace to list lands publicly or search verified lands.',
-        market_diff_btn: 'Public Leasing & Listings Market ↗',
         btn_share_portal: 'Share Lease With Us Portal Link',
         btn_share_supply: 'Share Crop Supply Portal Link',
         form_head: 'Land Inspection & Leasing Request to Nopal Core',
@@ -4285,7 +4393,7 @@
 
     const arCache = {};
     document.querySelectorAll('[data-i18n]').forEach(el => {
-      arCache[el.getAttribute('data-i18n')] = el.textContent;
+      arCache[el.getAttribute('data-i18n')] = el.innerHTML;
     });
 
     function toggleLanguage() {
@@ -4297,9 +4405,9 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (currentLang === 'en' && translations.en[key]) {
-          el.textContent = translations.en[key];
+          el.innerHTML = translations.en[key];
         } else if (arCache[key]) {
-          el.textContent = arCache[key];
+          el.innerHTML = arCache[key];
         }
       });
 

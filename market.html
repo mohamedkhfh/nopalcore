@@ -1744,15 +1744,38 @@
       };
       localStorage.setItem('nopal_market_member_v1', JSON.stringify(currentMemberUser));
 
-      try {
-        await sbMarket.from('market_users').upsert([{
-          email: currentMemberUser.email || '',
-          full_name: name,
-          whatsapp: whatsapp,
-          role: role,
-          updated_at: new Date().toISOString()
-        }], { onConflict: 'email' });
-      } catch (_) {}
+      const emailLower = (currentMemberUser.email || '').toLowerCase().trim();
+      if (emailLower) {
+        try {
+          const { data: existingUser } = await sbMarket
+            .from('market_users')
+            .select('id')
+            .eq('email', emailLower)
+            .maybeSingle();
+
+          let saveError = null;
+          if (existingUser && existingUser.id) {
+            const { error } = await sbMarket
+              .from('market_users')
+              .update({ full_name: name, whatsapp, role, updated_at: new Date().toISOString() })
+              .eq('id', existingUser.id);
+            saveError = error;
+          } else {
+            const { error } = await sbMarket
+              .from('market_users')
+              .insert([{ email: emailLower, full_name: name, whatsapp, role }]);
+            saveError = error;
+          }
+
+          if (saveError) {
+            console.error('Supabase market_users error:', saveError);
+            showToast('تنبيه قاعدة البيانات: ' + saveError.message);
+            return;
+          }
+        } catch (err) {
+          console.error('Supabase market_users exception:', err);
+        }
+      }
 
       syncMemberFieldsToForms();
       updateAuthHeaderUI();
@@ -1805,9 +1828,12 @@
         google_email: currentMemberUser?.email || null
       };
 
-      try {
-        await sbMarket.from('tenant_requests').insert([reqData]);
-      } catch (_) {}
+      const { error: reqErr } = await sbMarket.from('tenant_requests').insert([reqData]);
+      if (reqErr) {
+        console.error('Supabase tenant_requests error:', reqErr);
+        showToast('خطأ في حفظ الطلب بقاعدة البيانات: ' + reqErr.message);
+        return;
+      }
 
       const availableLands = allLandListings
         .filter(l => l.status === 'available')
@@ -1887,9 +1913,12 @@
         status: 'pending'
       };
 
-      try {
-        await sbMarket.from('land_offers').insert([offerPayload]);
-      } catch (_) {}
+      const { error: offErr } = await sbMarket.from('land_offers').insert([offerPayload]);
+      if (offErr) {
+        console.error('Supabase land_offers error:', offErr);
+        showToast('خطأ في حفظ عرض الأرض بقاعدة البيانات: ' + offErr.message);
+        return;
+      }
 
       const banner = document.getElementById('offerSuccessBanner');
       banner.textContent = `تم استلام بيانات أرضك (${finalGov}) وحفظها بنجاح تحت كود مراجعة #${tempCode}. سيتواصل معك فريق Nopal Core هاتفياً لتأكيد البيانات ونشرها بالكود دون إظهار رقمك.`;
@@ -1977,9 +2006,12 @@
         google_email: currentMemberUser?.email || null
       };
 
-      try {
-        await sbMarket.from('inspection_bookings').insert([bookingPayload]);
-      } catch (_) {}
+      const { error: bookErr } = await sbMarket.from('inspection_bookings').insert([bookingPayload]);
+      if (bookErr) {
+        console.error('Supabase inspection_bookings error:', bookErr);
+        showToast('خطأ في حفظ المعاينة بقاعدة البيانات: ' + bookErr.message);
+        return;
+      }
 
       closeBookingModal();
       e.target.reset();
